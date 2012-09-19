@@ -3,12 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".TestButtons" />
+       android:id = "@+id/label1"
+       android:layout_width = "fill_parent"
+       android:layout_height = "wrap_content"
+       android:text = "Hello World:"
+       android:textSize = "25dip"
+       android:textStyle = "bold"
+       android:layout_marginLeft = "12dip"
+       android:layout_marginTop = "12dip"
+       />
+    
+   <EditText
+       android:id = "@+id/editor"
+       android:layout_width = "fill_parent"
+       android:layout_height = "wrap_content"
+       android:layout_below = "@+id/label1"
+       android:layout_marginTop="35dip"
+       android:layout_marginRight = "12dip"
+       android:layout_marginLeft = "12dip"
+       />
+   
+   <Button 
+       android:id = "@+id/ok"
+       android:layout_width = "wrap_content"
+       android:layout_height = "wrap_content"
+       android:layout_below = "@+id/editor"
+       android:layout_alignRight = "@+id/editor"
+       android:layout_marginTop = "12dip"
+       android:text = "mini \n button"
+       android:textSize = "6dip"
+       />
+   
+   <Button 
+       android:id = "@+id/mega"
+       android:layout_width = "wrap_content"
+       android:layout_height = "wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_marginBottom = "12dip"
+       android:layout_marginLeft = "27dip"
+       android:text = "MEGA \n BUTTON"
+       android:textSize = "60dip"
+       />
+
+   
+</RelativeLayout>
 
 </RelativeLayout>
