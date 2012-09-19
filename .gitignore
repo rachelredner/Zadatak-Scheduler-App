@@ -1,12 +1,16 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# built application files
+*.apk
+*.ap_
 
-# Compiled Dynamic libraries
-*.so
+# files for the dex VM
+*.dex
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
