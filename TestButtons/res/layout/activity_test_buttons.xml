@@ -77,7 +77,7 @@
        android:layout_alignBottom = "@+id/ok"
        android:layout_marginRight = "12dip"
        android:text=" " 
-	   android:textColor = "#FFDDAA"
+	   android:textColor = "#990000"
    />
 </RelativeLayout>
 

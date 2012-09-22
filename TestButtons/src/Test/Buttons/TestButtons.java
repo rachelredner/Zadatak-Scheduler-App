@@ -1,22 +1,22 @@
 package Test.Buttons;
 
-import android.view.ContextMenu;
-import android.view.MenuItem;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.Toast;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
-public class TestButtons extends Activity implements OnClickListener, OnLongClickListener {
+public class TestButtons extends Activity  {
 
 	
 
@@ -28,8 +28,44 @@ public class TestButtons extends Activity implements OnClickListener, OnLongClic
 			setContentView(R.layout.activity_test_buttons);
 			
 			Button button = (Button)findViewById(R.id.mega);
-			button.setOnClickListener(this);
-			button.setOnLongClickListener(this);
+			button.setOnClickListener(new OnClickListener(){
+				public void onClick(View v){
+					TextView text = (TextView)findViewById(R.id.id9);
+					if (text.getText().toString().equals("Mega Button pressed!")) {
+						text.setText("Mega Button already pressed");
+					}
+					else if (text.getText().toString().equals("Mega Button already pressed")){
+						text.setText(" ");
+					}
+					else
+						text.setText("Mega Button pressed!");	
+				}
+			});
+			
+			
+			Button button3 = (Button)findViewById(R.id.ok);
+			button3.setOnClickListener(new OnClickListener(){
+				public void onClick(View v){
+					EditText mEdit   = (EditText)findViewById(R.id.editor);
+					String string1 = mEdit.getText().toString();
+					TextView text = (TextView)findViewById(R.id.id8);
+					text.setText(string1);	
+					mEdit.setText("");
+				}
+			});
+					
+			
+			
+			button.setOnLongClickListener(new OnLongClickListener() {
+				public boolean onLongClick(View arg0) {
+					TextView text = (TextView)findViewById(R.id.id9);
+					text.setText("MEGA BUTTON HELD \n OH SO GENTLY ");	
+					return true;
+				}
+				
+			});
+			
+			
 			Button contextbutton = (Button)findViewById(R.id.ok);
 			registerForContextMenu(contextbutton);
 		}
@@ -91,20 +127,6 @@ public class TestButtons extends Activity implements OnClickListener, OnLongClic
 	
 	
 
-	public void onClick(View v) {
-		TextView text = (TextView)findViewById(R.id.id9);
-		if (text.getText().toString().equals("MEGA BUTTON PRESSED!"))
-		{
-			text.setText(" ");
-		}
-		else
-			text.setText("MEGA BUTTON PRESSED!");
-		
-	}
 
-	public boolean onLongClick(View arg0) {
-		TextView text = (TextView)findViewById(R.id.id9);
-		text.setText("MEGA BUTTON HELD \n OH SO GENTLY ");	
-		return true;
-	}
+	
 }
