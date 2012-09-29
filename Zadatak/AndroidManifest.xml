@@ -4,7 +4,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="8"
         android:targetSdkVersion="15" />
 
     <application
@@ -12,8 +12,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main" >
+            android:name=".Zadatak"
+            android:label="@string/title_activity_zadatak" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
