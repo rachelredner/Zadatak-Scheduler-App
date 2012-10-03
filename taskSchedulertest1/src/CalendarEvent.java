@@ -12,6 +12,7 @@ public class CalendarEvent {
 
 	private int progress;
 	private UUID eventId;
+	
 	//EventLength is defined in days
 	private int eventLength;
 	private int hoursToComplete;
@@ -32,8 +33,7 @@ public class CalendarEvent {
 		this.eventId = UUID.randomUUID();
 		this.eventName = name;
 	}
-	
-	
+		
 	/* Setters and Getters */
 	
 	public int getProgress(){
@@ -62,6 +62,10 @@ public class CalendarEvent {
 	
 	public void resetEventLength(int newLength){
 		this.eventLength = newLength;
+	}
+	
+	public String toString(){
+		return getName();
 	}
 
 }

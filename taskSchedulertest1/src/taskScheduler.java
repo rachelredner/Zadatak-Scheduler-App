@@ -12,16 +12,31 @@ public class taskScheduler {
 		listOfEvents[1] = new CalendarEvent("Task 2", 10, 20 , 0);
 		
 		Scheduler sched = new Scheduler();
+		for(int i = 0; i < 7; i++){
+			sched.addBusyTimes(i, 20, 23);
+			sched.addBusyTimes(i, 0, 8);
+			
+		}
+		sched.addBusyTimes(0, 14, 16);
+		sched.addBusyTimes(3, 16, 20);
+		sched.addBusyTimes(3, 10, 14);
+		sched.addBusyTimes(5, 10, 12);
+		sched.addBusyTimes(2, 12, 16);
+		sched.addBusyTimes(7, 8, 20);
+		sched.addBusyTimes(6, 8, 20);
+		
 		System.out.println("Original:");
-		sched.printCalendar();
-		sched.scheduleEvent(listOfEvents[0]);
-		System.out.println("After event 1 added");
-		sched.printCalendar();
-		sched.scheduleEvent(listOfEvents[1]);
-		System.out.println("After event 2 added");
-		sched.printCalendar();
-		
-		
+		for(int i = 0; i < 7; i++){
+			sched.getCal()[i].PrintCalendar();
+		}
+		sched.addToQueue(listOfEvents[0]);
+		sched.addToQueue(listOfEvents[1]);
+		sched.scheduleEvents();
+		System.out.println("After events added");
+		for(int i = 0; i < 7; i++){
+			sched.getCal()[i].PrintCalendar();
+		}
+				
 	}
 
 }
