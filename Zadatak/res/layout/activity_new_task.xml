@@ -3,12 +3,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".NewTask" />
+        android:layout_marginTop="0dp" >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingLeft="16dp"
+		    android:paddingRight="16dp"
+		    android:orientation="vertical" >
+        
+	        <Button
+		        android:id="@+id/onee"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="34dp"
+		        android:text="One" />
+	
+		    <Button
+		        android:id="@+id/two"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="34dp"
+		        android:text="Two" />
+		
+		    <Button
+		        android:id="@+id/three"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="34dp"
+		        android:text="Three" />
+		    
+		    <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Button" />
+		    <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Button" />
+		    <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Button" />
+		    <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Button" />
+		    <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Button" />
+		    <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Button" />
+		    <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Button" />
+		    
+		    <EditText
+	            android:id="@+id/editText1"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:ems="10" >
+	        </EditText>
+	        
+		    
+		    <EditText
+	            android:id="@+id/editText1"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:ems="10" >
+	        </EditText>
+		    
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
