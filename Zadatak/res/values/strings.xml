@@ -10,5 +10,6 @@
     <string name="two">two</string>
     <string name="three">three</string>
     <string name="title_activity_view_tasks">ViewTasks</string>
+    <string name="title_activity_profile">Profile</string>
 
 </resources>

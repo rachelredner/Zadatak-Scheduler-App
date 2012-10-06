@@ -28,6 +28,10 @@
             android:name=".ViewTasks"
             android:label="@string/title_activity_view_tasks" >
         </activity>
+        <activity
+            android:name=".Profile"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
 
 </manifest>
