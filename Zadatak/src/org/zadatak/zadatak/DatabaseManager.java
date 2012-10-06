@@ -1,5 +1,7 @@
 package org.zadatak.zadatak;
 
+import org.zadatak.zadatak.Task.Attributes;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
@@ -9,9 +11,6 @@ public class DatabaseManager {
 	// Database fields
 	  private SQLiteDatabase database;
 	  private DatabaseHelper dbLayout;
-	  private String[] allColumns = { DatabaseHelper.TASK_ID,
-	      DatabaseHelper.TASK_NAME,
-	      DatabaseHelper.TASK_DEADLINE};
 
 	  
 	  // CONSTRUCTOR FOR THE DATABSE MANAGER (CREATE A NEW DATABASE)
@@ -32,10 +31,11 @@ public class DatabaseManager {
 	  
 	  
 	  // CREATE A TASK
-	  public long createComment(String name, String deadline) {
+	  public long insertTask(Task task) {
 	    ContentValues values = new ContentValues();
-	    values.put(DatabaseHelper.TASK_NAME, name);
-	    values.put(DatabaseHelper.TASK_DEADLINE, deadline);
+	    for (Attributes attribute : Task.Attributes.values()) {
+	    	values.put(attribute.toString(), task.get(attribute));
+	    }
 	    long insertId = database.insert(DatabaseHelper.TABLE_NAME, null, values);
 	    return insertId;
 	    
