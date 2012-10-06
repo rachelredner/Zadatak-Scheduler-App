@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class Database extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 	// COLUMN VALUES (N SUCH)
-	public static final String TABLE_NAME = "taks";
+	public static final String TABLE_NAME = "tasks";
 	public static final String TASK_ID = "_id";
 	public static final String TASK_NAME = "_name";
 	public static final String TASK_DEADLINE = "_deadline";
@@ -27,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
 	| This is the constructor for the database class, it does not do much and      |
 	| most of the work is actually done by the oncreate function of this class     |
 	\******************************************************************************/
-	public Database(Context context){
+	public DatabaseHelper(Context context){
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		// TODO Auto-generated constructor stub
 	}
@@ -39,7 +39,7 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-		Log.w(Database.class.getName(),
+		Log.w(DatabaseHelper.class.getName(),
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
