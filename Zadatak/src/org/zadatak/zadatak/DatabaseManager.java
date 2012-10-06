@@ -67,11 +67,19 @@ public class DatabaseManager {
 	  public List<Task> getAllComments() {
 	    List<Task> comments = new ArrayList<Task>();
 
-	    Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
+	    Attributes[] attributes = Task.Attributes.values();
+	    
+	    String[] allColumns = new String[attributes.length];
+	    
+	    for (int i = 0; i < attributes.length; i++) {
+	    	allColumns[i] = attributes[i].toString();
+	    }
+	    
+	    
+	    
+	    Cursor cursor = database.query(DatabaseHelper.TABLE_NAME,
 	        allColumns, null, null, null, null, null);
-	    
-	    database.
-	    
+	    	    
 	    cursor.moveToFirst();
 	    while (!cursor.isAfterLast()) {
 	      Task comment = cursorToTask(cursor);
