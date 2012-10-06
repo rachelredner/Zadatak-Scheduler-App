@@ -85,6 +85,7 @@ public class DatabaseManager {
 			comments.add(comment);
 			cursor.moveToNext();
 		}
+		
 		// Make sure to close the cursor
 		cursor.close();
 		return comments;

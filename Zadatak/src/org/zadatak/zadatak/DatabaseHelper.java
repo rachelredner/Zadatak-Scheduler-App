@@ -25,8 +25,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
+	/********************************** ON CREATE *********************************\
+	| On Create creates a new sql table to contain all of the tasks for Zadatak    |
+	\******************************************************************************/	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		Attributes[] rows = Task.Attributes.values();
@@ -36,17 +37,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			databasecreate += rows.toString() + " text,";
 		}
 		databasecreate += ");";
-	    db.execSQL(databasecreate);
+		db.execSQL(databasecreate);
 	}
 	
-	
-	
-	
+	/********************************* ON UPGRADE *********************************\
+	| This function is run whenever the application is upgraded. It should         |
+	| contain code in order to update the database from version to version.        |
+	| However it currently just deletes the database and allows the new version    |
+	| to recreate the database                                                     |
+	\******************************************************************************/
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.w(DatabaseHelper.class.getName(),
-		        "Upgrading database from version " + oldVersion + " to "
-		            + newVersion + ", which will destroy all old data");
+		Log.w(DatabaseHelper.class.getName(), "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 		onCreate(db);
 	}
