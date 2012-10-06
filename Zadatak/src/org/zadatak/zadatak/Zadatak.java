@@ -56,16 +56,16 @@ public class Zadatak extends Activity {
     | tasks he or she has                                                          |
     \******************************************************************************/
     private void goToTaskList(){
-    	Context context = getApplicationContext();
+    	/*Context context = getApplicationContext();
     	CharSequence text = "GO TO TASK LIST";
     	int duration = Toast.LENGTH_SHORT;
 
     	Toast toast = Toast.makeText(context, text, duration);
-    	toast.show();
-    	/*
-    	Intent intent = new Intent(Zadatak.this, NewTask.class);
+    	toast.show();*/
+    	
+    	Intent intent = new Intent(Zadatak.this, ViewTasks.class);
 		Zadatak.this.startActivity(intent);
-		*/
+		
     }
     /***************************** GO TO TODAYS TASKS *****************************\
     | This function, like the other go to functions, is called when the user       |
@@ -78,5 +78,10 @@ public class Zadatak extends Activity {
 
     	Toast toast = Toast.makeText(context, text, duration);
     	toast.show();
+    	
+    	/*
+    	Intent intent = new Intent(Zadatak.this, NewTask.class);
+		Zadatak.this.startActivity(intent);
+		*/
     }
 }

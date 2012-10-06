@@ -9,5 +9,6 @@
     <string name="one">one</string>
     <string name="two">two</string>
     <string name="three">three</string>
+    <string name="title_activity_view_tasks">ViewTasks</string>
 
 </resources>
