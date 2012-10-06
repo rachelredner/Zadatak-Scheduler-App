@@ -22,7 +22,7 @@ public class Zadatak extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zadatak);
         
-        // Grab the new task button and asign a click listener to load the new task activity when clicked
+        // Grab the new task button and assign a click listener to load the new task activity when clicked
 		Button newtaskButton = (Button)findViewById(R.id.newtask);
 		newtaskButton.setOnClickListener(new OnClickListener(){ public void onClick(View v){ goToNewTask(); } } );
 		// Repeat this for the task list

@@ -2,6 +2,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background = "@drawable/hourglass"
         
 	android:id="@+id/scrollView1"
 	android:layout_alignParentTop="true"
@@ -11,82 +12,87 @@
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
+		android:background = "#CCFFFFFF"
 		android:paddingLeft="16dp"
 		android:paddingRight="16dp"
 		android:orientation="vertical" >
-		<Button
-			android:id="@+id/onee"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="34dp"
-			android:text="@+string/one" />
-	 	<Button
-			android:id="@+id/two"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="34dp"
-			android:text="@+string/two" />
-	 	<Button
-	      	android:id="@+id/three"
-	      	android:layout_width="fill_parent"
-	      	android:layout_height="wrap_content"
-	      	android:layout_marginTop="34dp"
-	      	android:text="@+string/three" />
-	  	<Button
-	    	android:id="@+id/button1"
-	      	android:layout_width="fill_parent"
-	      	android:layout_height="wrap_content"
-	      	android:layout_marginTop="34dp"
-	      	android:text="@+string/button" />
-	  	<Button
-          	android:id="@+id/button2"
-          	android:layout_width="fill_parent"
-          	android:layout_height="wrap_content"
-          	android:layout_marginTop="34dp"
-          	android:text="@+string/button" />
-	  	<Button
-          	android:id="@+id/button3"
-          	android:layout_width="fill_parent"
-          	android:layout_height="wrap_content"
-          	android:layout_marginTop="34dp"
-          	android:text="@+string/button" />
-	  	<Button
-          	android:id="@+id/button4"
-          	android:layout_width="fill_parent"
-          	android:layout_height="wrap_content"
-          	android:layout_marginTop="34dp"
-          	android:text="@+string/button" />
-	  	<Button
-          	android:id="@+id/button5"
-          	android:layout_width="fill_parent"
-          	android:layout_height="wrap_content"
-          	android:layout_marginTop="34dp"
-          	android:text="@+string/button" />
-	  	<Button
-          	android:id="@+id/button6"
-          	android:layout_width="fill_parent"
-          	android:layout_height="wrap_content"
-          	android:layout_marginTop="34dp"
-          	android:text="@+string/button" />
-	  	<Button
-          	android:id="@+id/button7"
-          	android:layout_width="fill_parent"
-          	android:layout_height="wrap_content"
-          	android:layout_marginTop="34dp"
-          	android:text="@+string/button" />
-	  	<EditText
-	  	    android:inputType="text"
-	      	android:id="@+id/editText1"
-	      	android:layout_width="match_parent"
-	      	android:layout_height="wrap_content"
-	      	android:ems="10" >
-	  	</EditText>
-	  	<EditText
-	  	    android:inputType="text"
-	      	android:id="@+id/editText2"
-	      	android:layout_width="match_parent"
-	      	android:layout_height="wrap_content"
-	      	android:ems="10" >
-     	</EditText>
+
+	    
+		    <TextView 
+	        android:id = "@+id/nameprompt"
+	        android:text = "Task Name:"
+	        android:textSize = "20dip"
+	        android:layout_marginTop = "12dip"
+	        android:layout_height = "wrap_content"
+	        android:layout_width = "wrap_content"
+	               
+	        />
+	    
+	    <EditText
+	        android:id = "@+id/NameBox"
+	        android:inputType="text"
+	        android:layout_height = "wrap_content" 
+	        android:layout_width = "fill_parent"
+	        android:layout_marginTop = "2dip"
+	        android:hint="e.g. 'DatabaseSystems Homework' "
+	        />
+	    
+	    <TextView 
+	        android:id = "@+id/dateprompt"
+	        android:text = "Due Date:"
+	        android:textSize = "20dip"
+	        android:layout_marginTop = "12dip"
+	        android:layout_height = "wrap_content"
+	        android:layout_width = "wrap_content"
+	               
+	        />
+	    
+	    <DatePicker
+	        android:id  = "@+id/datepicker"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop = "2dip"
+	        android:minDate="10062012"
+	        
+	        />
+	    
+	    <TextView 
+	        android:id = "@+id/lengthprompt"
+	        android:text = "Approximate Length (in hours):"
+	        android:textSize = "20dip"
+	        android:layout_marginTop = "12dip"
+	        android:layout_height = "wrap_content"
+	        android:layout_width = "wrap_content"
+	               
+	        />
+	    <EditText
+	        android:id = "@+id/estimatedlength"
+	        android:inputType = "number"
+	        android:hint ="EG '4.5'  (OPTIONAL)"
+	        android:layout_marginTop = "2dip"
+	        android:layout_height = "wrap_content"
+	        android:layout_width = "wrap_content"
+	        />
+	    
+	    <CheckBox
+	        android:id = "@+id/highpriority"
+	        android:text = "High Priority"
+	        android:checked = "false"
+	        android:layout_height = "wrap_content" 
+	        android:layout_width = "wrap_content"
+	        android:layout_marginTop = "12dip"
+	  
+	        />
+	    
+        
+	    
+	        <Button
+	        android:id = "@+id/save"
+	        android:layout_marginLeft="60dip"
+	        android:text = "Save"
+	        android:layout_height = "wrap_content"
+	        android:layout_width = "wrap_content"
+	        />
 	</LinearLayout>
+
 </ScrollView>
