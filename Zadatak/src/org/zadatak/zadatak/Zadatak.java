@@ -31,6 +31,11 @@ public class Zadatak extends Activity {
 		// and repeat again for 'todays tasks'
 		Button todaysTasks = (Button) findViewById(R.id.todaystasks);
 		todaysTasks.setOnClickListener(new OnClickListener() { public void onClick(View v) { goToTodaysTasks();} } );
+		// and repeat again for 'todays tasks'
+		Button profilepage = (Button) findViewById(R.id.myprofile);
+		profilepage.setOnClickListener(new OnClickListener() { public void onClick(View v) { goToProfilePage();} } );
+		
+		
     }
     /**************************** ON CREATE OPTION MENU ***************************\
     | This adds the menu button menu to the activity, it can be changed in         |
@@ -83,5 +88,10 @@ public class Zadatak extends Activity {
     	Intent intent = new Intent(Zadatak.this, NewTask.class);
 		Zadatak.this.startActivity(intent);
 		*/
+    }
+    
+    private void goToProfilePage() {
+    	Intent intent = new Intent(Zadatak.this, Profile.class);
+		Zadatak.this.startActivity(intent);
     }
 }

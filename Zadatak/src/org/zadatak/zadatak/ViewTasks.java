@@ -2,16 +2,9 @@ package org.zadatak.zadatak;
 
 import android.os.Bundle;
 import android.app.ListActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.view.Gravity;
 import android.view.Menu;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
 public class ViewTasks extends ListActivity {
 	
