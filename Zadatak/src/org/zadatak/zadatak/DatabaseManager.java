@@ -1,9 +1,13 @@
 package org.zadatak.zadatak;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.zadatak.zadatak.Task.Attributes;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -48,6 +52,7 @@ public class DatabaseManager {
 	    return newComment;*/
 	  }
 	  
+	  
 	  // DELETE A TASK WILL BE SAVED FOR LATER
 	  /*
 	  public void deleteComment(Comment comment) {
@@ -59,15 +64,17 @@ public class DatabaseManager {
 
 	  
 	  // GET ALL TASKS
-	  public List<Comment> getAllComments() {
-	    List<Comment> comments = new ArrayList<Comment>();
+	  public List<Task> getAllComments() {
+	    List<Task> comments = new ArrayList<Task>();
 
 	    Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
 	        allColumns, null, null, null, null, null);
-
+	    
+	    database.
+	    
 	    cursor.moveToFirst();
 	    while (!cursor.isAfterLast()) {
-	      Comment comment = cursorToComment(cursor);
+	      Task comment = cursorToTask(cursor);
 	      comments.add(comment);
 	      cursor.moveToNext();
 	    }
@@ -75,4 +82,14 @@ public class DatabaseManager {
 	    cursor.close();
 	    return comments;
 	  }
+	  
+	  // Turns a query into an actual value
+	  private Task cursorToTask(Cursor cursor) {
+		    Task task = new Task();
+		    Attributes[] attributes = Task.Attributes.values();
+		    for (int i = 1; i < attributes.length; i++) {
+		    	task.set(attributes[i], cursor.getString(i));
+		    }
+		    return task;
+		  }
 }
