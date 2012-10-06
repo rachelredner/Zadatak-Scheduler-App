@@ -35,11 +35,12 @@
         android:layout_below = "@+id/Welcome2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:layout_marginLeft = "10dip"
+        android:layout_marginRight = "10dip"
         android:background="#77282828"
         android:textColor="#000000"
         android:textSize = "22dip"
-        android:layout_marginLeft = "35dip"
-        android:layout_marginRight= "24dip"
+
         android:text="Add a New Task" />
 
     <Button
@@ -47,13 +48,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/newtask"
+        android:layout_marginLeft = "10dip"
+        android:layout_marginRight = "10dip"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
         android:background="#77282828"
         android:textColor="#000000"
         android:textSize = "22dip"
-        android:layout_marginLeft = "35dip"
-        android:layout_marginRight= "24dip"
+
         android:text="View / Edit My Tasks" />
 
     <Button
@@ -62,11 +64,12 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/myprofile"
         android:layout_marginBottom="46dp"
+        android:layout_marginLeft = "10dip"
+        android:layout_marginRight = "10dip"
         android:background="#77282828"
         android:textColor="#000000"
         android:textSize = "22dip"
-        android:layout_marginLeft = "35dip"
-        android:layout_marginRight= "24dip"
+
         android:text="Today's Tasks" />
     
         <Button
@@ -75,11 +78,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="95dp"
+        android:layout_marginLeft = "10dip"
+        android:layout_marginRight = "10dip"
 		android:background="#77282828"
         android:textColor="#000000"
         android:textSize = "22dip"
-        android:layout_marginLeft = "35dip"
-        android:layout_marginRight= "24dip"
+
+
         android:text="My Profile" />
 
 </RelativeLayout>
