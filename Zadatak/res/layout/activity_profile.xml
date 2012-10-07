@@ -1,17 +1,94 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:paddingLeft="7dip"
+    android:paddingRight="7dip"
+    android:background = "@drawable/hourglass1" 
+
+    >
 
     <TextView
+        android:id = "@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop = "True"
         android:text="My Profile"
-        android:layout_marginTop = "20dip"
+        android:textSize = "22dip"
+        android:textStyle = "bold"
+        android:layout_marginTop = "10dip"
         tools:context=".Profile" />
     
+    <TextView
+        android:id = "@+id/StartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below = "@+id/header"
+        android:text = "Enter daily \n start time: "
+        />
+        
+    
+    <TimePicker
+        android:id = "@+id/timepicker1"
+        android:layout_width = "wrap_content" 
+        android:layout_height = "wrap_content"
+        android:layout_toRightOf="@+id/StartTime"
+        android:layout_alignTop="@+id/StartTime"
+     
+        />
+    
+        <TextView
+        android:id = "@+id/EndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below = "@+id/timepicker1"
+        android:text = "Enter daily \n end time: "
+        />
+        
+    
+    <TimePicker
+        android:id = "@+id/timepicker2"
+        android:layout_width = "wrap_content" 
+        android:layout_height = "wrap_content"
+        android:layout_toRightOf="@+id/EndTime"
+        android:layout_alignTop="@+id/EndTime"
+
+        />
+    
+    <TextView 
+        android:id = "@+id/scheduleprompt"
+        android:layout_width = "wrap_content" 
+        android:layout_height = "wrap_content"
+        android:text = "Scheduling \n Schema:"
+        android:layout_below = "@+id/timepicker2"
+
+        
+        />
+    
+ 	<RadioGroup
+		android:id = "@+id/scheduleoptions"
+        android:layout_width = "wrap_content" 
+        android:layout_height = "wrap_content"
+		android:layout_toRightOf="@+id/scheduleprompt"
+		android:layout_below = "@+id/EndTime"
+		android:layout_alignTop = "@+id/scheduleprompt"
+    	android:orientation="vertical"
+    	android:checkedButton="@+id/Procrastinator"
+    	>
+    	<RadioButton 
+    	    android:id = "@+id/Procrastinator"
+    	    android:text = "Procrastinator"
+    	    />
+    	<RadioButton 
+    	    android:id = "@+id/Moderate"
+    	    android:text = "Moderate"
+    	    />
+    	<RadioButton 
+    	    android:id = "@+id/proactive"
+    	    android:text = "Proactive"
+    	    />
+    </RadioGroup>
     
 
 </RelativeLayout>
