@@ -15,9 +15,9 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop = "True"
         android:text="My Profile"
-        android:textSize = "22dip"
+        android:textSize = "18dip"
         android:textStyle = "bold"
-        android:layout_marginTop = "10dip"
+        android:layout_marginTop = "4dip"
         tools:context=".Profile" />
     
     <TextView
@@ -25,25 +25,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below = "@+id/header"
-        android:text = "Enter daily \n start time: "
+        android:textStyle = "bold"
+        android:text = "Enter \n daily \n start \n time: "
         />
-        
-    
+        
     <TimePicker
-        android:id = "@+id/timepicker1"
-        android:layout_width = "wrap_content" 
-        android:layout_height = "wrap_content"
-        android:layout_toRightOf="@+id/StartTime"
-        android:layout_alignTop="@+id/StartTime"
-     
-        />
+        android:id="@+id/timepicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/StartTime" 
+	    android:layout_alignTop =  "@+id/StartTime"
+	    android:layout_marginLeft = "10dip"
+    />
     
         <TextView
         android:id = "@+id/EndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle = "bold"
         android:layout_below = "@+id/timepicker1"
-        android:text = "Enter daily \n end time: "
+        android:text = "Enter \n daily \n end \n time: "
         />
         
     
@@ -51,7 +52,7 @@
         android:id = "@+id/timepicker2"
         android:layout_width = "wrap_content" 
         android:layout_height = "wrap_content"
-        android:layout_toRightOf="@+id/EndTime"
+        android:layout_alignLeft="@+id/timepicker1"
         android:layout_alignTop="@+id/EndTime"
 
         />
@@ -61,6 +62,7 @@
         android:layout_width = "wrap_content" 
         android:layout_height = "wrap_content"
         android:text = "Scheduling \n Schema:"
+        android:textStyle = "bold"
         android:layout_below = "@+id/timepicker2"
 
         
@@ -73,8 +75,9 @@
 		android:layout_toRightOf="@+id/scheduleprompt"
 		android:layout_below = "@+id/EndTime"
 		android:layout_alignTop = "@+id/scheduleprompt"
+		android:layout_marginLeft = "30dip"
     	android:orientation="vertical"
-    	android:checkedButton="@+id/Procrastinator"
+    	android:checkedButton="@+id/Moderate"
     	>
     	<RadioButton 
     	    android:id = "@+id/Procrastinator"
@@ -89,6 +92,28 @@
     	    android:text = "Proactive"
     	    />
     </RadioGroup>
+    
+ 	<TextView
+ 	    android:id = "@+id/calendarprompt"
+ 	    android:layout_width = "wrap_content" 
+ 	    android:layout_height = "wrap_content"
+ 	    android:layout_alignParentBottom = "true"
+ 	    android:layout_marginBottom = "16dip"
+ 	    android:textStyle = "bold"
+ 	    android:text = "Use my built in calendar: "
+ 	    />
+ 	
+ 	<CheckBox
+ 	    android:id = "@+id/usecalendar"
+ 	    android:layout_width = "wrap_content"
+ 	    android:layout_height = "wrap_content"
+ 	    android:layout_alignBottom = "@+id/calendarprompt"
+ 	    android:checked="true"
+ 	    android:layout_toRightOf = "@+id/calendarprompt"
+ 	    android:layout_marginLeft = "12dip"
+ 	    />
+ 	    
+ 	    
     
 
 </RelativeLayout>

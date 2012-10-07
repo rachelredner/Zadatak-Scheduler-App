@@ -17,12 +17,23 @@
     	android:paddingRight="12dip"
     	android:layout_height="wrap_content" >
 
+	    <TextView
+        android:id = "@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop = "True"
+        android:text="Add a new task"
+        android:textSize = "18dip"
+        android:textStyle = "bold"
+        android:layout_marginTop = "4dip"
+ />
 	    
 		  <TextView 
 	        android:id = "@+id/nameprompt"
 	        android:text = "Task Name:"
 	        android:textSize = "20dip"
-	        android:layout_alignParentTop = "true" style=""
+	        android:layout_below = "@+id/header" 
 	        android:layout_marginTop = "12dip"
 	        android:layout_height = "wrap_content"
 	        android:layout_width = "wrap_content"
