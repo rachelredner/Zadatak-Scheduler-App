@@ -24,8 +24,13 @@ public class ViewTasks extends ListActivity {
 		String[] values = new String[tasks.size()];
 		
 		for (int i = 0; i < tasks.size(); i++) {
-			values[i] = tasks.get(i).get(Task.Attributes.Name);
-			if (values[i] == null) values[i] = "NULL";
+			String name = tasks.get(i).get(Task.Attributes.Name);
+			if (name == null) name = "NULL";
+			
+			String duedate = tasks.get(i).get(Task.Attributes.Duedate);
+			if (duedate == null) duedate = "NULL";
+			
+			values[i] = name + "|" + duedate;
 		}
 		
         /*String[] values = new String[] { "Android", "iPhone", "WindowsMobile",

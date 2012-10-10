@@ -48,9 +48,17 @@ public class Zadatak extends Activity {
 		
 		//DatabaseManager dbman = new DatabaseManager(getApplicationContext());
 		
-				
+		
 		ZadatakApp app = (ZadatakApp) getApplicationContext();
 		app.dbman.open();
+		
+		Task task = new Task();
+		task.set(Task.Attributes.Name,"MYTASK!");
+		task.set(Task.Attributes.Duedate, "DOOMTIME!!");
+		
+		Task inserted = app.dbman.insertTask(task);
+		
+		app.toaster(task.get(Task.Attributes.Duedate) + "|" + inserted.get(Task.Attributes.Duedate));
 		
     }
     /**************************** ON CREATE OPTION MENU ***************************\

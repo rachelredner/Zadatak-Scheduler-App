@@ -35,20 +35,27 @@ public class DatabaseManager{
 	| This function takes in a task value and puts all of the values into the      |
 	| database for it to be found later                                            |
 	\******************************************************************************/
-	public long insertTask(Task task) {
+	public Task insertTask(Task task) {
 		ContentValues values = new ContentValues();
 		for (Attributes attribute : Task.Attributes.values()) {
 			values.put(attribute.toString(), task.get(attribute));
+			System.out.println("++"+attribute.toString());
 		}
 		long insertId = database.insert(DatabaseHelper.TABLE_NAME, null, values);
-		return insertId;
-		/*Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-		allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
-		null, null, null);
+		//return insertId;
+		
+		String[] allColumns = new String[Task.Attributes.values().length];
+		
+		for (int i = 0; i < Task.Attributes.values().length; i++) {
+			allColumns[i] = Task.Attributes.values()[i].toString();
+		}
+		
+		
+		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, allColumns, "_id = " + insertId, null, null, null, null);
 		cursor.moveToFirst();
-		Comment newComment = cursorToComment(cursor);
+		Task newTask = cursorToTask(cursor);
 		cursor.close();
-		return newComment;*/
+		return newTask;
 	}
 	
 	/******************************** DELETE A TASK *******************************\
@@ -99,7 +106,7 @@ public class DatabaseManager{
 	private Task cursorToTask(Cursor cursor) {
 		Task task = new Task();
 		Attributes[] attributes = Task.Attributes.values();
-		for (int i = 1; i < attributes.length; i++) {
+		for (int i = 0; i < attributes.length; i++) {
 			task.set(attributes[i], cursor.getString(i));
 		}
 		return task;
