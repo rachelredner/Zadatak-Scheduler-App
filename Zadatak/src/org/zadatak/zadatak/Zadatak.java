@@ -1,5 +1,10 @@
 package org.zadatak.zadatak;
 
+
+import java.util.List;
+
+import org.zadatak.zadatak.Task.Attributes;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +14,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+
+
+
 
 public class Zadatak extends Activity {
 	
@@ -36,6 +44,28 @@ public class Zadatak extends Activity {
 		profilepage.setOnClickListener(new OnClickListener() { public void onClick(View v) { goToProfilePage();} } );
 		
 		
+		// Open the database
+		
+		//DatabaseManager dbman = new DatabaseManager(getApplicationContext());
+		
+				
+		ZadatakApp app = (ZadatakApp) getApplicationContext();
+		app.toaster("HELLO");
+		app.dbman.open();
+		/*
+		Task task = new Task();
+		task.set(Task.Attributes.Name, "TEST DATABASE");
+		app.dbman.insertTask(task);
+		List<Task> allTasks = app.dbman.getAllTasks();
+
+		
+		Context context = getApplicationContext();
+    	CharSequence text = ""+allTasks.size();
+    	int duration = Toast.LENGTH_SHORT;
+
+    	Toast toast = Toast.makeText(context, text, duration);
+    	toast.show();
+		*/
     }
     /**************************** ON CREATE OPTION MENU ***************************\
     | This adds the menu button menu to the activity, it can be changed in         |

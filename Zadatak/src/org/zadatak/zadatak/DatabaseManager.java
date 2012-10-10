@@ -11,7 +11,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class DatabaseManager {
+public class DatabaseManager{
 	// Database fields
 	private SQLiteDatabase database;
 	private DatabaseHelper dbLayout;

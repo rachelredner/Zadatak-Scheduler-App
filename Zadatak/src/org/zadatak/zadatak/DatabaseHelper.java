@@ -30,11 +30,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	\******************************************************************************/	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		
 		Attributes[] rows = Task.Attributes.values();
 		String databasecreate = "create table " + TABLE_NAME + "("
-				+ "_id integer primary key autoincrement,";
+				+ "_id integer primary key autoincrement";
 		for (int i = 0 ; i < rows.length; i++) {
-			databasecreate += rows.toString() + " text,";
+			databasecreate += "," + rows[i].toString() + " text";
 		}
 		databasecreate += ");";
 		db.execSQL(databasecreate);
