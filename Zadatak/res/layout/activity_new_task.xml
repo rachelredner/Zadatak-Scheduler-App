@@ -114,5 +114,4 @@
 	        android:layout_below="@+id/highpriority"
 	        />
 	</RelativeLayout>
-
 </ScrollView>
