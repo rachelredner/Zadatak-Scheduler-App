@@ -8,6 +8,8 @@ public class Task {
 	enum Attributes {
 		Name,
 		Duedate,
+		Hours,
+		Priority
 	}
 	
 	Map<Attributes,String> values = new HashMap<Attributes,String>();

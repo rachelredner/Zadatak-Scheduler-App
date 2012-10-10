@@ -1,9 +1,6 @@
 package org.zadatak.zadatak;
 
 
-import java.util.List;
-
-import org.zadatak.zadatak.Task.Attributes;
 
 import android.os.Bundle;
 import android.app.Activity;
