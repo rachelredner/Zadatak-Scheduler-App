@@ -50,17 +50,8 @@ public class Zadatak extends Activity {
 		
 				
 		ZadatakApp app = (ZadatakApp) getApplicationContext();
-		//app.toaster("HELLO");
 		app.dbman.open();
 		
-		
-		Task task = new Task();
-		task.set(Task.Attributes.Name, "TEST DATABASE");
-		app.dbman.insertTask(task);
-		List<Task> allTasks = app.dbman.getAllTasks();
-
-		
-    	app.toaster("DB SIZE!"+allTasks.size());    	
     }
     /**************************** ON CREATE OPTION MENU ***************************\
     | This adds the menu button menu to the activity, it can be changed in         |
