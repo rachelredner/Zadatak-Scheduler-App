@@ -10,33 +10,46 @@
     
     <TextView
         android:id = "@+id/Welcome"
+        
         android:layout_centerHorizontal = "true"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:text = "Welcome to"
+        android:layout_marginTop="12dip"
+        
+
         android:textSize="33dip"
         android:textStyle="bold"
         android:textColor="#000000"
+        
         android:shadowColor="#BBBBFF"
         android:shadowRadius = "7"
-        android:layout_marginTop="12dip"
-        />
+        
+        android:text = "Welcome to"
+         />
+    
     <TextView
         android:id = "@+id/Welcome2"
+        
         android:layout_centerHorizontal = "true"
         android:layout_below="@id/Welcome"
+        android:layout_marginTop="1dip"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:text = "Zadatak"
+        
+
         android:textSize="39dip"
         android:textStyle="bold"
+        
         android:textColor="#000000"
         android:shadowColor="#BBBBFF"
         android:shadowRadius="7"
-        android:layout_marginTop="1dip"
+        
+        android:text = "Zadatak"
         />
+    
     <Button
         android:id="@+id/newtask"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above = "@+id/tasklist"
@@ -44,15 +57,22 @@
         android:layout_marginBottom="40dip"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
+        
         android:background="#77282828"
+        
         android:textColor="#000000"
         android:textSize = "25dip"
+
+         
         android:shadowColor="#CCCCCC"
         android:shadowRadius="4"
-        android:text="Add a New Task" />
+        
+        android:text="Add a New Task"
+        />
 
     <Button
         android:id="@+id/tasklist"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/center"
@@ -60,13 +80,21 @@
         android:layout_marginRight = "10dip"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        
         android:background="#77282828"
+        
         android:textColor="#000000"
         android:textSize = "25dip"
+
+        
         android:shadowColor="#CCCCCC"
         android:shadowRadius="4"
-        android:text="View / Edit My Tasks" />
+        
+        android:text="View / Edit My Tasks" 
+	 />
+ 
     
+    <!-- A dummy text view to find the center of the screen --> 
     <TextView 
         android:id = "@+id/center"
         android:layout_width = "wrap_content" 
@@ -79,35 +107,96 @@
 
     <Button
         android:id="@+id/todaystasks"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/center"
         android:layout_marginTop="20dp"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
+        
         android:background="#77282828"
-        android:shadowColor="#CCCCCC"
-        android:shadowRadius="4"
+        
         android:textColor="#000000"
         android:textSize = "25dip"
+   
+        
+        android:shadowColor="#CCCCCC"
+        android:shadowRadius="4"
 
-        android:text="Today's Tasks" />
-    
+       android:text="Today's Tasks"               
+       />
+
+  
         <Button
         android:id="@+id/myprofile"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below = "@+id/todaystasks"
         android:layout_marginTop="40dp"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
+        
 		android:background="#77282828"
+		
         android:textColor="#000000"
         android:textSize = "25dip"
+        
         android:shadowColor="#CCCCCC"
         android:shadowRadius="4"
 
+        android:text="My Profile" 
+        />
+        
+        <TextView 
+        android:id  = "@+id/about"
+            
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_above = "@+id/about2" 
+        android:layout_alignParentRight = "true"
+        android:layout_marginRight = "10dip"
+                
+        android:textSize = "14dip"
+        
+        android:text = "An open source project by"
 
-        android:text="My Profile" />
+            />
+        
+                <TextView 
+        android:id  = "@+id/about2"
+            
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_above = "@+id/about3" 
+        android:layout_alignParentRight = "true"
+        android:layout_marginRight = "10dip"
+        
+        
+        android:textSize = "14dip"
+        android:textStyle = "bold"
+        
+        android:text = "The Rensselaer Center for "
+
+            />
+                
+                
+                        <TextView 
+        android:id  = "@+id/about3"
+            
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_alignParentBottom = "true" 
+        android:layout_alignParentRight = "true"
+        android:layout_marginRight = "10dip"
+        android:layout_marginBottom = "10dip"
+        
+        android:textSize = "14dip"
+        android:textStyle = "bold"
+        
+        android:text = "Open Source Software"
+
+            />
 
 </RelativeLayout>
