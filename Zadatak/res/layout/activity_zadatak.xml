@@ -2,7 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background = "@drawable/hourglass1"
+    android:screenOrientation = "portrait"
+    android:configChanges="keyboardHidden|orientation"
     android:layout_height="fill_parent" >
+    
     
     
     <TextView
@@ -11,9 +14,11 @@
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Welcome to"
-        android:textSize="30dip"
+        android:textSize="33dip"
         android:textStyle="bold"
         android:textColor="#000000"
+        android:shadowColor="#BBBBFF"
+        android:shadowRadius = "7"
         android:layout_marginTop="12dip"
         />
     <TextView
@@ -23,52 +28,68 @@
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Zadatak"
-        android:textSize="36dip"
+        android:textSize="39dip"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:layout_marginTop="4dip"
+        android:shadowColor="#BBBBFF"
+        android:shadowRadius="7"
+        android:layout_marginTop="1dip"
         />
     <Button
         android:id="@+id/newtask"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below = "@+id/Welcome2"
+        android:layout_above = "@+id/tasklist"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dip"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
         android:background="#77282828"
         android:textColor="#000000"
-        android:textSize = "22dip"
-
+        android:textSize = "25dip"
+        android:shadowColor="#CCCCCC"
+        android:shadowRadius="4"
         android:text="Add a New Task" />
 
     <Button
         android:id="@+id/tasklist"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/newtask"
+        android:layout_above="@+id/center"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginBottom="20dp"
         android:background="#77282828"
         android:textColor="#000000"
-        android:textSize = "22dip"
-
+        android:textSize = "25dip"
+        android:shadowColor="#CCCCCC"
+        android:shadowRadius="4"
         android:text="View / Edit My Tasks" />
+    
+    <TextView 
+        android:id = "@+id/center"
+        android:layout_width = "wrap_content" 
+        android:layout_height = "wrap_content" 
+        android:textSize="2dip"
+        android:layout_centerInParent="true"
+        android:text = " "    
+        
+        />
 
     <Button
         android:id="@+id/todaystasks"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/myprofile"
-        android:layout_marginBottom="46dp"
+        android:layout_below="@+id/center"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
         android:background="#77282828"
+        android:shadowColor="#CCCCCC"
+        android:shadowRadius="4"
         android:textColor="#000000"
-        android:textSize = "22dip"
+        android:textSize = "25dip"
 
         android:text="Today's Tasks" />
     
@@ -76,13 +97,15 @@
         android:id="@+id/myprofile"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="95dp"
+        android:layout_below = "@+id/todaystasks"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
 		android:background="#77282828"
         android:textColor="#000000"
-        android:textSize = "22dip"
+        android:textSize = "25dip"
+        android:shadowColor="#CCCCCC"
+        android:shadowRadius="4"
 
 
         android:text="My Profile" />
