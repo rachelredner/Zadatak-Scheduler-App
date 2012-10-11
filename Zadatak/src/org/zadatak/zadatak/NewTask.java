@@ -2,6 +2,7 @@ package org.zadatak.zadatak;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +13,7 @@ public class NewTask extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_new_task);
         
         

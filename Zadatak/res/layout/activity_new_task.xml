@@ -2,19 +2,23 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background = "@drawable/hourglass1"
+
+
         
 	android:id="@+id/scrollView1"
 	android:layout_alignParentTop="true"
 	android:layout_centerHorizontal="true"
-	android:layout_marginTop="0dp" >
+	android:layout_marginTop="0dp" 
+	 	android:background = "@drawable/hourglass1" 
+	>
+	
+    
 
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:focusable="true" 
 	    android:focusableInTouchMode="true"
     	xmlns:tools="http://schemas.android.com/tools"
   	    android:layout_width="match_parent"
-    	android:background = "#22FFFFFF"
     	android:paddingLeft="12dip"
     	android:paddingRight="12dip"
     	android:layout_height="wrap_content" >
@@ -25,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop = "True"
-        android:text="Add a new task"
-        android:textSize = "18dip"
+        android:text="Add A New Task"
+        android:textSize = "22dip"
         android:textStyle = "bold"
         android:layout_marginTop = "4dip"
  />
@@ -114,4 +118,5 @@
 	        android:layout_below="@+id/highpriority"
 	        />
 	</RelativeLayout>
+
 </ScrollView>

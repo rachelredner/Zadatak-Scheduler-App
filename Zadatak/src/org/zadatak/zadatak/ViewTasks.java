@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.content.pm.ActivityInfo;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,8 @@ public class ViewTasks extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     	
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
 		List<Task> tasks = app.dbman.getAllTasks();
