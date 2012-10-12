@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.EditText;
 
 public class NewTask extends Activity {
 
@@ -29,6 +32,28 @@ public class NewTask extends Activity {
     }
     
     private void saveTask(){
+    	ZadatakApp app = (ZadatakApp)getApplicationContext();
+    	
+    	EditText nameText = (EditText) findViewById(R.id.NameBox);
+    	String name = nameText.getText().toString();
+    	
+    	DatePicker datePicker = (DatePicker)findViewById(R.id.datepicker);
+    	String date = datePicker.getDayOfMonth() + " " + datePicker.getMonth() + " " + datePicker.getYear();
+    	
+    	EditText lengthText = (EditText) findViewById(R.id.estimatedlength);
+    	String time = lengthText.getText().toString();
+    	
+    	CheckBox priorityBox = (CheckBox)findViewById(R.id.highpriority);
+    	String priority = priorityBox.isChecked() ? "HIGH" : "NORMAL";
+    	
+    	Task task = new Task();
+    	task.set(Task.Attributes.Name, name);
+    	task.set(Task.Attributes.Duedate, date);
+    	task.set(Task.Attributes.Hours, time);
+    	task.set(Task.Attributes.Priority, priority);
+
+    	app.dbman.insertTask(task);
+    	
     	finish();
     }
 }
