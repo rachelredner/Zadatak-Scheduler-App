@@ -4,7 +4,7 @@
     android:layout_height="match_parent" 
     android:paddingLeft="7dip"
     android:paddingRight="7dip"
-    android:background = "@drawable/hourglass1" 
+    android:background = "@drawable/hourglassfade" 
 
     >
 
