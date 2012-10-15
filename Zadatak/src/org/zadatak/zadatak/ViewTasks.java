@@ -6,8 +6,15 @@ import android.os.Bundle;
 import android.app.ListActivity;
 import android.content.pm.ActivityInfo;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class ViewTasks extends ListActivity {
 	
@@ -20,7 +27,15 @@ public class ViewTasks extends ListActivity {
     	super.onCreate(savedInstanceState);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+    	String[] tasks = getTaskList();
     	
+		
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+            android.R.layout.simple_list_item_1, tasks);
+        setListAdapter(adapter);
+    }
+
+    private String[] getTaskList(){
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
 		List<Task> tasks = app.dbman.getAllTasks();
     	
@@ -35,15 +50,34 @@ public class ViewTasks extends ListActivity {
 			
 			values[i] = name + "|" + duedate;
 		}
-		
-        /*String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-            "Linux", "OS/2" };*/
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            android.R.layout.simple_list_item_1, values);
-        setListAdapter(adapter);
+		return values;
     }
-
+    
+    
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+    /*
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.red:
+                //editNote(info.id);
+                return true;
+            case R.id.blue:
+                //deleteNote(info.id);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }*/
+    
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_view_tasks, menu);
