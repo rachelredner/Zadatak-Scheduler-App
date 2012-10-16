@@ -4,17 +4,14 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.pm.ActivityInfo;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -37,6 +34,13 @@ public class ViewTasks extends Activity {
         list.setAdapter(adapter);
         
         registerForContextMenu(list);
+        
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id){
+                edit(position);
+            }
+        });
+
     }
 
     private String[] getTaskList(){
@@ -57,17 +61,26 @@ public class ViewTasks extends Activity {
 		return values;
     }
     
+    public void delete (int index) {
+        ZadatakApp app = (ZadatakApp) getApplicationContext();
+        app.toaster("Delete " + index);
+    }
+    public void edit (int index) {
+        ZadatakApp app = (ZadatakApp) getApplicationContext();
+        app.toaster("Edit " + index);
+    }
+    
     /*************************** ON CREATE CONTEXT MENU ***************************\
     | This function creates the elements of the context menu that will be          |
-    | displayed, it gets run when the context menu is regestered in the oncreate   |
+    | displayed, it gets run when the context menu is registered in the oncreate   |
     | function. It creates the values of menuItems inside the context menu         |
     \******************************************************************************/
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
       if (v.getId()==R.id.tasklist) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-        menu.setHeaderTitle(getTaskList()[info.position]);
-        String[] menuItems = {"EDIT","DELETE"};
+        //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+        menu.setHeaderTitle("Options");
+        String[] menuItems = {"Edit Task","Delete Task"};
         for (int i = 0; i<menuItems.length; i++) {
           menu.add(Menu.NONE, i, i, menuItems[i]);
         }
@@ -85,13 +98,12 @@ public class ViewTasks extends Activity {
       AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
       int menuItemIndex = item.getItemId();
       
-      ZadatakApp app = (ZadatakApp) getApplicationContext();
       switch(menuItemIndex) {
       case 0:
-    	  app.toaster("EDIT " + info.position);
+    	  edit (info.position);
     	  break;
       case 1:
-    	  app.toaster("DELETE " + info.position);
+    	  delete(info.position);
     	  break;
       }
       
