@@ -57,6 +57,11 @@ public class ViewTasks extends Activity {
 		return values;
     }
     
+    /*************************** ON CREATE CONTEXT MENU ***************************\
+    | This function creates the elements of the context menu that will be          |
+    | displayed, it gets run when the context menu is regestered in the oncreate   |
+    | function. It creates the values of menuItems inside the context menu         |
+    \******************************************************************************/
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
       if (v.getId()==R.id.tasklist) {
@@ -69,16 +74,18 @@ public class ViewTasks extends Activity {
       }
     }
     
+    /*************************** ON CONTEXT-ITEM SELECT ***************************\
+    | This function is run whenever an item in the context menu is selected.       |
+    | There is only one context menu on this activity, it handles the long poll    |
+    | events on elements of the list to allow you to edit, delete, etc each of     |
+    | the elements of the task list                                                |
+    \******************************************************************************/
     @Override
     public boolean onContextItemSelected(MenuItem item) {
       AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
       int menuItemIndex = item.getItemId();
-      //String[] menuItems = getResources().getStringArray(R.array.menu);
-      //String menuItemName = menuItems[menuItemIndex];
-      //String listItemName = Countries[info.position];
       
       ZadatakApp app = (ZadatakApp) getApplicationContext();
-      //app.toaster("BUTTON PRESS");
       switch(menuItemIndex) {
       case 0:
     	  app.toaster("EDIT " + info.position);
@@ -88,10 +95,6 @@ public class ViewTasks extends Activity {
     	  break;
       }
       
-
-      //TextView text = (TextView)findViewById(R.id.footer);
-      
-      //text.setText(String.format("Selected %s for item %s", menuItemName, listItemName));
       return true;
     }
     
