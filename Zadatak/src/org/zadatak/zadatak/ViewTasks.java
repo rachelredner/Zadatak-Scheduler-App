@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -25,19 +26,17 @@ public class ViewTasks extends Activity {
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
-    	
+    	super.onCreate(savedInstanceState);	
     	setContentView(R.layout.activity_view_tasks);
-    	
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
     	String[] tasks = getTaskList();
-    	
-		ListView list = (ListView) findViewById(R.id.tasklist);
-    	
+
+    	ListView list = (ListView) findViewById(R.id.tasklist);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem, tasks);
         list.setAdapter(adapter);
         
+        registerForContextMenu(list);
     }
 
     private String[] getTaskList(){
@@ -56,7 +55,20 @@ public class ViewTasks extends Activity {
 			values[i] = name + "|" + duedate;
 		}
 		return values;
-    }  
+    }
+    
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+      if (v.getId()==R.id.tasklist) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+        menu.setHeaderTitle(getTaskList()[info.position]);
+        String[] menuItems = {"EDIT","DELETE"};
+        for (int i = 0; i<menuItems.length; i++) {
+          menu.add(Menu.NONE, i, i, menuItems[i]);
+        }
+      }
+    }
+    
     /*************************** ON CREATE OPTIONS MENU ***************************\
     | This function is run when the options menu is created, there are no real     |
     | options for this activity yet so it does not need to do anything             |
