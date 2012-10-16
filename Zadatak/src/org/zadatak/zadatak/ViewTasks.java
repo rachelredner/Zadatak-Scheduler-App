@@ -35,7 +35,7 @@ public class ViewTasks extends Activity {
     	
 		ListView list = (ListView) findViewById(R.id.tasklist);
     	
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, tasks);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem, tasks);
         list.setAdapter(adapter);
         
     }
