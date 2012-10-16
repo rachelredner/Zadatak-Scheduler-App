@@ -51,33 +51,11 @@ public class ViewTasks extends ListActivity {
 			values[i] = name + "|" + duedate;
 		}
 		return values;
-    }
-    
-    
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v,
-                                    ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
-    }
-    /*
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        switch (item.getItemId()) {
-            case R.id.red:
-                //editNote(info.id);
-                return true;
-            case R.id.blue:
-                //deleteNote(info.id);
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }
-    }*/
-    
-    
+    }  
+    /*************************** ON CREATE OPTIONS MENU ***************************\
+    | This function is run when the options menu is created, there are no real     |
+    | options for this activity yet so it does not need to do anything             |
+    \******************************************************************************/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_view_tasks, menu);
