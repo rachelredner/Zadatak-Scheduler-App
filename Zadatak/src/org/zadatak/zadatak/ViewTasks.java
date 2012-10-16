@@ -3,6 +3,7 @@ package org.zadatak.zadatak;
 import java.util.List;
 
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.pm.ActivityInfo;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -16,7 +17,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ViewTasks extends ListActivity {
+public class ViewTasks extends Activity {
 	
 	// This is the Adapter being used to display the list's data
     SimpleCursorAdapter mAdapter;
@@ -25,14 +26,18 @@ public class ViewTasks extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    	
+    	setContentView(R.layout.activity_view_tasks);
+    	
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
     	String[] tasks = getTaskList();
     	
-		
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            android.R.layout.simple_list_item_1, tasks);
-        setListAdapter(adapter);
+		ListView list = (ListView) findViewById(R.id.tasklist);
+    	
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, tasks);
+        list.setAdapter(adapter);
+        
     }
 
     private String[] getTaskList(){
