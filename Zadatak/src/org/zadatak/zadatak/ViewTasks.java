@@ -69,6 +69,32 @@ public class ViewTasks extends Activity {
       }
     }
     
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+      AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+      int menuItemIndex = item.getItemId();
+      //String[] menuItems = getResources().getStringArray(R.array.menu);
+      //String menuItemName = menuItems[menuItemIndex];
+      //String listItemName = Countries[info.position];
+      
+      ZadatakApp app = (ZadatakApp) getApplicationContext();
+      //app.toaster("BUTTON PRESS");
+      switch(menuItemIndex) {
+      case 0:
+    	  app.toaster("EDIT " + info.position);
+    	  break;
+      case 1:
+    	  app.toaster("DELETE " + info.position);
+    	  break;
+      }
+      
+
+      //TextView text = (TextView)findViewById(R.id.footer);
+      
+      //text.setText(String.format("Selected %s for item %s", menuItemName, listItemName));
+      return true;
+    }
+    
     /*************************** ON CREATE OPTIONS MENU ***************************\
     | This function is run when the options menu is created, there are no real     |
     | options for this activity yet so it does not need to do anything             |
