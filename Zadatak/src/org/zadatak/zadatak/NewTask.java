@@ -13,24 +13,41 @@ import android.widget.EditText;
 
 public class NewTask extends Activity {
 
+	EditText   nameText;
+	DatePicker datePicker;
+	EditText   lengthText;
+	CheckBox   priorityBox;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        
-    	Bundle passedData = getIntent().getExtras();
-    	
-    	
-    	
-        if (passedData == null) {
-        	Task task = new Task();
-        	task.extractBundle(passedData);
-        }   
-    	
-    	super.onCreate(savedInstanceState);
+       	super.onCreate(savedInstanceState);
         
         
         
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_new_task);
+        
+        nameText = (EditText) findViewById(R.id.NameBox);
+    	datePicker = (DatePicker)findViewById(R.id.datepicker);
+    	lengthText = (EditText) findViewById(R.id.estimatedlength);
+    	priorityBox = (CheckBox)findViewById(R.id.highpriority);
+    	
+    	
+    	Bundle passedData = getIntent().getExtras();
+    	
+    	
+    	
+        if (passedData != null) {
+
+        	
+        	Task task = new Task();
+        	task.extractBundle(passedData);
+        	
+        	task.get(Task.Attributes.Name, nameText);
+        	
+        }   
+    	
+    	
         
         Button save = (Button) findViewById(R.id.save);
 		save.setOnClickListener(new OnClickListener() { public void onClick(View v) { saveTask();} } );
@@ -46,10 +63,8 @@ public class NewTask extends Activity {
     private void saveTask(){
     	ZadatakApp app = (ZadatakApp)getApplicationContext();
     	
-    	EditText   nameText = (EditText) findViewById(R.id.NameBox);
-    	DatePicker datePicker = (DatePicker)findViewById(R.id.datepicker);
-    	EditText   lengthText = (EditText) findViewById(R.id.estimatedlength);
-    	CheckBox   priorityBox = (CheckBox)findViewById(R.id.highpriority);
+    	
+    	
     	
     	Task task = new Task();
     	task.set(Task.Attributes.Name, nameText);
