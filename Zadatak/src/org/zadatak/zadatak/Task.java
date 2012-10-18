@@ -3,6 +3,8 @@ package org.zadatak.zadatak;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -20,6 +22,22 @@ public class Task {
 	
 	public void set(Attributes attribute,String value) {values.put(attribute, value);}
 	public String get (Attributes attribute) {return values.get(attribute);}
+	
+	public void extractBundle(Bundle bundle){
+		Attributes[] attributes = Task.Attributes.values();
+		for (int i = 0 ; i < attributes.length; i++) {
+			if (bundle.containsKey(attributes[i].toString())){
+				set(attributes[i],bundle.getString(attributes[i].toString()));
+			}
+		}
+	}
+	public void packIntent(Intent instance) {
+		Attributes[] attributes = Task.Attributes.values();
+		for (int i = 0 ; i < attributes.length; i++) {
+			instance.putExtra(attributes[i].toString(), get(attributes[i]));
+		}
+	}
+	
 	
 	// Now for some getters and setters that are used with the UI elements
 	/*

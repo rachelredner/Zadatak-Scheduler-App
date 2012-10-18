@@ -70,8 +70,10 @@ public class ViewTasks extends Activity {
         ZadatakApp app = (ZadatakApp) getApplicationContext();
         
         Intent intent = new Intent(ViewTasks.this, NewTask.class);
-        intent.putExtra("Data", "Edit");
-		ViewTasks.this.startActivity(intent);
+        
+		app.dbman.getAllTasks().get(index).packIntent(intent);
+        
+        ViewTasks.this.startActivity(intent);
         
         app.toaster("Edit " + index);
     }

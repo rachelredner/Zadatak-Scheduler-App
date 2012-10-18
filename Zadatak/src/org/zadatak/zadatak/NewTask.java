@@ -18,14 +18,12 @@ public class NewTask extends Activity {
         
     	Bundle passedData = getIntent().getExtras();
     	
-    	ZadatakApp app = (ZadatakApp)getApplicationContext();
+    	
+    	
         if (passedData == null) {
-        	app.toaster("Null Bundle");
-        }
-        else if (passedData.containsKey("Data")) {
-        	app.toaster("YEP: " + passedData.getString("Data"));
-        }
-        
+        	Task task = new Task();
+        	task.extractBundle(passedData);
+        }   
     	
     	super.onCreate(savedInstanceState);
         
