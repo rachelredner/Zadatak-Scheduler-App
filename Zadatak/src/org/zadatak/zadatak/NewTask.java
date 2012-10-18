@@ -15,10 +15,22 @@ public class NewTask extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        
+    	ZadatakApp app = (ZadatakApp)getApplicationContext();
+        if (savedInstanceState == null) {
+        	app.toaster("Null Bundle");
+        }
+        else if (savedInstanceState.containsKey("Data")) {
+        	app.toaster("YEP: " + savedInstanceState.getString("Data"));
+        }
+        
+    	
+    	super.onCreate(savedInstanceState);
+        
+        
+        
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_new_task);
-        
         
         Button save = (Button) findViewById(R.id.save);
 		save.setOnClickListener(new OnClickListener() { public void onClick(View v) { saveTask();} } );

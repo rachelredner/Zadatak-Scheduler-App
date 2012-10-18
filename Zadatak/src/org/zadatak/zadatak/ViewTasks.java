@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.ContextMenu;
@@ -67,6 +68,11 @@ public class ViewTasks extends Activity {
     }
     public void edit (int index) {
         ZadatakApp app = (ZadatakApp) getApplicationContext();
+        
+        Intent intent = new Intent(ViewTasks.this, NewTask.class);
+        intent.putExtra("Data", "Edit");
+		ViewTasks.this.startActivity(intent);
+        
         app.toaster("Edit " + index);
     }
     
