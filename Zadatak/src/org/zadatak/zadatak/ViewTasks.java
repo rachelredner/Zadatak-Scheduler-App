@@ -28,8 +28,12 @@ public class ViewTasks extends Activity {
     	setContentView(R.layout.activity_view_tasks);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-    	String[] tasks = getTaskList();
+    	refreshList();
 
+    }
+
+    private void refreshList() {
+    	String[] tasks = getTaskList();
     	ListView list = (ListView) findViewById(R.id.tasklist);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem, tasks);
         list.setAdapter(adapter);
@@ -41,9 +45,8 @@ public class ViewTasks extends Activity {
                 edit(position);
             }
         });
-
     }
-
+    
     private String[] getTaskList(){
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
 		List<Task> tasks = app.dbman.getAllTasks();
@@ -63,8 +66,10 @@ public class ViewTasks extends Activity {
     }
     
     public void delete (int index) {
-        ZadatakApp app = (ZadatakApp) getApplicationContext();
-        app.toaster("Delete " + index);
+    	ZadatakApp app = (ZadatakApp) getApplicationContext();
+    	app.dbman.deleteTask(app.dbman.getAllTasks().get(index).id);
+    	//app.toaster("Delete " + index);
+    	refreshList();
     }
     public void edit (int index) {
         ZadatakApp app = (ZadatakApp) getApplicationContext();

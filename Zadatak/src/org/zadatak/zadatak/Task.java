@@ -10,7 +10,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 public class Task {
-	
+	long id;
 	enum Attributes {
 		Name,
 		Duedate,

@@ -44,10 +44,11 @@ public class DatabaseManager{
 		long insertId = database.insert(DatabaseHelper.TABLE_NAME, null, values);
 		//return insertId;
 		
-		String[] allColumns = new String[Task.Attributes.values().length];
-		
-		for (int i = 0; i < Task.Attributes.values().length; i++) {
-			allColumns[i] = Task.Attributes.values()[i].toString();
+		Attributes[] attributes = Task.Attributes.values();
+		String[] allColumns = new String[attributes.length+1];
+		allColumns[0] = DatabaseHelper.ID_COLUMN_NAME;
+		for (int i = 0; i < attributes.length; i++) {
+			allColumns[i+1] = attributes[i].toString();
 		}
 		
 		
@@ -62,12 +63,23 @@ public class DatabaseManager{
 	| This function takes in a task object and deletes the matching task in the    |
 	| table (NOT DONE YET)                                                         |
 	\******************************************************************************/
-	/*
-	public void deleteComment(Comment comment) {
-		long id = comment.getId();
+	public void deleteTask(long id) {
 		System.out.println("Comment deleted with id: " + id);
-		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID + " = " + id, null);
-	}*/
+		database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.ID_COLUMN_NAME + " = " + id, null);
+	}
+	
+
+
+	public int editTask(long id, Task task) {
+		
+		ContentValues values = new ContentValues();
+		for (Attributes attribute : Task.Attributes.values()) {
+			values.put(attribute.toString(), task.get(attribute));
+			System.out.println("++"+attribute.toString());
+		}
+        int returncode = database.update(DatabaseHelper.TABLE_NAME, values, DatabaseHelper.ID_COLUMN_NAME + "='" + id + "'", null);
+        return returncode;
+    }
 	
 	  
 	/******************************** GET ALL TASKS *******************************\
@@ -78,10 +90,10 @@ public class DatabaseManager{
 		List<Task> comments = new ArrayList<Task>();
 		Attributes[] attributes = Task.Attributes.values();
 		
-		String[] allColumns = new String[attributes.length];
-		
+		String[] allColumns = new String[attributes.length+1];
+		allColumns[0] = DatabaseHelper.ID_COLUMN_NAME;
 		for (int i = 0; i < attributes.length; i++) {
-			allColumns[i] = attributes[i].toString();
+			allColumns[i+1] = attributes[i].toString();
 		}
 		
 		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, allColumns, null, null, null, null, null);
@@ -106,8 +118,10 @@ public class DatabaseManager{
 	private Task cursorToTask(Cursor cursor) {
 		Task task = new Task();
 		Attributes[] attributes = Task.Attributes.values();
+		task.id = cursor.getLong(0);
+		
 		for (int i = 0; i < attributes.length; i++) {
-			task.set(attributes[i], cursor.getString(i));
+			task.set(attributes[i], cursor.getString(i+1));
 		}
 		return task;
 	}

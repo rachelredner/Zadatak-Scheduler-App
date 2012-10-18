@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	// VERSION NUMBER AND DATABASE NAME
 	private static final String DATABASE_NAME = "zadatak.db";
+	public static final String ID_COLUMN_NAME = "_id";
 	private static final int DATABASE_VERSION = 1;
 	
 	/**************************** DATABASE CONSTRUCTOR ****************************\
@@ -33,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		Attributes[] rows = Task.Attributes.values();
 		String databasecreate = "create table " + TABLE_NAME + "("
-				+ "_id integer primary key autoincrement";
+				+ ID_COLUMN_NAME +" integer primary key autoincrement";
 		for (int i = 0 ; i < rows.length; i++) {
 			databasecreate += "," + rows[i].toString() + " text";
 		}
