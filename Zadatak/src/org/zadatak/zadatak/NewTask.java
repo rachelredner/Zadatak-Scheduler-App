@@ -16,12 +16,14 @@ public class NewTask extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         
+    	Bundle passedData = getIntent().getExtras();
+    	
     	ZadatakApp app = (ZadatakApp)getApplicationContext();
-        if (savedInstanceState == null) {
+        if (passedData == null) {
         	app.toaster("Null Bundle");
         }
-        else if (savedInstanceState.containsKey("Data")) {
-        	app.toaster("YEP: " + savedInstanceState.getString("Data"));
+        else if (passedData.containsKey("Data")) {
+        	app.toaster("YEP: " + passedData.getString("Data"));
         }
         
     	
@@ -46,23 +48,16 @@ public class NewTask extends Activity {
     private void saveTask(){
     	ZadatakApp app = (ZadatakApp)getApplicationContext();
     	
-    	EditText nameText = (EditText) findViewById(R.id.NameBox);
-    	String name = nameText.getText().toString();
-    	
+    	EditText   nameText = (EditText) findViewById(R.id.NameBox);
     	DatePicker datePicker = (DatePicker)findViewById(R.id.datepicker);
-    	String date = datePicker.getDayOfMonth() + " " + datePicker.getMonth() + " " + datePicker.getYear();
-    	
-    	EditText lengthText = (EditText) findViewById(R.id.estimatedlength);
-    	String time = lengthText.getText().toString();
-    	
-    	CheckBox priorityBox = (CheckBox)findViewById(R.id.highpriority);
-    	String priority = priorityBox.isChecked() ? "HIGH" : "NORMAL";
+    	EditText   lengthText = (EditText) findViewById(R.id.estimatedlength);
+    	CheckBox   priorityBox = (CheckBox)findViewById(R.id.highpriority);
     	
     	Task task = new Task();
-    	task.set(Task.Attributes.Name, name);
-    	task.set(Task.Attributes.Duedate, date);
-    	task.set(Task.Attributes.Hours, time);
-    	task.set(Task.Attributes.Priority, priority);
+    	task.set(Task.Attributes.Name, nameText);
+    	task.set(Task.Attributes.Duedate, datePicker);
+    	task.set(Task.Attributes.Hours, lengthText);
+    	task.set(Task.Attributes.Priority, priorityBox);
 
     	app.dbman.insertTask(task);
     	
