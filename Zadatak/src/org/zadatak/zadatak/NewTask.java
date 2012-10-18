@@ -38,13 +38,13 @@ public class NewTask extends Activity {
     	
     	
         if (passedData != null) {
-
-        	
         	Task task = new Task();
         	task.extractBundle(passedData);
         	
         	task.get(Task.Attributes.Name, nameText);
-        	
+        	task.get(Task.Attributes.Duedate, datePicker);
+        	task.get(Task.Attributes.Hours, lengthText);
+        	task.get(Task.Attributes.Priority, priorityBox);
         }   
     	
     	

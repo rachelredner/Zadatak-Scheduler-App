@@ -58,9 +58,9 @@ public class Task {
 	public void get(Attributes attribute, DatePicker datePicker) {
 		String alldates = get(attribute);
 		String[] dates = alldates.split("/");
-		int year = Integer.getInteger(dates[2]);
-		int month = Integer.getInteger(dates[1]);
-		int day = Integer.getInteger(dates[0]);
+		int year = Integer.parseInt(dates[2]);
+		int month = Integer.parseInt(dates[1]);
+		int day = Integer.parseInt(dates[0]);
 		datePicker.init(year, month, day, null);
 	}
 	// Checkbox
@@ -68,7 +68,7 @@ public class Task {
 		set(attribute,checkBox.isChecked() ? "TRUE" : "FALSE");
 	}
 	public void get (Attributes attribute, CheckBox checkBox){
-		boolean checked = get(attribute) == "TRUE";
+		boolean checked = get(attribute).equals("TRUE");
 		checkBox.setChecked(checked);
 	}
 	// Slider Bar
