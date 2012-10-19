@@ -43,24 +43,11 @@ public class Zadatak extends Activity {
 		Button profilepage = (Button) findViewById(R.id.myprofile);
 		profilepage.setOnClickListener(new OnClickListener() { public void onClick(View v) { goToProfilePage();} } );
 		
-		
 		// Open the database
-		
-		//DatabaseManager dbman = new DatabaseManager(getApplicationContext());
-		
-		
 		ZadatakApp app = (ZadatakApp) getApplicationContext();
 		app.dbman.open();
-		
-		/*Task task = new Task();
-		task.set(Task.Attributes.Name,"MYTASK!");
-		task.set(Task.Attributes.Duedate, "DOOMTIME!!");
-		
-		Task inserted = app.dbman.insertTask(task);
-		
-		app.toaster(task.get(Task.Attributes.Duedate) + "|" + inserted.get(Task.Attributes.Duedate));
-		*/
     }
+    
     /**************************** ON CREATE OPTION MENU ***************************\
     | This adds the menu button menu to the activity, it can be changed in         |
     | res/menu/activity_zadatak.xml                                                |
@@ -70,6 +57,7 @@ public class Zadatak extends Activity {
         getMenuInflater().inflate(R.menu.activity_zadatak, menu);
         return true;
     }
+    
     /******************************* GO TO NEW TASK *******************************\
     | This function is called when the user clicks on the new task button, it      |
     | brings the user to an activity where they can input a new task into          |
@@ -79,23 +67,17 @@ public class Zadatak extends Activity {
     	Intent intent = new Intent(Zadatak.this, NewTask.class);
 		Zadatak.this.startActivity(intent);
     }
+    
     /******************************* GO TO TASK LIST ******************************\
     | This function is called when the view task list button is clicked on the     |
     | screen. It calls a new activity (task list) up to show the user the list of  |
     | tasks he or she has                                                          |
     \******************************************************************************/
     private void goToTaskList(){
-    	/*Context context = getApplicationContext();
-    	CharSequence text = "GO TO TASK LIST";
-    	int duration = Toast.LENGTH_SHORT;
-
-    	Toast toast = Toast.makeText(context, text, duration);
-    	toast.show();*/
-    	
     	Intent intent = new Intent(Zadatak.this, ViewTasks.class);
-		Zadatak.this.startActivity(intent);
-		
+		Zadatak.this.startActivity(intent);		
     }
+    
     /***************************** GO TO TODAYS TASKS *****************************\
     | This function, like the other go to functions, is called when the user       |
     | clicks the view todays tasks button. It calls up the todays task activity.   |

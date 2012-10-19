@@ -32,11 +32,8 @@ public class NewTask extends Activity {
     	lengthText = (EditText) findViewById(R.id.estimatedlength);
     	priorityBox = (CheckBox)findViewById(R.id.highpriority);
     	
-    	
+    	// If a task was passed in, attempt to load it
     	Bundle passedData = getIntent().getExtras();
-    	
-    	
-    	
         if (passedData != null) {
         	Task task = new Task();
         	task.extractBundle(passedData);

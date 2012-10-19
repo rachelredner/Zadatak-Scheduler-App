@@ -31,7 +31,11 @@ public class ViewTasks extends Activity {
     	refreshList();
 
     }
-
+    
+    /******************************** REFRESH LIST ********************************\
+    | This function refreshes the list if the list is ever update, for example     |
+    | when a task is deleted or modified                                           |
+    \******************************************************************************/
     private void refreshList() {
     	String[] tasks = getTaskList();
     	ListView list = (ListView) findViewById(R.id.tasklist);
@@ -47,6 +51,11 @@ public class ViewTasks extends Activity {
         });
     }
     
+    /******************************** GET TASK LIST *******************************\
+    | This function gets a list of all the tasks in the database and returns a     |
+    | string based on some feature of each task. Currently it is                   |
+    | Name + | + date                                                              |
+    \******************************************************************************/
     private String[] getTaskList(){
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
 		List<Task> tasks = app.dbman.getAllTasks();
@@ -65,12 +74,20 @@ public class ViewTasks extends Activity {
 		return values;
     }
     
+    /********************************* DELETE TASK ********************************\
+    | This function deletes a task from the database given the id of the task in   |
+    | the database                                                                 |
+    \******************************************************************************/
     public void delete (int index) {
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
     	app.dbman.deleteTask(app.dbman.getAllTasks().get(index).id);
-    	//app.toaster("Delete " + index);
     	refreshList();
     }
+    
+    /********************************** EDIT TASK *********************************\
+    | This function will edit a task in the database, given the ID of the old      |
+    | task in the database and a new task object to replace it in the database     |
+    \******************************************************************************/
     public void edit (int index) {
         ZadatakApp app = (ZadatakApp) getApplicationContext();
         
