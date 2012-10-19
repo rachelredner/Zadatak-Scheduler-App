@@ -1,53 +1,40 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:fillViewport="true"
     android:fadeScrollbars="false"
-
-        
 	android:id="@+id/scrollView1"
 	android:layout_alignParentTop="true"
 	android:layout_centerHorizontal="true"
-	android:layout_marginTop="0dp" 
-
-	>
-	
-    
-
+	android:layout_marginTop="0dp" >
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:focusable="true" 
 	    android:focusableInTouchMode="true"
     	xmlns:tools="http://schemas.android.com/tools"
-  	    android:layout_width="match_parent"
+  	    android:layout_width="fill_parent"
     	android:paddingLeft="12dip"
     	android:paddingRight="12dip"
         android:background = "@drawable/hourglassfade"
-         
-    	android:layout_height="wrap_content" >
-
+    	android:layout_height="fill_parent" >
 	    <TextView
-        android:id = "@+id/header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop = "True"
-        android:text="Add A New Task"
-        android:textSize = "22dip"
-        android:textStyle = "bold"
-        android:layout_marginTop = "4dip"
- />
-	    
-		  <TextView 
-	        android:id = "@+id/nameprompt"
-	        android:text = "Task Name:"
-	        android:textSize = "22dip"
-	        android:layout_below = "@+id/header" 
-	        android:layout_marginTop = "16dip"
-	        android:layout_height = "wrap_content"
-	        android:layout_width = "wrap_content"
-	               
-	        />
-	    
+			android:id = "@+id/header"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_alignParentTop = "True"
+			android:text="Add A New Task"
+			android:textSize = "22dip"
+			android:textStyle = "bold"
+			android:layout_marginTop = "4dip" />
+		<TextView 
+			android:id = "@+id/nameprompt"
+			android:text = "Task Name:"
+			android:textSize = "22dip"
+			android:layout_below = "@+id/header" 
+			android:layout_marginTop = "16dip"
+			android:layout_height = "wrap_content"
+			android:layout_width = "wrap_content" />
 	    <EditText
 	        android:id = "@+id/NameBox"
 	        android:inputType="text"
@@ -55,30 +42,22 @@
 	        android:layout_width = "fill_parent"
 	        android:layout_marginTop = "4dip"
 	        android:layout_below="@+id/nameprompt"
-	        android:hint="e.g. 'Math Homework' "
-	        />
-	    
+	        android:hint="e.g. 'Math Homework' " />
 	    <TextView 
 	        android:id = "@+id/dateprompt"
 	        android:text = "Due Date:"
 	        android:textSize = "20dip"
-	        android:layout_marginTop = "16dip"
+	        android:layout_marginTop = "16dip" 
 	        android:layout_below="@+id/NameBox"
 	        android:layout_height = "wrap_content"
-	        android:layout_width = "wrap_content"
-	               
-	        />
-	    
+	        android:layout_width = "wrap_content" />
 	    <DatePicker
 	        android:id  = "@+id/datepicker"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop = "2dip"
 	        android:layout_below="@+id/dateprompt"
-	        android:minDate="10062012"
-	        
-	        />
-	    
+	        android:minDate="10062012" />
 	    <TextView 
 	        android:id = "@+id/lengthprompt"
 	        android:text = "Approximate Length in hours (optional):"
@@ -86,30 +65,23 @@
 	        android:layout_marginTop = "16dip"
 	        android:layout_height = "wrap_content"
 	        android:layout_width = "wrap_content"
-	        android:layout_below="@+id/datepicker"
-	               
-	        />
+	        android:layout_below="@+id/datepicker" />
 	    <EditText
-	        android:id = "@+id/estimatedlength"
-	        android:inputType = "number"
-	        android:hint ="e.g. '4' "
-	        android:layout_marginTop = "3dip"
-	        android:layout_height = "wrap_content"
-	        android:layout_width = "wrap_content"
-	        android:layout_below="@+id/lengthprompt"
-	        />
-	    
-		    <TextView 
+			android:id = "@+id/estimatedlength"
+			android:inputType = "number"
+			android:hint ="e.g. '4' "
+			android:layout_marginTop = "3dip"
+			android:layout_height = "wrap_content"
+			android:layout_width = "wrap_content"
+			android:layout_below="@+id/lengthprompt" />
+		<TextView 
 	        android:id = "@+id/progressprompt"
 	        android:text = "Current Progress:"
 	        android:textSize = "20dip"
 	        android:layout_marginTop = "16dip"
 	        android:layout_height = "wrap_content"
 	        android:layout_width = "wrap_content"
-	        android:layout_below="@+id/estimatedlength"
-	               
-	        />    
-	    
+	        android:layout_below="@+id/estimatedlength" />    
 		<SeekBar
 		    android:id = "@+id/currentprogress"
 		    android:progress="0"
@@ -118,9 +90,7 @@
 	        android:layout_height = "wrap_content"
 	        android:layout_width = "match_parent"
 	        android:layout_below="@+id/progressprompt"
-	        android:layout_marginTop = "2dip"
-	        />
-	    
+	        android:layout_marginTop = "2dip" />
 	    <CheckBox
 	        android:id = "@+id/highpriority"
 	        android:text = "High Priority"
@@ -129,11 +99,8 @@
 	        android:layout_height = "wrap_content" 
 	        android:layout_width = "wrap_content"
 	        android:layout_marginTop = "16dip"
-	        android:layout_below="@+id/currentprogress"
-	  
-	        />
-	              
-	        <Button
+	        android:layout_below="@+id/currentprogress" />
+		<Button
 	        android:id = "@+id/save"
        	    android:layout_alignParentRight = "true"
 			android:layout_below = "@+id/highpriority"
@@ -143,10 +110,6 @@
 	        android:textSize = "20dip"
 	        android:textStyle = "bold"
 	        android:layout_height = "wrap_content"
-	        android:layout_width = "wrap_content"
-
-	        
-	        />
+	        android:layout_width = "wrap_content" />
 	</RelativeLayout>
-
 </ScrollView>
