@@ -18,6 +18,9 @@ public class NewTask extends Activity {
 	EditText   lengthText;
 	CheckBox   priorityBox;
 	
+	long id;
+	boolean editmode = false;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
        	super.onCreate(savedInstanceState);
@@ -42,6 +45,9 @@ public class NewTask extends Activity {
         	task.get(Task.Attributes.Duedate, datePicker);
         	task.get(Task.Attributes.Hours, lengthText);
         	task.get(Task.Attributes.Priority, priorityBox);
+        	
+        	id = passedData.getLong("DB_ID");
+        	editmode = true;
         }   
     	
     	
@@ -69,8 +75,13 @@ public class NewTask extends Activity {
     	task.set(Task.Attributes.Hours, lengthText);
     	task.set(Task.Attributes.Priority, priorityBox);
 
-    	app.dbman.insertTask(task);
     	
+    	if (editmode) {
+    		app.dbman.editTask(id, task);
+    	}
+    	else {
+    		app.dbman.insertTask(task);
+    	}
     	finish();
     }
 }

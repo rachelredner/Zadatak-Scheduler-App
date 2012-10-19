@@ -92,12 +92,21 @@ public class ViewTasks extends Activity {
         ZadatakApp app = (ZadatakApp) getApplicationContext();
         
         Intent intent = new Intent(ViewTasks.this, NewTask.class);
+        Task task = app.dbman.getAllTasks().get(index);
+		task.packIntent(intent);
         
-		app.dbman.getAllTasks().get(index).packIntent(intent);
+		intent.putExtra("DB_ID", task.id);
+		
+        ViewTasks.this.startActivityForResult(intent,1);        
         
-        ViewTasks.this.startActivity(intent);
-        
-        app.toaster("Edit " + index);
+        //app.toaster("Edit " + index);
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    	//ZadatakApp app = (ZadatakApp) getApplicationContext();
+    	//app.toaster("UPDATING?");
+    	refreshList();
     }
     
     /*************************** ON CREATE CONTEXT MENU ***************************\
