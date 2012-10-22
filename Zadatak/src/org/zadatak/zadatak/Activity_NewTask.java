@@ -10,12 +10,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SeekBar;
 
 public class Activity_NewTask extends Activity {
 
 	EditText   nameText;
 	DatePicker datePicker;
 	EditText   lengthText;
+	SeekBar    progressBar;
 	CheckBox   priorityBox;
 	
 	long id;
@@ -33,6 +35,7 @@ public class Activity_NewTask extends Activity {
         nameText = (EditText) findViewById(R.id.NameBox);
     	datePicker = (DatePicker)findViewById(R.id.datepicker);
     	lengthText = (EditText) findViewById(R.id.estimatedlength);
+    	progressBar = (SeekBar) findViewById(R.id.currentprogress);
     	priorityBox = (CheckBox)findViewById(R.id.highpriority);
     	
     	// If a task was passed in, attempt to load it
@@ -44,6 +47,7 @@ public class Activity_NewTask extends Activity {
         	task.get(Task.Attributes.Name, nameText);
         	task.get(Task.Attributes.Duedate, datePicker);
         	task.get(Task.Attributes.Hours, lengthText);
+        	task.get(Task.Attributes.Progress, progressBar);
         	task.get(Task.Attributes.Priority, priorityBox);
         	
         	id = passedData.getLong("DB_ID");
@@ -73,6 +77,7 @@ public class Activity_NewTask extends Activity {
     	task.set(Task.Attributes.Name, nameText);
     	task.set(Task.Attributes.Duedate, datePicker);
     	task.set(Task.Attributes.Hours, lengthText);
+    	task.set(Task.Attributes.Progress, progressBar);
     	task.set(Task.Attributes.Priority, priorityBox);
 
     	

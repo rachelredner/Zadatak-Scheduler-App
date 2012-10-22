@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SeekBar;
 
 public class Task {
 	
@@ -16,6 +17,7 @@ public class Task {
 		Name,
 		Duedate,
 		Hours,
+		Progress,
 		Priority
 	}
 	
@@ -123,4 +125,11 @@ public class Task {
 		checkBox.setChecked(checked);
 	}
 	// Slider Bar
+	public void set (Attributes attribute, SeekBar seekBar) {
+		set(attribute,""+seekBar.getProgress());
+	}
+	public void get(Attributes attribute, SeekBar seekBar) {
+		String progress = get(attribute);
+		seekBar.setProgress(Integer.parseInt(progress));
+	}
 }
