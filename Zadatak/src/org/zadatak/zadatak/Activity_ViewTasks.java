@@ -22,6 +22,10 @@ public class Activity_ViewTasks extends Activity {
     SimpleCursorAdapter mAdapter;
 	
 	
+    /********************************** ON CREATE *********************************\
+    | The on create function loads the view and longs the orentation, then         |
+    | populates the list for the list view for the first time                      |
+    \******************************************************************************/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);	
@@ -29,7 +33,6 @@ public class Activity_ViewTasks extends Activity {
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
     	refreshList();
-
     }
     
     /******************************** REFRESH LIST ********************************\
@@ -98,14 +101,15 @@ public class Activity_ViewTasks extends Activity {
 		intent.putExtra("DB_ID", task.id);
 		
         Activity_ViewTasks.this.startActivityForResult(intent,1);        
-        
-        //app.toaster("Edit " + index);
     }
-    
+
+    /***************************** ON ACTIVITY RESULT *****************************\
+    | This function is run when the editTask (newTask with data passed to it)      |
+    | activity is completed. It refreshes the list in case the editTask activity   |
+    | changed any of the displayed data                                            |
+    \******************************************************************************/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-    	//ZadatakApp app = (ZadatakApp) getApplicationContext();
-    	//app.toaster("UPDATING?");
     	refreshList();
     }
     
