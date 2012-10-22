@@ -16,7 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ViewTasks extends Activity {
+public class Activity_ViewTasks extends Activity {
 	
 	// This is the Adapter being used to display the list's data
     SimpleCursorAdapter mAdapter;
@@ -91,13 +91,13 @@ public class ViewTasks extends Activity {
     public void edit (int index) {
         ZadatakApp app = (ZadatakApp) getApplicationContext();
         
-        Intent intent = new Intent(ViewTasks.this, NewTask.class);
+        Intent intent = new Intent(Activity_ViewTasks.this, Activity_NewTask.class);
         Task task = app.dbman.getAllTasks().get(index);
 		task.packIntent(intent);
         
 		intent.putExtra("DB_ID", task.id);
 		
-        ViewTasks.this.startActivityForResult(intent,1);        
+        Activity_ViewTasks.this.startActivityForResult(intent,1);        
         
         //app.toaster("Edit " + index);
     }

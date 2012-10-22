@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 
-public class Profile extends Activity {
+public class Activity_Profile extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

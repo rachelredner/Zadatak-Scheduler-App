@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-public class NewTask extends Activity {
+public class Activity_NewTask extends Activity {
 
 	EditText   nameText;
 	DatePicker datePicker;

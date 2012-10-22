@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 
 
-public class Zadatak extends Activity {
+public class Activity_Zadatak extends Activity {
 	
 	/********************************** ON CREATE *********************************\
 	| The onCreate function is run when the program is loaded. It handles all of   |
@@ -64,8 +64,8 @@ public class Zadatak extends Activity {
     | Zadatak. The new task will then appear on the task list.                     |
     \******************************************************************************/
     private void goToNewTask(){
-    	Intent intent = new Intent(Zadatak.this, NewTask.class);
-		Zadatak.this.startActivity(intent);
+    	Intent intent = new Intent(Activity_Zadatak.this, Activity_NewTask.class);
+		Activity_Zadatak.this.startActivity(intent);
     }
     
     /******************************* GO TO TASK LIST ******************************\
@@ -74,8 +74,8 @@ public class Zadatak extends Activity {
     | tasks he or she has                                                          |
     \******************************************************************************/
     private void goToTaskList(){
-    	Intent intent = new Intent(Zadatak.this, ViewTasks.class);
-		Zadatak.this.startActivity(intent);		
+    	Intent intent = new Intent(Activity_Zadatak.this, Activity_ViewTasks.class);
+		Activity_Zadatak.this.startActivity(intent);		
     }
     
     /***************************** GO TO TODAYS TASKS *****************************\
@@ -97,7 +97,7 @@ public class Zadatak extends Activity {
     }
     
     private void goToProfilePage() {
-    	Intent intent = new Intent(Zadatak.this, Profile.class);
-		Zadatak.this.startActivity(intent);
+    	Intent intent = new Intent(Activity_Zadatak.this, Activity_Profile.class);
+		Activity_Zadatak.this.startActivity(intent);
     }
 }
