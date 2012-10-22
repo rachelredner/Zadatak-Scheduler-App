@@ -124,10 +124,19 @@ public class Task {
 		boolean checked = get(attribute).equals("TRUE");
 		checkBox.setChecked(checked);
 	}
-	// Slider Bar
+	
+	/******************************** SET SEEK BAR ********************************\
+	| This function sets the attribute equal to the progress variable of the seek  |
+	| bar provided                                                                 |
+	\******************************************************************************/
 	public void set (Attributes attribute, SeekBar seekBar) {
 		set(attribute,""+seekBar.getProgress());
 	}
+	
+	/******************************** GET SEEK BAR ********************************\
+	| This function will set the progress of the seek bar given equal to the       |
+	| integer stored inside of the task object                                     |
+	\******************************************************************************/
 	public void get(Attributes attribute, SeekBar seekBar) {
 		String progress = get(attribute);
 		seekBar.setProgress(Integer.parseInt(progress));
