@@ -35,14 +35,16 @@ public class Activity_TodaysTasks extends Activity {
     PendingIntent pendingIntent;
     
     private void generateAlert() {
-    	Intent myIntent = new Intent(Activity_TodaysTasks.this, Service_TaskReminder.class);
-    	pendingIntent = PendingIntent.getService(Activity_TodaysTasks.this, 0, myIntent, 0);
+    	//Intent myIntent = new Intent(Activity_TodaysTasks.this, Service_TaskReminder.class);
+    	Intent myIntent = new Intent(Activity_TodaysTasks.this, Activity_Profile.class);
+    	pendingIntent = PendingIntent.getActivity(Activity_TodaysTasks.this, 0, myIntent, 0);
+    	
     	AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+    	
     	Calendar calendar = Calendar.getInstance();
     	calendar.setTimeInMillis(System.currentTimeMillis());
     	calendar.add(Calendar.SECOND, 10);
-    	alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-    	calendar.add(Calendar.SECOND, 10);
+    	
     	alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     	
     	Toast.makeText(Activity_TodaysTasks.this, "Start Alarm for "+ (calendar.getTimeInMillis()-System.currentTimeMillis()) , Toast.LENGTH_LONG).show();
