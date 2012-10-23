@@ -10,16 +10,18 @@ public class Service_TaskReminder extends Service {
 
 	@Override
 	public void onCreate() {
+		super.onCreate();
 		// TODO Auto-generated method stub
 		Toast.makeText(this, "MyAlarmService.onCreate()", Toast.LENGTH_LONG).show();
+		Intent i = new Intent(this, Activity_Profile.class);
+		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // flag the intent as creating a new task
+		this.startActivity(i);
 	}
 
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
 		Toast.makeText(this, "MyAlarmService.onBind()", Toast.LENGTH_LONG).show();
-		Intent i = new Intent(this, Activity_Profile.class);
-		this.startActivity(i);
 		return null;
 	}
 

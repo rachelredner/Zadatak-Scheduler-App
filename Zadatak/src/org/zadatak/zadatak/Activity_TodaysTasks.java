@@ -42,7 +42,10 @@ public class Activity_TodaysTasks extends Activity {
     	calendar.setTimeInMillis(System.currentTimeMillis());
     	calendar.add(Calendar.SECOND, 10);
     	alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-    	Toast.makeText(Activity_TodaysTasks.this, "Start Alarm", Toast.LENGTH_LONG).show();
+    	calendar.add(Calendar.SECOND, 10);
+    	alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    	
+    	Toast.makeText(Activity_TodaysTasks.this, "Start Alarm for "+ (calendar.getTimeInMillis()-System.currentTimeMillis()) , Toast.LENGTH_LONG).show();
     }
     
     private void cancelAlert() {
