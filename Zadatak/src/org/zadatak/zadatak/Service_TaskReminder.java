@@ -16,6 +16,7 @@ public class Service_TaskReminder extends Service {
 		Intent i = new Intent(this, Activity_Profile.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // flag the intent as creating a new task
 		this.startActivity(i);
+		onDestroy();
 	}
 
 	@Override
