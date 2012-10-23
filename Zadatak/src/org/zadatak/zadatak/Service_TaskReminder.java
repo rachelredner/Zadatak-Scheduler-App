@@ -1,5 +1,6 @@
 package org.zadatak.zadatak;
 
+import android.app.AlarmManager;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -17,6 +18,8 @@ public class Service_TaskReminder extends Service {
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
 		Toast.makeText(this, "MyAlarmService.onBind()", Toast.LENGTH_LONG).show();
+		Intent i = new Intent(this, Activity_Profile.class);
+		this.startActivity(i);
 		return null;
 	}
 

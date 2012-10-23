@@ -40,7 +40,8 @@ public class Activity_TodaysTasks extends Activity {
     	AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
     	Calendar calendar = Calendar.getInstance();
     	calendar.setTimeInMillis(System.currentTimeMillis());
-    	calendar.add(Calendar.SECOND, 10);alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    	calendar.add(Calendar.SECOND, 10);
+    	alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     	Toast.makeText(Activity_TodaysTasks.this, "Start Alarm", Toast.LENGTH_LONG).show();
     }
     
