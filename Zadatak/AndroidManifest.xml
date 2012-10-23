@@ -37,6 +37,8 @@
             android:name=".Activity_TodaysTasks"
             android:label="@string/title_activity_activity__todays_tasks" >
         </activity>
+        
+        <service android:name=".Service_TaskReminder" />
     </application>
 
 </manifest>
