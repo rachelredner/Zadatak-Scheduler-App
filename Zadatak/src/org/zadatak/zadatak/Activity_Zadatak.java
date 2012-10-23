@@ -83,17 +83,8 @@ public class Activity_Zadatak extends Activity {
     | clicks the view todays tasks button. It calls up the todays task activity.   |
     \******************************************************************************/
     private void goToTodaysTasks() {
-    	Context context = getApplicationContext();
-    	CharSequence text = "TODAYS TASKS";
-    	int duration = Toast.LENGTH_SHORT;
-
-    	Toast toast = Toast.makeText(context, text, duration);
-    	toast.show();
-    	
-    	/*
-    	Intent intent = new Intent(Zadatak.this, NewTask.class);
-		Zadatak.this.startActivity(intent);
-		*/
+    	Intent intent = new Intent(Activity_Zadatak.this, Activity_TodaysTasks.class);
+    	Activity_Zadatak.this.startActivity(intent);
     }
     
     private void goToProfilePage() {
