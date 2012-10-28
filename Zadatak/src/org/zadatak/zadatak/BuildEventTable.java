@@ -27,6 +27,9 @@ public class BuildEventTable extends Activity {
 		
 	};
 	 
+	public BuildEventTable(){
+		//Empty Constructor
+	}
     
 	/**
 	 * This class returns a list of events up to a certain date
