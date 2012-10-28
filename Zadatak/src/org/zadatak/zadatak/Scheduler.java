@@ -1,23 +1,22 @@
 package org.zadatak.zadatak;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * @author Nick Timakondu
  * Date Last Edited: 10/17/2012
  * 
- * This file contains the scheduling algorithm and holds the eventqueue
+ * This file contains the scheduling algorithm and holds the event queue
  */
 public class Scheduler {
 	
-	private CalendarDay[] cal;
-	private ConcurrentLinkedQueue<CalendarEvent> queue;
+	HashMap<Calendar,Integer> freeDays;
+	private PriorityQueue<Task> queue;
 	
 	public Scheduler(){
 		initQueue();
-		cal = new CalendarDay[7];
-		for(int i = 0; i < cal.length; i++){
-			cal[i] = new CalendarDay();
-		}
 	}
 	/**
 	 * Schedule all the events in the queue by adding one hour at a time
@@ -72,10 +71,10 @@ public class Scheduler {
 		currDay.addBusyTimes(startHour, endHour);		
 	}
 	/**
-	 * Initialize the event Queue
+	 * Initialize the task Queue
 	 */
 	public void initQueue(){
-		queue = new ConcurrentLinkedQueue<CalendarEvent>();
+		queue = ;
 	}
 	/**
 	 * Adds events to the event Queue
