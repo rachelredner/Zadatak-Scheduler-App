@@ -1,76 +1,97 @@
 package org.zadatak.zadatak;
 
-import java.text.Format;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.text.format.DateFormat;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-
+/**
+ * This class interfaces with the Calendar Table
+ * @author Nick Timakondu
+ *
+ */
 @TargetApi(14)
 public class BuildEventTable extends Activity {
-	private Cursor mCursor = null;
-	
-	private static final String[] COLS = new String[] {
-		CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND
+	protected Cursor mCursor = null;
+		
+	public static final String[] COLS = new String[] {
+		CalendarContract.Events.TITLE,
+		CalendarContract.Events.DTSTART,
+		CalendarContract.Events.DTEND,
+		CalendarContract.Events.ALL_DAY,
+		
 	};
+	 
+	public BuildEventTable(){
+		//Empty Constructor
+	}
     
-    public void getTable() {
-    	Calendar startDate = Calendar.getInstance();
-    	startDate.setTimeZone(TimeZone.getTimeZone("UTC"));
-    	startDate.set(2012,Calendar.OCTOBER, 14);
-    	long start = startDate.getTimeInMillis();
-    	
-    	Calendar endDate = Calendar.getInstance();
-    	endDate.setTimeZone(TimeZone.getTimeZone("UTC"));
-    	endDate.set(2012, Calendar.OCTOBER,21);
-    	long end = endDate.getTimeInMillis();
-    	
-        
-        mCursor = getContentResolver().query(
-        		CalendarContract.Events.CONTENT_URI,
-        		COLS,
-        		"DTSTART > " + start + " AND DTSTART <  " + end,
-        		null,
-        		COLS[1]
+	/**
+	 * This class returns a list of events up to a certain date
+	 * @param endDate 
+	 * @return list of CalendarEvents
+	 */
+	public List<CalendarEvent> getEvents(Calendar endDate){
+		List<CalendarEvent> list = new ArrayList<CalendarEvent>();
+		Calendar startDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+		long start = startDate.getTimeInMillis();
+		long end = endDate.getTimeInMillis();
+		
+		mCursor = getContentResolver().query(
+				CalendarContract.Events.CONTENT_URI,
+				COLS,
+				"DTSTART > " + start + " AND DTEND < " + end,
+				null,
+				COLS[1]
 		);
-        
-        mCursor.moveToFirst();      
-    }
-    
-    public void addEvents() {
-    	String title = "N/A";
-    	Long start = 0L, end = 0L;
-//    	switch(v.getId()) {
-//	    	case R.id.next:
-//	    		if(!mCursor.isLast())
-//	    			mCursor.moveToNext();
-//				break;
-//	    	case R.id.previous:
-//	    		if(!mCursor.isFirst())
-//	    			mCursor.moveToPrevious();
-//	    		break;
-//    	}
-//    	Format df = DateFormat.getDateFormat(this);
-    	Format tf = DateFormat.getTimeFormat(this);
-    	
-    	try{
-    		title = mCursor.getString(0);
-    		start = mCursor.getLong(1);
-    		end = mCursor.getLong(2);
-    	} catch (Exception e) {
-    		//ignore    	
-    	}
- //   	tv.setText(title + " on " + df.format(start)+ " at " + tf.format(start) + " to " + df.format(end) + " " + tf.format(end));
+		
+		mCursor.moveToFirst();
+		while(!mCursor.isLast()){
+			String title = mCursor.getString(0);
+			long dTStart = mCursor.getLong(1);
+			long dTEnd = mCursor.getLong(2);
+			//TODO: Figure out how to incorporate this information into a class.
+			Calendar eventStartDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+			Calendar eventEndDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+			eventStartDate.setTimeInMillis(dTStart);
+			eventEndDate.setTimeInMillis(dTEnd);
+			
+			CalendarEvent calEvent = new CalendarEvent(title,eventStartDate, eventEndDate);
+			list.add(calEvent);			
+			mCursor.moveToNext();
+		}
+		
+		return list;
+	}
+	/**
+	 * Find the remaining free hours this day;
+	 * @param day
+	 * @return free hours
+	 */
+	public int hoursFreethisDay(Calendar day){
+		long date = day.getTimeInMillis();
+		long dTStart, dTEnd, diff;
+		int FreeHours = 16;
+		mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI,
+				COLS, 
+				"DTSTART = " + date + " AND DTEND = " + date,
+				null,
+				COLS[1]
+		);
+		
+		mCursor.moveToFirst();
+		while(!mCursor.isAfterLast()){
+			dTStart = mCursor.getLong(1);
+			dTEnd = mCursor.getLong(2);
+			diff = dTEnd - dTStart;
+			diff = diff/(1000*60*60);
+			FreeHours -=diff;
+		}
+		return FreeHours;		
+	}
  
-     }
 }
