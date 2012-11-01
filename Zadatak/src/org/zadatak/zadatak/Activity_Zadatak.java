@@ -4,14 +4,12 @@ package org.zadatak.zadatak;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 
@@ -87,6 +85,10 @@ public class Activity_Zadatak extends Activity {
     	Activity_Zadatak.this.startActivity(intent);
     }
     
+    /***************************** GO TO PROFILE PAGE *****************************\
+    | This function calls the profile page activity when the user clicks the       |
+    | button it is attached to. Similar to the functions above                     |
+    \******************************************************************************/
     private void goToProfilePage() {
     	Intent intent = new Intent(Activity_Zadatak.this, Activity_Profile.class);
 		Activity_Zadatak.this.startActivity(intent);
