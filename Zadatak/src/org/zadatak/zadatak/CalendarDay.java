@@ -1,74 +1,42 @@
 package org.zadatak.zadatak;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 
 public class CalendarDay {
-//	public ArrayList<CalendarEvent> eventsThisDay; //Holds all events for this day
-//		
-//	public CalendarDay(){
-//		eventsThisDay = new ArrayList<CalendarEvent>(24);
-//		for(int i = 0; i < 24; i++){
-//			eventsThisDay.add(new CalendarEvent("null"));
-//		}
-//	}
-//	
-//	public void addEvent(int index, CalendarEvent event){
-//		eventsThisDay.set(index, event);
-//	}
-//	
-//	public int getNextFreeSpace(){
-//		for(int i = 0;i < eventsThisDay.size(); i++){			
-//			if(eventsThisDay.get(i).equalsTo("null")){
-//				return i;
-//			}
-//		}
-//		return -1;
-//	}
-//	public int getFreeSpaceThisDay(){
-//		int freeSpace = 0;
-//		for(int i = 0; i < eventsThisDay.size(); i++){
-//			if(eventsThisDay.get(i).equalsTo("null")){
-//				freeSpace++;
-//			}
-//		}
-//		return freeSpace;
-//	}
-//	/**
-//	 * Given a certain space hour, this will return how many hours are remaining in that slot
-//	 * @param startIndex hour to check on from 
-//	 * @return remaining hours in that slot
-//	 */
-//	public int getRemainingSpace(int startIndex){
-//		int currhour = startIndex;
-//		if(eventsThisDay.get(startIndex) != null) return -1;
-//		int remainingHours = 0;
-//		while(eventsThisDay.get(currhour) == null){
-//			remainingHours++;
-//			currhour++;
-//		}
-//		return remainingHours;
-//	}
-//	public void PrintCalendar(){
-//		System.out.print("\n");
-//		for(int i = 0; i < eventsThisDay.size(); i++){
-//			System.out.print(i + ": ");
-//			if(eventsThisDay.get(i).equals("null")){
-//				System.out.println("[null]");
-//			} else {
-//				System.out.println("[" + eventsThisDay.get(i) + "]");
-//			}
-//		}
-//		System.out.print("\n");
-//	}
-//	
-//	public void addBusyTimes(int startTime, int endTime){
-//		
-//		for(int i = startTime; i <= endTime; i++){
-//			eventsThisDay.set(i,new CalendarEvent("busy"));
-//		}
-//	}
-//	
-//	public String toString(){
-//		return ((Integer)this.getFreeSpaceThisDay()).toString();
-//	}
+	//This class needs to take in a Calendar Object, translate it into an array of free and busy times.
+	//Out of this day, the class needs to be able find the next free hour to schedule and add it to the user's google calendar
+	
+	Calendar day;
+	Task task;
+	String[] hours = new String[24];
+	
+	public CalendarDay(Calendar c_Day, Task c_task){
+		day = c_Day;
+		task = c_task;
+		addBusyTimes(0,8);         //Times to sleep! 
+		addBusyTimes(22,24);      
+	}
+	
+	
+	public void pushToCalendar(){
+		BuildEventTable bet = new BuildEventTable();
+		List<CalendarEvent> eventsThisDay = bet.getEventsThisDay(day);
+		
+		for(CalendarEvent e: eventsThisDay)
+			for(int i = e.startDate.get(Calendar.HOUR_OF_DAY); i < e.endDate.get(Calendar.HOUR_OF_DAY); i++)
+				hours[i] = e.name;
+		
+		int freehour = 0;
+		for(int i = 0; i < 24; i++)
+			if(hours[i] == null)
+				freehour = i;		
+		
+		bet.addEvent(day, freehour, task.get(Task.Attributes.Name));
+	}
+	
+	private void addBusyTimes(int starthour, int endhour){
+		for(int i = starthour; i < endhour; i++)
+			hours[i] = "Busy";
+	}	
 }

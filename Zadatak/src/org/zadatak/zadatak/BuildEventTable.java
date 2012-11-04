@@ -7,7 +7,10 @@ import java.util.TimeZone;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 import android.provider.CalendarContract;
 /**
  * This class interfaces with the Calendar Table
@@ -45,6 +48,36 @@ public class BuildEventTable extends Activity {
 				CalendarContract.Events.CONTENT_URI,
 				COLS,
 				"DTSTART > " + start + " AND DTEND < " + end,
+				null,
+				COLS[1]
+		);
+		
+		mCursor.moveToFirst();
+		while(!mCursor.isLast()){
+			String title = mCursor.getString(0);
+			long dTStart = mCursor.getLong(1);
+			long dTEnd = mCursor.getLong(2);
+			//Incorporate this information into a class.
+			Calendar eventStartDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+			Calendar eventEndDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+			eventStartDate.setTimeInMillis(dTStart);
+			eventEndDate.setTimeInMillis(dTEnd);
+			
+			CalendarEvent calEvent = new CalendarEvent(title,eventStartDate, eventEndDate);
+			list.add(calEvent);			
+			mCursor.moveToNext();
+		}
+		
+		return list;
+	}
+	
+	public List<CalendarEvent> getEventsThisDay(Calendar endDate){
+		List<CalendarEvent> list = new ArrayList<CalendarEvent>();
+		long end = endDate.getTimeInMillis();		
+		mCursor = getContentResolver().query(
+				CalendarContract.Events.CONTENT_URI,
+				COLS,
+				"DTSTART = " + end + " AND DTEND = " + end,
 				null,
 				COLS[1]
 		);
@@ -92,6 +125,31 @@ public class BuildEventTable extends Activity {
 			FreeHours -=diff;
 		}
 		return FreeHours;		
+	}
+	
+	public String addEvent(Calendar day, int hour, String name){
+		day.set(Calendar.HOUR_OF_DAY, hour);
+		long start = day.getTimeInMillis();
+		day.set(Calendar.HOUR_OF_DAY, hour + 1);
+		long end = day.getTimeInMillis();
+		
+		ContentResolver cr = getContentResolver();
+		ContentValues values = new ContentValues();
+		values.put(CalendarContract.Events.DTSTART, start);
+		values.put(CalendarContract.Events.DTEND, end);
+		values.put(CalendarContract.Events.TITLE, name);
+		values.put(CalendarContract.Events.CALENDAR_ID, 1);
+		
+		Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+		
+		String eventID = uri.getLastPathSegment();
+		return eventID;
+		
+		
+		
+		
+		
+		
 	}
  
 }

@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TimeZone;
 
@@ -45,7 +44,6 @@ public class Scheduler extends Activity {
 			return Day;
 		}
 		public int compareTo(FreeHours another) {
-			// TODO Auto-generated method stub
 			Integer i1 = Integer.valueOf(hoursfree);
 			Integer i2 = Integer.valueOf(another.getFreeHours());
 			return i1.compareTo(i2);
@@ -85,21 +83,23 @@ public class Scheduler extends Activity {
 	 * Build Event Queue from database task list
 	 */
 	public Scheduler(){
-		initQueue();
 		ZadatakApp app = (ZadatakApp) getApplicationContext();
 		List<Task> tasks = app.dbman.getAllTasks(); 
 		queue.addAll(tasks);
 	}
 	
+	/**
+	 * 
+	 */
 	public void getFreeHours(){
-		BuildEventTable bet = new BuildEventTable();
+		BuildEventTable bet = new BuildEventTable();  //Initialize class to get busy times
 		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-		int days = cal.getActualMaximum(Calendar.MONTH);
+		int days = cal.getActualMaximum(Calendar.MONTH); //Forecasting one month in advance
 		int hoursFree;
 		for(int i = 0; i < days; i++){
-			cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + i);
-			hoursFree = bet.hoursFreethisDay(cal);
-			FreeHours fh = new FreeHours(cal,hoursFree);
+			cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + i); //Advance day by one
+			hoursFree = bet.hoursFreethisDay(cal); //Get free hours this day
+			FreeHours fh = new FreeHours(cal,hoursFree); //Assign free hours to this day
 			listOfDays.add(fh);
 		}
 	}
@@ -110,65 +110,35 @@ public class Scheduler extends Activity {
 	 * events have been scheduled. 
 	 */
 	public void scheduleEvents(){
-		CalendarDay currDay = null;
+		Calendar nextOpenDay;
 		int maxDayHourRemaining = 0;
 		
 		//Continue Algorithm until all events have been scheduled. 
-		//TODO: Add priority so that higher priority events get scheduled first
+		// Add priority so that higher priority events get scheduled first
 		while(!queue.isEmpty()){
-			CalendarEvent event = queue.remove();
-			int hrsRemaining = event.getHoursToComplete();
+			Task currTask = queue.remove();
+			int hrsRemaining = Integer.parseInt(currTask.get(Task.Attributes.Hours)); //Get remaining hours for this task
 			while(hrsRemaining > 0){
+				SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
+				Calendar dueDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+				try {
+					dueDate.setTime(df.parse(currTask.get(Task.Attributes.Duedate)));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				//If event has a deadline, find the day with the most open spots 
 				//given that deadline
-				if(event.getEventLength() == -1)
-					maxDayHourRemaining = maxDayHourRemaining();
-				else
-					maxDayHourRemaining = maxDayHourRemaining(event.getEventLength());;
+				nextOpenDay = maxDayHourRemaining(dueDate);
+				CalendarDay calDay = new CalendarDay(nextOpenDay,currTask);
+				calDay.pushToCalendar();
+				currTask.set(Task.Attributes.Hours, Integer.toString(Integer.parseInt(currTask.get(Task.Attributes.Hours) + 1)));
 				
-				currDay = cal[maxDayHourRemaining];		
-				int index = currDay.getNextFreeSpace();
-				if(index == -1){
-					
-				}
-				currDay.addEvent(index, event);
-				hrsRemaining--;
-				event.updateRemainingTime(hrsRemaining);				
 			}
 		}
 	}
 	
-	/**
-	 * Get the calendar Array
-	 * @return calendar Array
-	 */
-	public CalendarDay[] getCal(){
-		return cal;
-	}
-	
-	/**
-	 * Mark a certain period of time as busy
-	 * @param day 
-	 * @param startHour
-	 * @param endHour
-	 */
-	public void addBusyTimes(int day, int startHour, int endHour){
-		CalendarDay currDay = cal[day];
-		currDay.addBusyTimes(startHour, endHour);		
-	}
-	/**
-	 * Initialize the task Queue
-	 */
-	public void initQueue(){
-		queue = new PriorityQueue<Task>(10,DATE_ORDER);
-	}
-	/**
-	 * Adds events to the event Queue
-	 * @param event to add to end of Queue
-	 */
-	public void addToQueue(CalendarEvent event){
-		queue.add(event);
-	}
 	
 	/**
 	 * Returns the day with the most free hours remaining
