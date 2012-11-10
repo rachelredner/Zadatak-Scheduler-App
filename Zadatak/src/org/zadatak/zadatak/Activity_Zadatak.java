@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 
 
@@ -44,6 +45,13 @@ public class Activity_Zadatak extends Activity {
 		// Open the database
 		ZadatakApp app = (ZadatakApp) getApplicationContext();
 		app.dbman.open();
+		
+		
+		// Allow Zadatak to wake up the phone
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
+			    | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+			    | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+		
     }
     
     /**************************** ON CREATE OPTION MENU ***************************\

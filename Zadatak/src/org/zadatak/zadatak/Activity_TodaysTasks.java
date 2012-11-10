@@ -36,7 +36,7 @@ public class Activity_TodaysTasks extends Activity {
     
     private void generateAlert() {
     	//Intent myIntent = new Intent(Activity_TodaysTasks.this, Service_TaskReminder.class);
-    	Intent myIntent = new Intent(Activity_TodaysTasks.this, Activity_Profile.class);
+    	Intent myIntent = new Intent(Activity_TodaysTasks.this, Activity_AlertTask.class);
     	pendingIntent = PendingIntent.getActivity(Activity_TodaysTasks.this, 0, myIntent, 0);
     	
     	AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
