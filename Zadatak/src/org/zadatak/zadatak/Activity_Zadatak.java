@@ -48,9 +48,9 @@ public class Activity_Zadatak extends Activity {
 		
 		
 		// Allow Zadatak to wake up the phone
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
+		/*getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
 			    | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-			    | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+			    | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);*/
 		
     }
     
