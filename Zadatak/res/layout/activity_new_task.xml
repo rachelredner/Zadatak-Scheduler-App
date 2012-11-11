@@ -2,6 +2,7 @@
 	android:focusable="true" 
 	android:focusableInTouchMode="true"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background = "@drawable/hourglassfade"
   	android:layout_width="fill_parent"
     android:paddingLeft="12dip"
     android:paddingRight="12dip"
@@ -17,7 +18,8 @@
 	android:id="@+id/scrollView1"
 	android:layout_alignParentTop="true"
 	android:layout_centerHorizontal="true"
-	android:layout_marginTop="0dp" >
+	android:layout_marginTop="1dip" 
+	android:layout_marginBottom = "47dip">
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:focusable="true" 
 	    android:focusableInTouchMode="true"
@@ -25,7 +27,7 @@
   	    android:layout_width="fill_parent"
     	android:paddingLeft="12dip"
     	android:paddingRight="12dip"
-        android:background = "@drawable/hourglassfade"
+
     	android:layout_height="fill_parent" >
 	    <TextView
 			android:id = "@+id/header"
@@ -114,11 +116,11 @@
 	    <TextView
 	        android:id = "@+id/buffer"
 	        android:text = "  " 
-	        android:textSize = "30dip"
+	        android:textSize = "10dip"
 	        android:layout_below = "@+id/highpriority"
 	        android:layout_height = "wrap_content"
 	        android:layout_width = "wrap_content"
-	        android:layout_marginTop = "18dip"
+	        android:layout_marginTop = "2dip"
 	        />
 
 	</RelativeLayout>
@@ -132,8 +134,9 @@
      android:layout_marginRight = "5dip"
      android:layout_marginBottom="5dip"
 	 android:text = "Save"
-	 android:textSize = "21dip"
+	 android:textSize = "29dip"
 	 android:textStyle = "bold"
 	 android:layout_height = "wrap_content"
+	 android:background="#DFA9C1D6"
 	 android:layout_width = "fill_parent" />
 </RelativeLayout>
