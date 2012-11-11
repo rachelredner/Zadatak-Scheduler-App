@@ -31,8 +31,25 @@ public class Activity_AlertTask extends Activity {
 		
 		Button postponeTask = (Button)findViewById(R.id.postponeTask);
 		postponeTask.setOnClickListener(new OnClickListener(){ public void onClick(View v){ postponeTask(); } } );
+		
+		playloop();
     }
+    
+    public void playloop() {
+    	MediaPlayer mp = MediaPlayer.create(Activity_AlertTask.this, R.raw.explosion);
+    	mp.setVolume(100, 100);
+        mp.setOnCompletionListener(new OnCompletionListener() {
+            //@Override
+            public void onCompletion(MediaPlayer mp) {
+                // TODO Auto-generated method stub
+                mp.release();
+                playloop();
+            }
 
+        });   
+        mp.start();
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_alert_task, menu);
@@ -44,17 +61,7 @@ public class Activity_AlertTask extends Activity {
     	finish();
     }
     public void postponeTask() {
-    	MediaPlayer mp = MediaPlayer.create(Activity_AlertTask.this, R.raw.explosion);
-    	mp.setVolume(100, 100);
-        mp.setOnCompletionListener(new OnCompletionListener() {
-            //@Override
-            public void onCompletion(MediaPlayer mp) {
-                // TODO Auto-generated method stub
-                mp.release();
-            }
-
-        });   
-        mp.start();
+    	
         //finish();
     }
     public void cancelTask() {
