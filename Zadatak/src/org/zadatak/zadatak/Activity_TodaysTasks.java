@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,7 +20,8 @@ public class Activity_TodaysTasks extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todays_tasks);
-        
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         Button createAlertButton = (Button)findViewById(R.id.alertButton);
         createAlertButton.setOnClickListener(new OnClickListener(){ public void onClick(View v){ generateAlert(); } } );
 		Button cancelAlertButton = (Button)findViewById(R.id.cancelAlert);
@@ -34,6 +36,10 @@ public class Activity_TodaysTasks extends Activity {
     
     PendingIntent pendingIntent;
     
+    /******************************* GENERATE ALERT *******************************\
+    | This function creates a pending intent that runs after 10 seconds. It is a   |
+    | testing function to see how the actual activity will handle the alarms       |
+    \******************************************************************************/
     private void generateAlert() {
     	//Intent myIntent = new Intent(Activity_TodaysTasks.this, Service_TaskReminder.class);
     	Intent myIntent = new Intent(Activity_TodaysTasks.this, Activity_AlertTask.class);
