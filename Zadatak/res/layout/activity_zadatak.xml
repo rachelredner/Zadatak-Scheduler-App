@@ -27,7 +27,7 @@
         android:text = "Welcome to"
          />
     
-    <TextView
+        <TextView
         android:id = "@+id/Welcome2"
         
         android:layout_centerHorizontal = "true"
@@ -46,107 +46,127 @@
         
         android:text = "Zadatak"
         />
+        
+
     
     <Button
-        android:id="@+id/newtask"
-        
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above = "@+id/tasklist"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dip"
-        android:layout_marginLeft = "10dip"
-        android:layout_marginRight = "10dip"
-        
-
-        
-        android:textColor="#000000"
-        android:textSize = "26dip"
-
-         
-        android:shadowColor="#CCCCCC"
-        android:shadowRadius="4"
-        
-        android:text="Add a New Task"
-        />
-
-    <Button
-        android:id="@+id/tasklist"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/center"
-        android:layout_marginLeft = "10dip"
-        android:layout_marginRight = "10dip"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        
-        
-        
-        android:textColor="#000000"
-        android:textSize = "26dip"
-
-        
-        android:shadowColor="#CCCCCC"
-        android:shadowRadius="4"
-        
-        android:text="View / Edit My Tasks" 
-	 />
- 
-    
-    <!-- A dummy text view to find the center of the screen --> 
-    <TextView 
-        android:id = "@+id/center"
-        android:layout_width = "wrap_content" 
-        android:layout_height = "wrap_content" 
-        android:textSize="2dip"
-        android:layout_centerInParent="true"
-        android:text = " "    
-        
-        />
-
-    <Button
-        android:id="@+id/todaystasks"
-        
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/center"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft = "10dip"
-        android:layout_marginRight = "10dip"
-        
-  
-        
-
-        android:textSize = "26dip"
-   
-        
-        android:shadowColor="#CCCCCC"
-        android:shadowRadius="4"
-
-       android:text="Today's Tasks"               
+       android:id = "@+id/newtask"  
+      
+       android:text="Add a \n New Task"
+       android:textSize = "26dip"
+       android:shadowColor="#BBBBFF"
+       android:shadowRadius = "7"  
+       
+       android:layout_width="fill_parent"
+       android:layout_toLeftOf = "@+id/CENTER"
+       android:layout_marginRight = "4dip"
+       
+       
+       android:layout_height="fill_parent"
+       android:layout_above = "@+id/CENTER"
+       android:layout_marginBottom = "3dip"
+       
+       android:layout_below = "@+id/Welcome2"
+       android:layout_marginTop = "10dip"
+       
+       android:layout_alignParentLeft = "true"
+       android:layout_marginLeft="10dip"
+       
+       
        />
-
-  
-        <Button
-        android:id="@+id/myprofile"
+    
+    
+    
+    
+     
+    <Button 
+        android:id = "@+id/tasklist"
         
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below = "@+id/todaystasks"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft = "10dip"
+        android:text = "View and \n Edit My \n Tasks"
+        android:textSize = "22dip"
+        android:shadowColor = "#BBBBFF"
+        android:shadowRadius = "7"
+        
+        android:layout_width = "fill_parent"
+        android:layout_toRightOf = "@+id/CENTER"
+        android:layout_marginLeft = "4dip"
+        
+        android:layout_height = "fill_parent"
+        android:layout_above = "@+id/CENTER"
+        android:layout_marginBottom = "3dip"
+        
+        android:layout_below = "@+id/Welcome2"
+        android:layout_marginTop = "10dip"
+        
+        android:layout_alignParentRight = "true"
         android:layout_marginRight = "10dip"
-        
-
-		
-        android:textColor="#000000"
-        android:textSize = "26dip"
-        
-        android:shadowColor="#CCCCCC"
-        android:shadowRadius="4"
-
-        android:text="My Profile" 
         />
+    
+    
+       <TextView 
+        android:id = "@+id/CENTER"
+        android:text = " " 
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_centerInParent = "true"
+        />          
+
+    
+    <Button
+        android:id = "@+id/todaystasks"
+        
+        android:text = "Today's \n Tasks"
+        android:textSize = "26dip"
+        android:shadowColor = "#BBBBFF"
+        android:shadowRadius = "7"
+        
+       android:layout_width="fill_parent"
+       android:layout_toLeftOf = "@+id/CENTER"
+       android:layout_marginRight = "4dip"
+        
+        android:layout_height = "fill_parent"
+        android:layout_below = "@+id/CENTER"
+        android:layout_marginTop = "3dip"
+        
+        android:layout_alignParentBottom = "true"
+        android:layout_marginBottom = "95dip"
+        
+        android:layout_alignParentLeft = "true"
+        android:layout_marginLeft = "10dip"
+      
+        />
+    
+
+    
+    <Button
+        android:id = "@+id/myprofile"
+        
+        android:text = "My \n Profile"
+        android:textSize = "26dip"
+        android:shadowColor = "#FFA0A0"
+        android:shadowRadius = "7"
+        
+        android:layout_width = "fill_parent"
+        android:layout_toRightOf="@+id/CENTER"
+        android:layout_marginLeft="4dip"
+        
+        
+        android:layout_height = "fill_parent"
+        android:layout_below = "@+id/CENTER"
+        android:layout_marginTop = "3dip"
+        
+        android:layout_alignParentBottom = "True"
+        android:layout_marginBottom = "95dip"
+        
+        android:layout_alignParentRight = "true"
+        android:layout_marginRight = "10dip"
+    
+    />
+    
+    
+    
+    
+
         
         <TextView 
         android:id  = "@+id/about"
