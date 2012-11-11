@@ -13,6 +13,7 @@ import android.widget.Button;
 
 public class Activity_AlertTask extends Activity {
 
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class Activity_AlertTask extends Activity {
 		postponeTask.setOnClickListener(new OnClickListener(){ public void onClick(View v){ postponeTask(); } } );
 		
 		playloop();
+		
     }
     
     public void playloop() {
