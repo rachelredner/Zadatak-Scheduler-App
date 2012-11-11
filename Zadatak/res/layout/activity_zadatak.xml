@@ -61,20 +61,20 @@
 
         
         android:textColor="#000000"
-        android:textSize = "26dip"
+        android:textSize = "23dip"
 
          
         android:shadowColor="#CCCCCC"
         android:shadowRadius="4"
         
-        android:text="Add a New Task"
+        android:text="Add a \n New Task"
         />
 
     <Button
         android:id="@+id/tasklist"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/center"
+        android:layout_above="@+id/todaystasks"
         android:layout_marginLeft = "10dip"
         android:layout_marginRight = "10dip"
         android:layout_centerHorizontal="true"
@@ -83,26 +83,17 @@
         
         
         android:textColor="#000000"
-        android:textSize = "26dip"
+        android:textSize = "23dip"
 
         
         android:shadowColor="#CCCCCC"
         android:shadowRadius="4"
         
-        android:text="View / Edit My Tasks" 
+        android:text="View / Edit \n My Tasks" 
 	 />
  
     
-    <!-- A dummy text view to find the center of the screen --> 
-    <TextView 
-        android:id = "@+id/center"
-        android:layout_width = "wrap_content" 
-        android:layout_height = "wrap_content" 
-        android:textSize="2dip"
-        android:layout_centerInParent="true"
-        android:text = " "    
-        
-        />
+
 
     <Button
         android:id="@+id/todaystasks"
@@ -110,20 +101,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/center"
+        android:layout_above = "@+id/about"
         android:layout_marginTop="20dp"
         android:layout_marginLeft = "10dip"
-        android:layout_marginRight = "10dip"
+        android:layout_marginRight = "5dip"
         
   
         
 
-        android:textSize = "26dip"
+        android:textSize = "23dip"
    
         
         android:shadowColor="#CCCCCC"
         android:shadowRadius="4"
 
-       android:text="Today's Tasks"               
+       android:text="Today's \n Tasks"               
        />
 
   
@@ -132,20 +124,23 @@
         
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below = "@+id/todaystasks"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft = "10dip"
+        android:layout_toRightOf = "@+id/todaystasks"
+        android:layout_above="@+id/about"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft = "5dip"
+        android:layout_alignTop="@+id/todaystasks"
+        android:layout_alignParentRight = "true"
         android:layout_marginRight = "10dip"
         
 
 		
         android:textColor="#000000"
-        android:textSize = "26dip"
+        android:textSize = "23dip"
         
         android:shadowColor="#CCCCCC"
         android:shadowRadius="4"
 
-        android:text="My Profile" 
+        android:text="My \n Profile" 
         />
         
         <TextView 
