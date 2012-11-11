@@ -53,8 +53,9 @@
        android:id = "@+id/newtask"  
       
        android:text="Add a \n New Task"
-       android:textSize = "26dip"
-       android:shadowColor="#BBBBFF"
+       android:textSize = "24dip"
+       android:textStyle = "bold"
+       android:shadowColor="#A0A0DE"
        android:shadowRadius = "7"  
        
        android:layout_width="fill_parent"
@@ -82,9 +83,10 @@
     <Button 
         android:id = "@+id/tasklist"
         
-        android:text = "View and \n Edit My \n Tasks"
-        android:textSize = "22dip"
-        android:shadowColor = "#BBBBFF"
+        android:text = "Edit My \n Tasks"
+        android:textSize = "24dip"
+        android:textStyle = "bold"
+        android:shadowColor = "#A0A0DE"
         android:shadowRadius = "7"
         
         android:layout_width = "fill_parent"
@@ -116,9 +118,10 @@
         android:id = "@+id/todaystasks"
         
         android:text = "Today's \n Tasks"
-        android:textSize = "26dip"
-        android:shadowColor = "#BBBBFF"
+        android:textSize = "24dip"
+        android:shadowColor = "#A0A0DE"
         android:shadowRadius = "7"
+        android:textStyle = "bold"
         
        android:layout_width="fill_parent"
        android:layout_toLeftOf = "@+id/CENTER"
@@ -129,11 +132,11 @@
         android:layout_marginTop = "3dip"
         
         android:layout_alignParentBottom = "true"
-        android:layout_marginBottom = "95dip"
+        android:layout_marginBottom = "122dip"
         
         android:layout_alignParentLeft = "true"
-        android:layout_marginLeft = "10dip"
-      
+        android:layout_marginLeft = "10dip"       
+       
         />
     
 
@@ -142,8 +145,9 @@
         android:id = "@+id/myprofile"
         
         android:text = "My \n Profile"
-        android:textSize = "26dip"
-        android:shadowColor = "#FFA0A0"
+        android:textSize = "24dip"
+        android:textStyle = "bold"
+        android:shadowColor = "#A0A0DE"
         android:shadowRadius = "7"
         
         android:layout_width = "fill_parent"
@@ -156,10 +160,11 @@
         android:layout_marginTop = "3dip"
         
         android:layout_alignParentBottom = "True"
-        android:layout_marginBottom = "95dip"
+        android:layout_marginBottom = "122dip"
         
         android:layout_alignParentRight = "true"
         android:layout_marginRight = "10dip"
+
     
     />
     
@@ -196,13 +201,30 @@
         android:textSize = "14dip"
         android:textStyle = "bold"
         
-        android:text = "The Rensselaer Center for "
+        android:text = "The Rensselaer Center"
 
             />
                 
                 
                         <TextView 
         android:id  = "@+id/about3"
+            
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_above = "@+id/about4"
+        android:layout_alignParentRight = "true"
+        android:layout_marginRight = "10dip"
+  
+        
+        android:textSize = "14dip"
+        android:textStyle = "bold"
+        
+        android:text = "for Open Source Software"
+
+            />
+        <TextView
+                            
+        android:id  = "@+id/about4"
             
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
@@ -214,8 +236,11 @@
         android:textSize = "14dip"
         android:textStyle = "bold"
         
-        android:text = "Open Source Software"
+        android:text = "http://rcos.rpi.edu/"
 
             />
+                
+                        
+                        
 
 </RelativeLayout>
