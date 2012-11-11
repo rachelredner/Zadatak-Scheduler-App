@@ -44,7 +44,7 @@ public class Activity_AlertTask extends Activity {
     	finish();
     }
     public void postponeTask() {
-    	MediaPlayer mp = MediaPlayer.create(Activity_AlertTask.this, R.raw.damdadido);
+    	MediaPlayer mp = MediaPlayer.create(Activity_AlertTask.this, R.raw.explosion);
     	mp.setVolume(100, 100);
         mp.setOnCompletionListener(new OnCompletionListener() {
             //@Override

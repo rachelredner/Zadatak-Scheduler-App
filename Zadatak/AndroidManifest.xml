@@ -40,11 +40,6 @@
         <activity
             android:name=".Activity_AlertTask"
             android:label="@string/title_activity_activity__alert_task" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
