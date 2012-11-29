@@ -21,7 +21,7 @@ public class Activity_TestNotification extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_notification);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        
         Button createAlertButton = (Button)findViewById(R.id.alertButton);
         createAlertButton.setOnClickListener(new OnClickListener(){ public void onClick(View v){ generateAlert(); } } );
 		Button cancelAlertButton = (Button)findViewById(R.id.cancelAlert);
