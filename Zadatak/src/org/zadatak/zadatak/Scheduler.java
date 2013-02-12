@@ -10,6 +10,7 @@ import java.util.PriorityQueue;
 import java.util.TimeZone;
 
 import android.app.Activity;
+import android.util.Log;
 
 /**
  * @author Nick Timakondu
@@ -56,7 +57,6 @@ public class Scheduler extends Activity {
 	static Comparator<Task> DATE_ORDER = new Comparator<Task>(){
 		//Compare by due date then by priority
 		public int compare(Task t1, Task t2) {
-			// TODO Auto-generated method stub
 			Calendar c1, c2;
 			c1 = c2 = Calendar.getInstance((TimeZone.getTimeZone("UTC")));
 			SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
@@ -79,12 +79,20 @@ public class Scheduler extends Activity {
 		
 	};
 	
+	
+	private ZadatakApp app;
 	/**
 	 * Build Event Queue from database task list
 	 */
-	public Scheduler(){
-		ZadatakApp app = (ZadatakApp) getApplicationContext();
-		List<Task> tasks = app.dbman.getAllTasks(); 
+	public Scheduler(ZadatakApp c_app){
+		app = c_app;
+		Log.d("UserMessage", "app is: " + app);
+		List<Task> tasks = app.dbman.getAllTasks();
+		
+		for(Task t: tasks){
+			Log.d("Tasks", "task: " + t);
+		}
+		queue = new PriorityQueue<Task>();
 		queue.addAll(tasks);
 	}
 	
@@ -94,11 +102,12 @@ public class Scheduler extends Activity {
 	public void getFreeHours(){
 		BuildEventTable bet = new BuildEventTable();  //Initialize class to get busy times
 		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-		int days = cal.getActualMaximum(Calendar.MONTH); //Forecasting one month in advance
+		//TODO: Change forecasting based on conversation with Asher and Rachel
+		int days = 10;
 		int hoursFree;
 		for(int i = 0; i < days; i++){
-			cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + i); //Advance day by one
-			hoursFree = bet.hoursFreethisDay(cal); //Get free hours this day
+			cal.add(Calendar.DAY_OF_MONTH,1); //Advance day by one
+			hoursFree = bet.hoursFreethisDay(app, cal); //Get free hours this day
 			FreeHours fh = new FreeHours(cal,hoursFree); //Assign free hours to this day
 			listOfDays.add(fh);
 		}
@@ -111,27 +120,31 @@ public class Scheduler extends Activity {
 	 */
 	public void scheduleEvents(){
 		Calendar nextOpenDay;
-		int maxDayHourRemaining = 0;
 		
 		//Continue Algorithm until all events have been scheduled. 
 		// Add priority so that higher priority events get scheduled first
 		while(!queue.isEmpty()){
 			Task currTask = queue.remove();
 			int hrsRemaining = Integer.parseInt(currTask.get(Task.Attributes.Hours)); //Get remaining hours for this task
+			Log.d("UserMsg", "task hours remaining: " + hrsRemaining);
 			while(hrsRemaining > 0){
-				SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
+				SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 				Calendar dueDate = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 				try {
-					dueDate.setTime(df.parse(currTask.get(Task.Attributes.Duedate)));
+					Log.d("UserMessage", "DueDate: " + currTask.get(Task.Attributes.Duedate));
+					dueDate.setTime(df.parse(currTask.get(Task.Attributes.Duedate)) );
+					dueDate.set(dueDate.get(Calendar.YEAR), dueDate.get(Calendar.MONTH) + 1,dueDate.get(Calendar.DAY_OF_MONTH));
+					Log.d("UserMsg", "DueDate after parse: " + df.format(dueDate.getTime()) );
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Log.d("ParseException", e.getMessage());
 				}
 				
 				//If event has a deadline, find the day with the most open spots 
 				//given that deadline
 				nextOpenDay = maxDayHourRemaining(dueDate);
-				CalendarDay calDay = new CalendarDay(nextOpenDay,currTask);
+				Log.d("UserMsg", "Next Open Day: " + df.format(nextOpenDay.getTime()));
+				CalendarDay calDay = new CalendarDay(nextOpenDay,currTask, app);
 				calDay.pushToCalendar();
 				currTask.set(Task.Attributes.Hours, Integer.toString(Integer.parseInt(currTask.get(Task.Attributes.Hours) + 1)));
 				
@@ -146,6 +159,7 @@ public class Scheduler extends Activity {
 	 * @return day index with most free hours remaining
 	 */
 	private Calendar maxDayHourRemaining(){
+		getFreeHours();
 		Collections.sort(listOfDays);
 		return listOfDays.get(listOfDays.size()-1).getDay();
 	}
@@ -157,9 +171,13 @@ public class Scheduler extends Activity {
 	 * 		   given these constraints
 	 */
 	private Calendar maxDayHourRemaining(Calendar endDay){
+		getFreeHours();
+		Log.d("UserMsg", "listOFDays size: " + listOfDays.size());
 		Collections.sort(listOfDays);
 		for(int i = listOfDays.size()-1; i > 0;i--){
-			if(listOfDays.get(i).getDay().before(endDay)){
+			FreeHours fh = listOfDays.get(i);
+			Calendar thisDay = fh.getDay();
+			if(thisDay.before(endDay)){
 				return listOfDays.get(i).getDay();
 			}
 		}

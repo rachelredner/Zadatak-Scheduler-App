@@ -67,21 +67,21 @@ public class BuildEventTable extends Activity {
 			list.add(calEvent);			
 			mCursor.moveToNext();
 		}
-		
+		mCursor.close();
 		return list;
 	}
 	
-	public List<CalendarEvent> getEventsThisDay(Calendar endDate){
+	public List<CalendarEvent> getEventsThisDay(ZadatakApp app, Calendar endDate){
 		List<CalendarEvent> list = new ArrayList<CalendarEvent>();
 		long end = endDate.getTimeInMillis();		
-		mCursor = getContentResolver().query(
+		mCursor = app.getContentResolver().query(
 				CalendarContract.Events.CONTENT_URI,
 				COLS,
 				"DTSTART = " + end + " AND DTEND = " + end,
 				null,
 				COLS[1]
 		);
-		
+
 		mCursor.moveToFirst();
 		while(!mCursor.isLast()){
 			String title = mCursor.getString(0);
@@ -97,7 +97,7 @@ public class BuildEventTable extends Activity {
 			list.add(calEvent);			
 			mCursor.moveToNext();
 		}
-		
+		mCursor.close();
 		return list;
 	}
 	/**
@@ -105,11 +105,11 @@ public class BuildEventTable extends Activity {
 	 * @param day
 	 * @return free hours
 	 */
-	public int hoursFreethisDay(Calendar day){
+	public int hoursFreethisDay(ZadatakApp app, Calendar day){
 		long date = day.getTimeInMillis();
 		long dTStart, dTEnd, diff;
 		int FreeHours = 16;
-		mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI,
+		mCursor = app.getContentResolver().query(CalendarContract.Events.CONTENT_URI,
 				COLS, 
 				"DTSTART = " + date + " AND DTEND = " + date,
 				null,

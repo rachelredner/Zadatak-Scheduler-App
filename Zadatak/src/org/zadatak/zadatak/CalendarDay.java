@@ -10,10 +10,12 @@ public class CalendarDay {
 	Calendar day;
 	Task task;
 	String[] hours = new String[24];
+	ZadatakApp app;
 	
-	public CalendarDay(Calendar c_Day, Task c_task){
+	public CalendarDay(Calendar c_Day, Task c_task, ZadatakApp c_app){
 		day = c_Day;
 		task = c_task;
+		app = c_app;
 		addBusyTimes(0,8);         //Times to sleep! 
 		addBusyTimes(22,24);      
 	}
@@ -21,7 +23,7 @@ public class CalendarDay {
 	
 	public void pushToCalendar(){
 		BuildEventTable bet = new BuildEventTable();
-		List<CalendarEvent> eventsThisDay = bet.getEventsThisDay(day);
+		List<CalendarEvent> eventsThisDay = bet.getEventsThisDay(app,day);
 		
 		for(CalendarEvent e: eventsThisDay)
 			for(int i = e.startDate.get(Calendar.HOUR_OF_DAY); i < e.endDate.get(Calendar.HOUR_OF_DAY); i++)

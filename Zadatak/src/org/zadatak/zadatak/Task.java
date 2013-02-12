@@ -141,4 +141,10 @@ public class Task {
 		String progress = get(attribute);
 		seekBar.setProgress(Integer.parseInt(progress));
 	}
+	
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.get(Attributes.Name) );		
+		return sb.toString();
+	}
 }

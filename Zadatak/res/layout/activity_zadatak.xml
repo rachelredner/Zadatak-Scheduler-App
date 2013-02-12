@@ -243,4 +243,14 @@
                         
                         
 
+                        <Button
+                            android:id="@+id/scheduleButton"
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@+id/about"
+                            android:layout_alignBottom="@+id/about"
+                            android:layout_alignLeft="@+id/myprofile"
+                            android:text="Schedule" />
+
 </RelativeLayout>
