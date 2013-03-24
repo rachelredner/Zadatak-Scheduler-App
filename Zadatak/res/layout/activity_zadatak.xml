@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background = "@drawable/hourglass1"
+    android:background = "#222222"
     android:screenOrientation = "portrait"
     android:configChanges="keyboardHidden|orientation"
     android:layout_height="fill_parent" 
@@ -55,7 +55,7 @@
        android:layout_alignParentLeft = "true"
        android:layout_marginLeft="10dip"
        
-       android:background="#FFCCCCCC"
+       android:background="#FFBBBBBB"
        
        
        />
@@ -86,7 +86,7 @@
         android:layout_alignParentRight = "true"
         android:layout_marginRight = "10dip"
         
-        android:background="#FFCCCCCC"
+        android:background="#FFBBBBBB"
         />
     
     
@@ -121,7 +121,7 @@
         android:layout_alignParentLeft = "true"
         android:layout_marginLeft = "10dip"    
         
-        android:background="#FFCCCCCC"   
+        android:background="#FFBBBBBB"   
        
         />
     
@@ -149,7 +149,7 @@
         android:layout_alignParentRight = "true"
         android:layout_marginRight = "10dip"
         
-        android:background="#FFCCCCCC"
+        android:background="#FFBBBBBB"
 
     
     />

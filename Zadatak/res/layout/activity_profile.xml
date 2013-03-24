@@ -4,7 +4,7 @@
     android:layout_height="match_parent" 
     android:paddingLeft="7dip"
     android:paddingRight="7dip"
-    android:background = "@drawable/hourglassfade" 
+    android:background = "#282828" 
 
     >
 
@@ -15,6 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop = "True"
         android:text="My Profile"
+        android:textColor="#BBBB9A"
         android:textSize = "18dip"
         android:textStyle = "bold"
         android:layout_marginTop = "4dip"
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below = "@+id/header"
         android:textStyle = "bold"
+        android:textColor="#BBBB9A"
         android:text = "Enter \n daily \n start \n time: "
         />
         
@@ -43,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle = "bold"
+        android:textColor="#BBBB9A"
         android:layout_below = "@+id/timepicker1"
         android:text = "Enter \n daily \n end \n time: "
         />
@@ -63,6 +66,7 @@
         android:layout_height = "wrap_content"
         android:text = "Scheduling \n Schema:"
         android:textStyle = "bold"
+        android:textColor="#BBBB9A"
         android:layout_below = "@+id/timepicker2"
 
         
@@ -82,14 +86,17 @@
     	<RadioButton 
     	    android:id = "@+id/Procrastinator"
     	    android:text = "Procrastinator"
+    	    android:textColor="#BBBB9A"
     	    />
     	<RadioButton 
     	    android:id = "@+id/Moderate"
     	    android:text = "Moderate"
+    	    android:textColor="#BBBB9A"
     	    />
     	<RadioButton 
     	    android:id = "@+id/proactive"
     	    android:text = "Proactive"
+    	    android:textColor="#BBBB9A"
     	    />
     </RadioGroup>
     
@@ -100,6 +107,7 @@
  	    android:layout_alignParentBottom = "true"
  	    android:layout_marginBottom = "16dip"
  	    android:textStyle = "bold"
+ 	    android:textColor="#BBBB9A"
  	    android:text = "Use my built in calendar: "
  	    />
  	
