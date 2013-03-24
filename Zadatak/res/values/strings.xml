@@ -14,5 +14,7 @@
     <string name="title_activity_activity__todays_tasks">Activity_TodaysTasks</string>
     <string name="title_activity_activity__alert_task">Activity_AlertTask</string>
     <string name="title_activity_activity__test_notification">Activity_TestNotification</string>
+    <string name="title_activity_scheduler">Scheduling</string>
+    <string name="title_activity_CalendarComm">Calendar Communication</string>
 
 </resources>

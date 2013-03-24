@@ -62,7 +62,7 @@ public class Activity_Zadatak extends Activity {
 		
     }
     
-    /**************************** ON CREATE OPTION MENU ***************************\
+    /*f*************************** ON CREATE OPTION MENU ***************************\
     | This adds the menu button menu to the activity, it can be changed in         |
     | res/menu/activity_zadatak.xml                                                |
     \******************************************************************************/
@@ -76,10 +76,9 @@ public class Activity_Zadatak extends Activity {
      * Schedule the tasks
      */
     private void scheduleTasks(){
-    	ZadatakApp app = (ZadatakApp) getApplicationContext();
     	
-    	Scheduler schedular = new Scheduler(app);
-    	schedular.scheduleEvents();
+    	Intent intent = new Intent(Activity_Zadatak.this, Activity_Scheduler.class);
+    	Activity_Zadatak.this.startActivity(intent);
     	
     	//Toast on screen
     	Context context = getApplicationContext();    	

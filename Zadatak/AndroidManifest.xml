@@ -4,7 +4,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="14"
         android:targetSdkVersion="15" />
     
     <uses-permission android:name="android.permission.READ_CALENDAR" />
@@ -44,6 +44,10 @@
         <activity
             android:name=".Activity_AlertTask"
             android:label="@string/title_activity_activity__alert_task" >
+        </activity>
+        <activity
+            android:name=".Activity_Scheduler"
+            android:label="@string/title_activity_scheduler">
         </activity>
         <activity
             android:name=".Activity_TestNotification"

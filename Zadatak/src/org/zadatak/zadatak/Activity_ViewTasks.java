@@ -72,7 +72,7 @@ public class Activity_ViewTasks extends Activity {
 			String duedate = tasks.get(i).get(Task.Attributes.Duedate);
 			if (duedate == null) duedate = "NULL";
 			
-			values[i] = name + "|" + duedate;
+			values[i] = name + " | " + duedate;
 		}
 		return values;
     }

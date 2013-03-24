@@ -89,7 +89,7 @@ public class Task {
 	| the paired function get date picker must also be changed                     |
 	\******************************************************************************/
 	public void set(Attributes attribute, DatePicker datePicker) {
-		String date = datePicker.getDayOfMonth() + "/" + datePicker.getMonth() + "/" + datePicker.getYear();
+		String date = datePicker.getDayOfMonth() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getYear();
 		set(attribute, date);
 	}
 	
