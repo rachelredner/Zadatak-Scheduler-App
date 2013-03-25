@@ -54,7 +54,8 @@
 	        android:layout_width = "fill_parent"
 	        android:layout_marginTop = "6dip"
 	        android:layout_below="@+id/nameprompt"
-	        android:hint="e.g. 'Math Homework' " />
+	        android:hint="e.g. 'Math Homework' " 
+	        android:textColor="#FFBBBBBB"/>
 	    <TextView 
 	        android:id = "@+id/dateprompt"
 	        android:text = "Due Date:"
@@ -70,7 +71,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop = "4dip"
 	        android:layout_below="@+id/dateprompt"
-			android:background="#FFBBBBBB"
+			android:background="#FFCBCBCB"
 	        android:minDate="10062012" />
 	    <TextView 
 	        android:id = "@+id/lengthprompt"
@@ -88,6 +89,7 @@
 			android:layout_marginTop = "5dip"
 			android:layout_height = "wrap_content"
 			android:layout_width = "wrap_content"
+			android:textColor="#FFBBBBBB"
 			android:layout_below="@+id/lengthprompt" />
 		<TextView 
 	        android:id = "@+id/progressprompt"
@@ -113,6 +115,7 @@
 	        android:textColor = "#BBBB9A"
 	        android:textSize = "21dip"
 	        android:checked = "false"
+
 	        android:layout_height = "wrap_content" 
 	        android:layout_width = "wrap_content"
 	        android:layout_marginTop = "18dip"

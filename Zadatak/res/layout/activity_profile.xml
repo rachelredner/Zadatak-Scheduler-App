@@ -1,12 +1,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:focusable="true" 
+	android:focusableInTouchMode="true"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:paddingLeft="7dip"
-    android:paddingRight="7dip"
-    android:background = "#282828" 
+    android:background = "#282828"
+  	android:layout_width="fill_parent"
+  
+    android:layout_height="fill_parent" >
 
-    >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:fillViewport="true"
+    android:fadeScrollbars="false"
+	android:id="@+id/scrollView1"
+	android:layout_alignParentTop="true"
+	android:layout_centerHorizontal="true"
+	android:layout_marginTop="1dip" 
+	android:layout_marginBottom = "47dip">
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:focusable="true" 
+	    android:focusableInTouchMode="true"
+    	xmlns:tools="http://schemas.android.com/tools"
+  	    android:layout_width="fill_parent"
+    	android:paddingLeft="12dip"
+    	android:paddingRight="12dip"
+
+    	android:layout_height="fill_parent" >
 
     <TextView
         android:id = "@+id/header"
@@ -16,7 +36,7 @@
         android:layout_alignParentTop = "True"
         android:text="My Profile"
         android:textColor="#BBBB9A"
-        android:textSize = "18dip"
+        android:textSize = "23dip"
         android:textStyle = "bold"
         android:layout_marginTop = "4dip"
         tools:context=".Profile" />
@@ -26,9 +46,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below = "@+id/header"
-        android:textStyle = "bold"
+        android:layout_marginTop = "8dip"
         android:textColor="#BBBB9A"
-        android:text = "Enter \n daily \n start \n time: "
+        android:textSize = "19dip"
+        android:text = "Daily \n start \n time: "
         />
         
     <TimePicker
@@ -37,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/StartTime" 
 	    android:layout_alignTop =  "@+id/StartTime"
+	    android:background="#FFCBCBCB"
 	    android:layout_marginLeft = "10dip"
     />
     
@@ -44,10 +66,11 @@
         android:id = "@+id/EndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle = "bold"
+    	 android:textSize = "19dip"
         android:textColor="#BBBB9A"
         android:layout_below = "@+id/timepicker1"
-        android:text = "Enter \n daily \n end \n time: "
+        android:layout_marginTop = "8dip"
+        android:text = "Daily \n end \n time: "
         />
         
     
@@ -57,6 +80,7 @@
         android:layout_height = "wrap_content"
         android:layout_alignLeft="@+id/timepicker1"
         android:layout_alignTop="@+id/EndTime"
+        android:background="#FFCBCBCB"
 
         />
     
@@ -65,9 +89,10 @@
         android:layout_width = "wrap_content" 
         android:layout_height = "wrap_content"
         android:text = "Scheduling \n Schema:"
-        android:textStyle = "bold"
         android:textColor="#BBBB9A"
         android:layout_below = "@+id/timepicker2"
+        android:layout_marginTop = "8dip"
+        android:textSize = "19dip"
 
         
         />
@@ -82,6 +107,7 @@
 		android:layout_marginLeft = "30dip"
     	android:orientation="vertical"
     	android:checkedButton="@+id/Moderate"
+        android:textSize = "19dip"
     	>
     	<RadioButton 
     	    android:id = "@+id/Procrastinator"
@@ -104,9 +130,9 @@
  	    android:id = "@+id/calendarprompt"
  	    android:layout_width = "wrap_content" 
  	    android:layout_height = "wrap_content"
- 	    android:layout_alignParentBottom = "true"
- 	    android:layout_marginBottom = "16dip"
- 	    android:textStyle = "bold"
+ 	    android:layout_below = "@+id/scheduleoptions"
+        android:layout_marginTop = "8dip"
+ 	    android:textSize = "19dip"
  	    android:textColor="#BBBB9A"
  	    android:text = "Use my built in calendar: "
  	    />
@@ -115,7 +141,7 @@
  	    android:id = "@+id/usecalendar"
  	    android:layout_width = "wrap_content"
  	    android:layout_height = "wrap_content"
- 	    android:layout_alignBottom = "@+id/calendarprompt"
+ 	    android:layout_alignTop = "@+id/calendarprompt"
  	    android:checked="true"
  	    android:layout_toRightOf = "@+id/calendarprompt"
  	    android:layout_marginLeft = "12dip"
@@ -124,4 +150,20 @@
  	    
     
 
+	</RelativeLayout>
+</ScrollView>
+
+<Button
+	 android:id = "@+id/save"
+     android:layout_alignParentRight = "true"
+	 android:layout_alignParentBottom = "true"
+     android:layout_marginLeft = "5dip"
+     android:layout_marginRight = "5dip"
+     android:layout_marginBottom="5dip"
+	 android:text = "Save"
+	 android:textSize = "29dip"
+	 android:textStyle = "bold"
+	 android:layout_height = "wrap_content"
+	 android:background="#FFBBBBBB"
+	 android:layout_width = "fill_parent" />
 </RelativeLayout>
