@@ -11,6 +11,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +32,7 @@ public class Activity_TodaysTasks extends Activity {
     	super.onCreate(savedInstanceState);	
     	setContentView(R.layout.activity_todays_tasks);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    	this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     	refreshList();
     }

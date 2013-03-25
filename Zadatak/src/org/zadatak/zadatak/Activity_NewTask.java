@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -34,6 +35,7 @@ public class Activity_NewTask extends Activity {
        	super.onCreate(savedInstanceState);
         
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_new_task);
         
         nameText = (EditText) findViewById(R.id.NameBox);
