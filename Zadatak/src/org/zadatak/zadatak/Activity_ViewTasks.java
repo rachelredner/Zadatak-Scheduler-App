@@ -31,7 +31,7 @@ public class Activity_ViewTasks extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);	
     	setContentView(R.layout.activity_view_tasks);
-    	this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    	//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
     	refreshList();

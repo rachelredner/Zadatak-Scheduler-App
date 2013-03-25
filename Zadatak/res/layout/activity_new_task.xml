@@ -35,7 +35,7 @@
 			android:layout_alignParentTop = "True"
 			android:text="Add A New Task"
 			android:textColor="#BBBB9A"
-			android:textSize = "23dip"
+			android:textSize = "30dip"
 			android:textStyle = "bold"
 			android:layout_marginTop = "6dip" />
 		<TextView 

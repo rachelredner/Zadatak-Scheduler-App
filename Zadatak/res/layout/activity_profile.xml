@@ -36,7 +36,7 @@
         android:layout_alignParentTop = "True"
         android:text="My Profile"
         android:textColor="#BBBB9A"
-        android:textSize = "23dip"
+        android:textSize = "30dip"
         android:textStyle = "bold"
         android:layout_marginTop = "4dip"
         tools:context=".Profile" />

@@ -32,7 +32,7 @@ public class Activity_TodaysTasks extends Activity {
     	super.onCreate(savedInstanceState);	
     	setContentView(R.layout.activity_todays_tasks);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-    	this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    	//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     	refreshList();
     }
