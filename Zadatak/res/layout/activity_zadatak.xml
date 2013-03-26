@@ -1,176 +1,131 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background = "#222222"
-    android:screenOrientation = "portrait"
-    android:configChanges="keyboardHidden|orientation"
-    android:layout_height="fill_parent"
-   
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:background = "#222222"
+	android:screenOrientation = "portrait"
+	android:configChanges="keyboardHidden|orientation"
+	android:layout_height="fill_parent"
+	>
 
-    >
-    
-    
-        <TextView
-        android:id = "@+id/Welcome2"
-        
-        android:layout_centerHorizontal = "true"
-      
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:layout_marginTop="12dip"
-        
+	<TextView
+		android:id = "@+id/Welcome2"
 
-        android:textSize="56sp"
-        android:textStyle="bold"
-        
-        android:textColor="#BBBB9A"
+		android:text = "@string/app_name"
+		android:textSize="56sp"
+		android:textStyle="bold"
+		android:textColor="#BBBB9A"
 
-        
-        android:text = "@string/app_name"
-        />
-        
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		
+		android:layout_centerHorizontal = "true"
 
-    <Button
-       android:id = "@+id/newtask"  
-      
-       android:text="@string/new_task_buttontext"
-       android:textSize = "24sp"
-  
+		android:layout_marginTop="12dip"
+		/>
+	
+	<Button
+		android:id = "@+id/newtask" 
 
-       
-       android:layout_width="fill_parent"
-       android:layout_toLeftOf = "@+id/CENTER"
-       android:layout_marginRight = "4dip"
-       
-       
-       android:layout_height="fill_parent"
-       android:layout_above = "@+id/CENTER"
-       android:layout_marginBottom = "4dip"
-       
-       android:layout_below = "@+id/Welcome2"
-       android:layout_marginTop = "30dip"
-       
-       android:layout_alignParentLeft = "true"
-       android:layout_marginLeft="10dip"
-       
-       android:background="#FFBBBBBB"
-       
-       
-       />
-    
-    
-    
-    
-     
-    <Button 
-        android:id = "@+id/tasklist"
-        
-        android:text = "@string/edit_task_buttontext"
-        android:textSize = "24sp"
-   
+		android:text="@string/new_task_buttontext"
+		android:textSize = "24sp"
+		android:background = "#FFBBBBBB"
 
-        
-        android:layout_width = "fill_parent"
-        android:layout_toRightOf = "@+id/CENTER"
-        android:layout_marginLeft = "4dip"
-        
-        android:layout_height = "fill_parent"
-        android:layout_above = "@+id/CENTER"
-        android:layout_marginBottom = "4dip"
-        
-        android:layout_below = "@+id/Welcome2"
-        android:layout_marginTop = "30dip"
-        
-        android:layout_alignParentRight = "true"
-        android:layout_marginRight = "10dip"
-        
-        android:background="#FFBBBBBB"
-        />
-    
-    
-       <TextView 
-        android:id = "@+id/CENTER"
-        android:layout_width = "0px"
-        android:layout_height = "0px"
-        android:layout_centerInParent = "true"
-        />          
+		android:layout_width = "fill_parent"
+		android:layout_height = "fill_parent"
 
-    
-    <Button
-        android:id = "@+id/todaystasks"
-        
-        android:text = "@string/todays_tasks_buttontext"
-        android:textSize = "24sp"
+		android:layout_alignParentLeft = "true"
+		android:layout_toLeftOf = "@+id/CENTER"
+		android:layout_above = "@+id/CENTER"
+		android:layout_below = "@+id/Welcome2"
 
-      
-        
-       android:layout_width="fill_parent"
-       android:layout_toLeftOf = "@+id/CENTER"
-       android:layout_marginRight = "4dip"
-        
-        android:layout_height = "fill_parent"
-        android:layout_below = "@+id/CENTER"
-        android:layout_marginTop = "4dip"
-        
-        android:layout_alignParentBottom = "true"
-        android:layout_marginBottom = "122dip"
-        
-        android:layout_alignParentLeft = "true"
-        android:layout_marginLeft = "10dip"    
-        
-        android:background="#FFBBBBBB"   
-       
-        />
-    
+		android:layout_marginTop = "30dip"
+		android:layout_marginBottom = "4dip"
+		android:layout_marginLeft = "10dip"
+		android:layout_marginRight = "4dip"
+		/>
 
-    
-    <Button
-        android:id = "@+id/myprofile"
-        
-        android:text = "@string/my_profile_buttontext"
-        android:textSize = "24sp"
+	<Button 
+		android:id = "@+id/tasklist"
 
-        
-        android:layout_width = "fill_parent"
-        android:layout_toRightOf="@+id/CENTER"
-        android:layout_marginLeft="4dip"
-        
-        
-        android:layout_height = "fill_parent"
-        android:layout_below = "@+id/CENTER"
-        android:layout_marginTop = "4dip"
-        
-        android:layout_alignParentBottom = "True"
-        android:layout_marginBottom = "122dip"
-        
-        android:layout_alignParentRight = "true"
-        android:layout_marginRight = "10dip"
-        
-        android:background="#FFBBBBBB"
+		android:text = "@string/edit_task_buttontext"
+		android:textSize = "24sp"
+		android:background = "#FFBBBBBB"
 
-    
-    />
-    
-    
-    
-    
+		android:layout_width = "fill_parent"
+		android:layout_height = "fill_parent"
 
+		android:layout_alignParentRight = "true"
+		android:layout_toRightOf = "@+id/CENTER"
+		android:layout_above = "@+id/CENTER"
+		android:layout_below = "@+id/Welcome2"
 
-                
-                        
-                        
+		android:layout_marginTop = "30dip"
+		android:layout_marginBottom = "4dip"
+		android:layout_marginLeft = "4dip"
+		android:layout_marginRight = "10dip"
+		/>
 
-                        <Button
-                            android:id="@+id/scheduleButton"
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom = "true"
-                            android:layout_marginBottom = "6dip"
-                           android:layout_alignParentRight="true"
-                            android:layout_marginRight = "6dip"
-                            android:background="#FFCCCCCC"
-                            android:text="Schedule" />
+	<TextView 
+		android:id = "@+id/CENTER"
+		android:layout_width = "0px"
+		android:layout_height = "0px"
+		android:layout_centerInParent = "true"
+		/>
+
+	<Button
+		android:id = "@+id/todaystasks"
+
+		android:text = "@string/todays_tasks_buttontext"
+		android:textSize = "24sp"
+		android:background="#FFBBBBBB"   
+
+		android:layout_width="fill_parent"
+		android:layout_height = "fill_parent"
+
+		android:layout_alignParentLeft = "true"
+		android:layout_alignParentBottom = "true"
+		android:layout_toLeftOf = "@+id/CENTER"
+		android:layout_below = "@+id/CENTER"
+
+		android:layout_marginTop = "4dip"
+		android:layout_marginBottom = "122dip"
+		android:layout_marginLeft = "10dip"    
+		android:layout_marginRight = "4dip"
+		/>
+
+	<Button
+		android:id = "@+id/myprofile"
+
+		android:text = "@string/my_profile_buttontext"
+		android:textSize = "24sp"
+		android:background="#FFBBBBBB"
+
+		android:layout_width = "fill_parent"
+		android:layout_height = "fill_parent"
+
+		android:layout_alignParentBottom = "True"
+		android:layout_alignParentRight = "true"
+		android:layout_toRightOf="@+id/CENTER"
+		android:layout_below = "@+id/CENTER"
+
+		android:layout_marginTop = "4dip"
+		android:layout_marginBottom = "122dip"
+		android:layout_marginLeft="4dip"
+		android:layout_marginRight = "10dip"
+		/>
+
+	<!-- Temporary Debug Button -->
+	<Button
+		android:id="@+id/scheduleButton"
+		style="?android:attr/buttonStyleSmall"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom = "true"
+		android:layout_marginBottom = "6dip"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight = "6dip"
+		android:background="#FFCCCCCC"
+		android:text="Schedule" />
 
 
 </RelativeLayout>
