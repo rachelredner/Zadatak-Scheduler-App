@@ -20,21 +20,21 @@
         android:layout_marginTop="12dip"
         
 
-        android:textSize="56dip"
+        android:textSize="56sp"
         android:textStyle="bold"
         
         android:textColor="#BBBB9A"
 
         
-        android:text = "Zadatak"
+        android:text = "@string/app_name"
         />
         
 
     <Button
        android:id = "@+id/newtask"  
       
-       android:text="Add a \n New Task"
-       android:textSize = "24dip"
+       android:text="@string/new_task_buttontext"
+       android:textSize = "24sp"
   
 
        
@@ -65,8 +65,8 @@
     <Button 
         android:id = "@+id/tasklist"
         
-        android:text = "Edit My \n Tasks"
-        android:textSize = "24dip"
+        android:text = "@string/edit_task_buttontext"
+        android:textSize = "24sp"
    
 
         
@@ -99,8 +99,8 @@
     <Button
         android:id = "@+id/todaystasks"
         
-        android:text = "Today's \n Tasks"
-        android:textSize = "24dip"
+        android:text = "@string/todays_tasks_buttontext"
+        android:textSize = "24sp"
 
       
         
@@ -127,8 +127,8 @@
     <Button
         android:id = "@+id/myprofile"
         
-        android:text = "My \n Profile"
-        android:textSize = "24dsp"
+        android:text = "@string/my_profile_buttontext"
+        android:textSize = "24sp"
 
         
         android:layout_width = "fill_parent"

@@ -16,5 +16,9 @@
     <string name="title_activity_activity__test_notification">Activity_TestNotification</string>
     <string name="title_activity_scheduler">Scheduling</string>
     <string name="title_activity_CalendarComm">Calendar Communication</string>
-
+   	<!-- Strings For Activity_Zadatak -->
+	<string name="new_task_buttontext">Add a\nNew Task</string>
+	<string name="edit_task_buttontext">Edit My\nTasks</string>
+	<string name="todays_tasks_buttontext">Today\'s\nTasks</string>
+	<string name="my_profile_buttontext">My\nProfile</string>
 </resources>
