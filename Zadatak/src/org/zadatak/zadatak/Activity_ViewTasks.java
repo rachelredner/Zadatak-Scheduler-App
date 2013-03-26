@@ -42,9 +42,14 @@ public class Activity_ViewTasks extends Activity {
     | when a task is deleted or modified                                           |
     \******************************************************************************/
     private void refreshList() {
-    	String[] tasks = getTaskList();
+    	//String[] tasks = getTaskList();
     	ListView list = (ListView) findViewById(R.id.tasklist);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem, tasks);
+        
+    	ZadatakApp app = (ZadatakApp) getApplicationContext();
+		List<Task> tasks = app.dbman.getAllTasks();
+		TaskListAdapter adapter = new TaskListAdapter(this,R.layout.listitem,tasks);
+    	
+    	//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem,R.id.displayTaskName, tasks);
         list.setAdapter(adapter);
         
         registerForContextMenu(list);
