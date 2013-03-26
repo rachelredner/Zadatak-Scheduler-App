@@ -43,9 +43,16 @@ public class Activity_TodaysTasks extends Activity {
     \******************************************************************************/
     Activity activity = null;
     private void refreshList() {
-    	String[] tasks = getTaskList();
+    	//String[] tasks = getTaskList();
     	ListView list = (ListView) findViewById(R.id.tasklist);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem, tasks);
+    	
+    	ZadatakApp app = (ZadatakApp) getApplicationContext();
+		List<Task> tasks = app.dbman.getAllTasks();
+    	
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem, tasks);
+        
+        TaskListAdapter adapter = new TaskListAdapter(this,R.layout.listitem,tasks);
+		
         list.setAdapter(adapter);
         registerForContextMenu(list);
         activity = this;
