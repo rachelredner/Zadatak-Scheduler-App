@@ -54,7 +54,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
 	        if (duedateBox != null) {
 	        	String dueDate = task.get(Task.Attributes.Duedate);
 	        	if (dueDate != null) {
-	        		duedateBox.setText(dueDate);
+	        		duedateBox.setText("Due on: "+dueDate);
 	        	}
 	        }
 
