@@ -103,12 +103,12 @@
 		<SeekBar
 		    android:id = "@+id/currentprogress"
 		    android:progress="0"
-		    android:max="100"
-		    android:minHeight="68dip"
 	        android:layout_height = "wrap_content"
 	        android:layout_width = "match_parent"
 	        android:layout_below="@+id/progressprompt"
+	        android:max="100"	
 	        android:layout_marginTop = "4dip" />
+		
 	    <CheckBox
 	        android:id = "@+id/highpriority"
 	        android:text = "High Priority"
