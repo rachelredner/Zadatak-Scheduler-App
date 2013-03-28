@@ -86,10 +86,8 @@ public class Activity_Scheduler extends Activity {
 			}
 			// Due date is equal
 			if (c1.compareTo(c2) == 0) {
-				Integer t1priority = Integer.parseInt(t1
-						.get(Task.Attributes.Priority));
-				Integer t2priority = Integer.parseInt(t2
-						.get(Task.Attributes.Priority));
+				Integer t1priority = t1.get(Task.Attributes.Priority)=="TRUE"?1:0;
+				Integer t2priority = t2.get(Task.Attributes.Priority)=="TRUE"?1:0;
 				return t1priority.compareTo(t2priority);
 
 			} else
