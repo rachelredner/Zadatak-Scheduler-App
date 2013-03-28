@@ -178,8 +178,9 @@ public class Activity_Scheduler extends Activity {
 		// Add priority so that higher priority events get scheduled first
 		while (!queue.isEmpty()) {
 			Task currTask = queue.remove();
-			int hrsRemaining = Integer.parseInt(currTask
-					.get(Task.Attributes.Hours)); // Get remaining hours for
+			String strHoursRemaining = currTask.get(Task.Attributes.Hours);
+			if (strHoursRemaining == "") strHoursRemaining = "4";
+			int hrsRemaining = Integer.parseInt(strHoursRemaining);// Get remaining hours for
 													// this task
 			Log.d("NickDebug", "task hours remaining: " + hrsRemaining);
 			while (hrsRemaining > 0) {
