@@ -12,9 +12,7 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class Activity_ViewTasks extends Activity {
@@ -59,29 +57,6 @@ public class Activity_ViewTasks extends Activity {
                 edit(position);
             }
         });
-    }
-    
-    /******************************** GET TASK LIST *******************************\
-    | This function gets a list of all the tasks in the database and returns a     |
-    | string based on some feature of each task. Currently it is                   |
-    | Name + | + date                                                              |
-    \******************************************************************************/
-    private String[] getTaskList(){
-    	ZadatakApp app = (ZadatakApp) getApplicationContext();
-		List<Task> tasks = app.dbman.getAllTasks();
-    	
-		String[] values = new String[tasks.size()];
-		
-		for (int i = 0; i < tasks.size(); i++) {
-			String name = tasks.get(i).get(Task.Attributes.Name);
-			if (name == null) name = "NULL";
-			
-			String duedate = tasks.get(i).get(Task.Attributes.Duedate);
-			if (duedate == null) duedate = "NULL";
-			
-			values[i] = name + " | " + duedate;
-		}
-		return values;
     }
     
     /********************************* DELETE TASK ********************************\
