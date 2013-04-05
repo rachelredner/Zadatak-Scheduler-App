@@ -31,6 +31,10 @@ public class DatabaseManager{
 		dbLayout.close();
 	}
 	
+	  //////////////////////////////////////////////////////////////////////////////
+	 //////////////////////// TASK MANIPULATION FUNCTIONS ///////////////////////// 
+	//////////////////////////////////////////////////////////////////////////////  
+
 	/******************************** CREATE A TASK *******************************\
 	| This function takes in a task value and puts all of the values into the      |
 	| database for it to be found later                                            |
@@ -145,4 +149,58 @@ public class DatabaseManager{
 		}
 		return task;
 	}
+	
+	  //////////////////////////////////////////////////////////////////////////////
+	 /////////////////////// SETTING MANIPULATION FUNCTIONS /////////////////////// 
+	//////////////////////////////////////////////////////////////////////////////  
+	
+	public int setSetting (String setting, String value) {
+		if (getSetting(setting) != null) {
+			ContentValues values = new ContentValues();
+			values.put("settingvalue", value);
+	        int returncode = database.update(DatabaseHelper.TASK_TABLE_NAME, values, "settingname='" + setting + "'", null);
+	        return returncode;
+		}
+		else {
+			
+			ContentValues values = new ContentValues();
+			values.put("settingname", setting);
+			values.put("settingvalue", value);
+			
+			long insertId = database.insert(DatabaseHelper.TASK_TABLE_NAME, null, values);
+			//return insertId;
+			
+//			Attributes[] attributes = Task.Attributes.values();
+//			String[] allColumns = new String[attributes.length+1];
+//			allColumns[0] = DatabaseHelper.ID_COLUMN_NAME;
+//			for (int i = 0; i < attributes.length; i++) {
+//				allColumns[i+1] = attributes[i].toString();
+//			}
+//			
+//			
+//			Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, "_id = " + insertId, null, null, null, null);
+//			cursor.moveToFirst();
+//			Task newTask = cursorToTask(cursor);
+//			cursor.close();
+//			
+			
+			return 0;
+		}
+	}
+	
+	public String getSetting (String setting) {
+		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"settingname", "settingvalue"};
+		
+		
+		Cursor cursor = database.query(DatabaseHelper.SETTING_TABLE_NAME, allColumns, "settingname = " + setting, null, null, null, null);
+		if (cursor.getCount() > 0) { // If there are one or more rows selected in the cursor then the item exists
+			cursor.moveToFirst();
+			String settingValue = cursor.getString(2); // Get the setting value
+			cursor.close();
+			return settingValue;
+		}
+		
+		return null;
+	}
+	
 }
