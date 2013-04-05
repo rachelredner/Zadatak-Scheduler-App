@@ -41,7 +41,7 @@ public class DatabaseManager{
 			values.put(attribute.toString(), task.get(attribute));
 			System.out.println("++"+attribute.toString());
 		}
-		long insertId = database.insert(DatabaseHelper.TABLE_NAME, null, values);
+		long insertId = database.insert(DatabaseHelper.TASK_TABLE_NAME, null, values);
 		//return insertId;
 		
 		Attributes[] attributes = Task.Attributes.values();
@@ -52,7 +52,7 @@ public class DatabaseManager{
 		}
 		
 		
-		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, allColumns, "_id = " + insertId, null, null, null, null);
+		Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, "_id = " + insertId, null, null, null, null);
 		cursor.moveToFirst();
 		Task newTask = cursorToTask(cursor);
 		cursor.close();
@@ -65,7 +65,7 @@ public class DatabaseManager{
 	\******************************************************************************/
 	public void deleteTask(long id) {
 		System.out.println("Comment deleted with id: " + id);
-		database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.ID_COLUMN_NAME + " = " + id, null);
+		database.delete(DatabaseHelper.TASK_TABLE_NAME, DatabaseHelper.ID_COLUMN_NAME + " = " + id, null);
 	}
 	
 
@@ -77,9 +77,29 @@ public class DatabaseManager{
 			values.put(attribute.toString(), task.get(attribute));
 			System.out.println("++"+attribute.toString());
 		}
-        int returncode = database.update(DatabaseHelper.TABLE_NAME, values, DatabaseHelper.ID_COLUMN_NAME + "='" + id + "'", null);
+        int returncode = database.update(DatabaseHelper.TASK_TABLE_NAME, values, DatabaseHelper.ID_COLUMN_NAME + "='" + id + "'", null);
         return returncode;
     }
+	
+	/******************************* GET TASK BY ID *******************************\
+	| This function gets a task from the database by an ID value and then returns  |
+	| the whole task with all of its attributes                                    |
+	\******************************************************************************/
+	public Task getTaskById(long id) {
+		Attributes[] attributes = Task.Attributes.values();
+		String[] allColumns = new String[attributes.length+1];
+		allColumns[0] = DatabaseHelper.ID_COLUMN_NAME;
+		for (int i = 0; i < attributes.length; i++) {
+			allColumns[i+1] = attributes[i].toString();
+		}
+		
+		Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, "_id = " + id, null, null, null, null);
+		cursor.moveToFirst();
+		Task newTask = cursorToTask(cursor);
+		cursor.close();
+		
+		return newTask;
+	}
 	
 	  
 	/******************************** GET ALL TASKS *******************************\
@@ -96,7 +116,7 @@ public class DatabaseManager{
 			allColumns[i+1] = attributes[i].toString();
 		}
 		
-		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, allColumns, null, null, null, null, null);
+		Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, null, null, null, null, null);
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
