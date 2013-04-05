@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// VERSION NUMBER AND DATABASE NAME
 	private static final String DATABASE_NAME = "zadatak.db";
 	public static final String ID_COLUMN_NAME = "_id";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	
 	/**************************** DATABASE CONSTRUCTOR ****************************\
 	| This is the constructor for the database class, it does not do much and      |
