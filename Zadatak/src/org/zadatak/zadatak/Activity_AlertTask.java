@@ -55,20 +55,20 @@ public class Activity_AlertTask extends Activity {
 		
     }
     
-    public void playloop() {
-    	MediaPlayer mp = MediaPlayer.create(Activity_AlertTask.this, R.raw.explosion);
-    	mp.setVolume(100, 100);
-        mp.setOnCompletionListener(new OnCompletionListener() {
-            //@Override
-            public void onCompletion(MediaPlayer mp) {
-                // TODO Auto-generated method stub
-                mp.release();
-                playloop();
-            }
-
-        });   
-        mp.start();
-    }
+//    private void playloop() {
+//    	MediaPlayer mp = MediaPlayer.create(Activity_AlertTask.this, R.raw.explosion);
+//    	mp.setVolume(100, 100);
+//        mp.setOnCompletionListener(new OnCompletionListener() {
+//            //@Override
+//            public void onCompletion(MediaPlayer mp) {
+//                // TODO Auto-generated method stub
+//                mp.release();
+//                playloop();
+//            }
+//
+//        });
+//        mp.start();
+//    }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
