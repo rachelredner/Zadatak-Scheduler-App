@@ -44,13 +44,6 @@ public class Activity_Zadatak extends Activity {
 		// and repeat again for 'todays tasks'
 		Button profilepage = (Button) findViewById(R.id.myprofile);
 		profilepage.setOnClickListener(new OnClickListener() { public void onClick(View v) { goToProfilePage();} } );
-		//Add button for Scheduling
-		Button scheduleButton = (Button) findViewById(R.id.scheduleButton);
-		scheduleButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v){
-				scheduleTasks();
-			}
-		});
 		// Open the database
 		ZadatakApp app = (ZadatakApp) getApplicationContext();
 		app.dbman.open();
@@ -71,23 +64,6 @@ public class Activity_Zadatak extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_zadatak, menu);
         return true;
-    }
-    
-    /**
-     * Schedule the tasks
-     */
-    private void scheduleTasks(){
-    	
-    	Intent intent = new Intent(Activity_Zadatak.this, Activity_Scheduler.class);
-    	Activity_Zadatak.this.startActivity(intent);
-    	
-    	//Toast on screen
-    	Context context = getApplicationContext();    	
-    	CharSequence text = "Scheduling done. Check android calendar";
-    	int duration = Toast.LENGTH_SHORT;
-    	Toast toast = Toast.makeText(context, text, duration);
-    	toast.show();
-    	
     }
     
     /******************************* GO TO NEW TASK *******************************\

@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import org.zadatak.zadatak.Task.Attributes;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -212,6 +213,7 @@ public class DatabaseManager{
 	//////////////////////////////////////////////////////////////////////////////  
 	
 	// This function gets the tasks for today and returns a map of start times to activities
+	@SuppressLint("UseSparseArrays")
 	public Map<Integer,Task> getTasks(long Day) {
 		Map<Integer,Task> taskList = new HashMap<Integer,Task>();
 		return taskList;

@@ -52,6 +52,11 @@
         <activity
             android:name=".Activity_TestNotification"
             android:label="@string/title_activity_activity__test_notification" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
