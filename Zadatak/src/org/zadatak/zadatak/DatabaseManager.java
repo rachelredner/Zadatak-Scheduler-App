@@ -1,7 +1,10 @@
 package org.zadatak.zadatak;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.zadatak.zadatak.Task.Attributes;
 
@@ -10,6 +13,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.SparseArray;
 
 public class DatabaseManager{
 	// Database fields
@@ -202,5 +206,23 @@ public class DatabaseManager{
 		
 		return null;
 	}
+	
+	  //////////////////////////////////////////////////////////////////////////////
+	 ////////////////////// SCHEDULE MANIPULATION FUNCTIONS /////////////////////// 
+	//////////////////////////////////////////////////////////////////////////////  
+	
+	// This function gets the tasks for today and returns a map of start times to activities
+	public Map<Integer,Task> getTasks(long Day) {
+		Map<Integer,Task> taskList = new HashMap<Integer,Task>();
+		return taskList;
+	}
+	
+	public int setTasks(long day, Map<Integer,Task> taskList) {
+		for (Entry<Integer,Task> task : taskList.entrySet()) {
+			
+		}
+		return 0;
+	}
+	
 	
 }
