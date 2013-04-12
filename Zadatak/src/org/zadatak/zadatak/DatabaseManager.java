@@ -216,13 +216,18 @@ public class DatabaseManager{
 	@SuppressLint("UseSparseArrays")
 	public Map<Integer,Task> getTasks(long Day) {
 		Map<Integer,Task> taskList = new HashMap<Integer,Task>();
+		
+		// get database row with key "day" and parse to fill the tasklist map
+		
 		return taskList;
 	}
 	
 	public int setTasks(long day, Map<Integer,Task> taskList) {
+		String csv = "";
 		for (Entry<Integer,Task> task : taskList.entrySet()) {
-			
+			csv += task.getValue().id;
 		}
+		// Set database with key "day" to the value of csv
 		return 0;
 	}
 	
