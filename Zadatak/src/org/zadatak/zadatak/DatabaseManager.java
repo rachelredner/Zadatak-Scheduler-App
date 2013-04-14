@@ -225,10 +225,42 @@ public class DatabaseManager{
 	public int setTasks(long day, Map<Integer,Task> taskList) {
 		String csv = "";
 		for (Entry<Integer,Task> task : taskList.entrySet()) {
-			csv += task.getValue().id;
+			csv += task.getValue().id+",";
 		}
 		// Set database with key "day" to the value of csv
-		return 0;
+		if (getTasks(day) != null) {
+			ContentValues values = new ContentValues();
+			values.put("tasklist", csv);
+	        int returncode = database.update(DatabaseHelper.TASK_TABLE_NAME, values, "day='" + day + "'", null);
+	        return returncode;
+		}
+		else {
+			
+			ContentValues values = new ContentValues();
+			values.put("day", day);
+			values.put("tasklist", csv);
+			
+			long insertId = database.insert(DatabaseHelper.TASK_TABLE_NAME, null, values);
+			//return insertId;
+			
+//			Attributes[] attributes = Task.Attributes.values();
+//			String[] allColumns = new String[attributes.length+1];
+//			allColumns[0] = DatabaseHelper.ID_COLUMN_NAME;
+//			for (int i = 0; i < attributes.length; i++) {
+//				allColumns[i+1] = attributes[i].toString();
+//			}
+//			
+//			
+//			Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, "_id = " + insertId, null, null, null, null);
+//			cursor.moveToFirst();
+//			Task newTask = cursorToTask(cursor);
+//			cursor.close();
+//			
+			
+			return 0;
+		}
+		
+		//return 0;
 	}
 	
 	
