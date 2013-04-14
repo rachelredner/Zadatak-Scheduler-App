@@ -1,9 +1,9 @@
 package org.zadatak.zadatak;
 
-import org.zadatak.zadatak.Task.Attributes;
-
 import android.app.Application;
 import android.widget.CheckBox;
+import android.widget.RadioGroup;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class ZadatakApp extends Application {
@@ -45,8 +45,42 @@ public class ZadatakApp extends Application {
 		| it's value, either checked or unchecked                                      |
 		\******************************************************************************/
 		public void loadCheckbox (Settings setting, CheckBox checkBox){
-			boolean checked = get(setting).equals("TRUE");
+			String fromString = get(setting);
+			if (fromString == null) return;
+			boolean checked = fromString.equals("TRUE");
 			checkBox.setChecked(checked);
+		}
+		
+		
+		public void saveTimePicker (Settings setting, TimePicker timePicker) {
+			String toString = "";
+			Integer currentHour = timePicker.getCurrentHour();
+			Integer currentMinute = timePicker.getCurrentMinute();
+			toString = currentHour + ":" + currentMinute;
+			set (setting, toString);
+		}
+		
+		public void loadTimePicker (Settings setting, TimePicker timePicker) {
+			String fromString = get(setting);
+			if (fromString == null) return;
+			String[] split = fromString.split(":");
+			Integer currentHour = Integer.parseInt(split[0]);
+			Integer currentMinute = Integer.parseInt(split[1]);
+			timePicker.setCurrentHour(currentHour);
+			timePicker.setCurrentMinute(currentMinute);
+		}
+		
+		public void saveRadioGroup(Settings setting, RadioGroup radioGroup) {
+			int radioButton = radioGroup.getCheckedRadioButtonId();
+			String toString = "" + radioButton;
+			set(setting,toString);
+		}
+		
+		public void loadRadioGroup(Settings setting, RadioGroup radioGroup) {
+			String fromString = get (setting);
+			if (fromString == null) return;
+			int radioButtonId = Integer.parseInt(fromString);
+			radioGroup.check(radioButtonId);
 		}
 	}
 }
