@@ -57,6 +57,8 @@ public class Activity_Profile extends Activity {
     	app.setting.saveTimePicker(Settings.EndTime, endTime);
         app.setting.saveRadioGroup(Settings.SchedulingSchema, schedulingSchema);
         app.setting.saveCheckbox(Settings.UseSchedule,useSchedule);
+        
+        finish();
     }
     
     @Override

@@ -204,7 +204,7 @@ public class DatabaseManager{
 			cursor.close();
 			return settingValue;
 		}
-		
+		cursor.close();
 		return null;
 	}
 	
