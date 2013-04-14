@@ -9,10 +9,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.TimePicker;
 
 public class Activity_Profile extends Activity {
@@ -30,11 +27,6 @@ public class Activity_Profile extends Activity {
 
         setContentView(R.layout.activity_profile);
         
-        
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_new_task);
-        
         // Find all the widgets on the layout
         startTime = (TimePicker) findViewById(R.id.timepicker1);
         endTime = (TimePicker) findViewById(R.id.timepicker2);
@@ -43,11 +35,13 @@ public class Activity_Profile extends Activity {
         
         // Set the value of each widget from the databse
         ZadatakApp app = (ZadatakApp)getApplicationContext();
-        app.dbman.getSetting("startTime");
-        app.dbman.getSetting("endTime");
-        app.dbman.getSetting("SchedulingSchema");
-        app.dbman.getSetting("useSchedule");
-    	
+
+        app.setting.loadTimePicker(Settings.StartTime, startTime);
+        app.setting.loadTimePicker(Settings.EndTime, endTime);
+        app.setting.loadRadioGroup(Settings.SchedulingSchema, schedulingSchema);
+        app.setting.loadCheckbox(Settings.UseSchedule,useSchedule);
+        
+    	        
         // Bind the save button
         Button save = (Button) findViewById(R.id.save);
 		save.setOnClickListener(new OnClickListener() { public void onClick(View v) { saveSettings();} } );
@@ -57,7 +51,12 @@ public class Activity_Profile extends Activity {
     
     // This function saves all of the settings into the databse
     public void saveSettings() {
-    
+    	ZadatakApp app = (ZadatakApp)getApplicationContext();
+    	
+    	app.setting.saveTimePicker(Settings.StartTime,startTime);
+    	app.setting.saveTimePicker(Settings.EndTime, endTime);
+        app.setting.saveRadioGroup(Settings.SchedulingSchema, schedulingSchema);
+        app.setting.saveCheckbox(Settings.UseSchedule,useSchedule);
     }
     
     @Override
