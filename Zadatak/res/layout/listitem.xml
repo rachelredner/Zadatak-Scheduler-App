@@ -3,29 +3,29 @@
               android:layout_width="fill_parent" 
               android:layout_height="fill_parent" 
               android:orientation="vertical" >
-<TextView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="wrap_content"
-  android:textSize="24sp"
-  android:paddingTop="20dip"
-  android:paddingBottom="3dp"
-  android:paddingLeft="8dip"
-  android:singleLine="true"
-  android:background="#fff"
-  android:id="@+id/displayTaskName"
-  />
-<TextView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="wrap_content"
-  android:textSize="12sp"
-  android:paddingTop="0dp"
-  android:paddingBottom="20dip"
-  android:paddingLeft="8dip"
-  android:singleLine="true"
-  android:background="#fff"
-  android:id="@+id/displayDueDate"
-  />
+	<TextView
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:textSize="24sp"
+	  android:paddingTop="20dip"
+	  android:paddingBottom="3dp"
+	  android:paddingLeft="8dip"
+	  android:singleLine="true"
+	  android:background="#fff"
+	  android:id="@+id/displayTaskName"
+	  android:textIsSelectable="false"
+	  />
+	<TextView
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:textSize="12sp"
+	  android:paddingTop="0dp"
+	  android:paddingBottom="20dip"
+	  android:paddingLeft="8dip"
+	  android:singleLine="true"
+	  android:background="#fff"
+	  android:id="@+id/displayDueDate"
+	  android:textIsSelectable="false"
+	  />
 
   </LinearLayout>
