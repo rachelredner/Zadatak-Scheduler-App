@@ -214,21 +214,44 @@ public class DatabaseManager{
 	
 	// This function gets the tasks for today and returns a map of start times to activities
 	@SuppressLint("UseSparseArrays")
-	public Map<Integer,Task> getTasks(long Day) {
-		Map<Integer,Task> taskList = new HashMap<Integer,Task>();
+	public Map<Integer,Task> getTasks(long day) {
 		
-		// get database row with key "day" and parse to fill the tasklist map
 		
-		return taskList;
+		// get database row with key "day"
+		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"day", "tasklist"};
+		
+		
+		Cursor cursor = database.query(DatabaseHelper.SETTING_TABLE_NAME, allColumns, "day = " + day, null, null, null, null);
+		if (cursor.getCount() > 0) { // If there are one or more rows selected in the cursor then the item exists
+			cursor.moveToFirst();
+			String tasks = cursor.getString(2); // Get the setting value
+			cursor.close();
+			
+			// Parse String into the hashmap
+			Map<Integer,Task> taskList = new HashMap<Integer,Task>();
+			
+			String[] parts = tasks.split(",");
+			for (String part : parts) {
+				String[] elements = part.split(":");
+				Integer time = Integer.parseInt(elements[0]);
+				long id = Long.parseLong(elements[1]);
+				Task task = getTaskById(id);
+				taskList.put(time, task);
+			}
+			return taskList;
+			
+		}
+		
+		return null;
 	}
 	
 	public int setTasks(long day, Map<Integer,Task> taskList) {
 		String csv = "";
 		for (Entry<Integer,Task> task : taskList.entrySet()) {
-			csv += task.getValue().id+",";
+			csv += task.getKey()+":"+task.getValue().id+",";
 		}
 		// Set database with key "day" to the value of csv
-		if (getTasks(day) != null) {
+		if (getTasks(day) == null) {
 			ContentValues values = new ContentValues();
 			values.put("tasklist", csv);
 	        int returncode = database.update(DatabaseHelper.TASK_TABLE_NAME, values, "day='" + day + "'", null);
