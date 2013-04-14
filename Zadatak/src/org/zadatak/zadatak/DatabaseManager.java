@@ -163,7 +163,7 @@ public class DatabaseManager{
 		if (getSetting(setting) != null) {
 			ContentValues values = new ContentValues();
 			values.put("settingvalue", value);
-	        int returncode = database.update(DatabaseHelper.TASK_TABLE_NAME, values, "settingname='" + setting + "'", null);
+	        int returncode = database.update(DatabaseHelper.SETTING_TABLE_NAME, values, "settingname='" + setting + "'", null);
 	        return returncode;
 		}
 		else {
@@ -172,7 +172,7 @@ public class DatabaseManager{
 			values.put("settingname", setting);
 			values.put("settingvalue", value);
 			
-			long insertId = database.insert(DatabaseHelper.TASK_TABLE_NAME, null, values);
+			long insertId = database.insert(DatabaseHelper.SETTING_TABLE_NAME, null, values);
 			//return insertId;
 			
 //			Attributes[] attributes = Task.Attributes.values();
@@ -197,7 +197,7 @@ public class DatabaseManager{
 		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"settingname", "settingvalue"};
 		
 		
-		Cursor cursor = database.query(DatabaseHelper.SETTING_TABLE_NAME, allColumns, "settingname = " + setting, null, null, null, null);
+		Cursor cursor = database.query(DatabaseHelper.SETTING_TABLE_NAME, allColumns, "settingname='" + setting + "'", null, null, null, null);
 		if (cursor.getCount() > 0) { // If there are one or more rows selected in the cursor then the item exists
 			cursor.moveToFirst();
 			String settingValue = cursor.getString(2); // Get the setting value
@@ -221,7 +221,7 @@ public class DatabaseManager{
 		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"day", "tasklist"};
 		
 		
-		Cursor cursor = database.query(DatabaseHelper.SETTING_TABLE_NAME, allColumns, "day = " + day, null, null, null, null);
+		Cursor cursor = database.query(DatabaseHelper.SCHEDULE_TABLE_NAME, allColumns, "day = " + day, null, null, null, null);
 		if (cursor.getCount() > 0) { // If there are one or more rows selected in the cursor then the item exists
 			cursor.moveToFirst();
 			String tasks = cursor.getString(2); // Get the setting value
@@ -254,7 +254,7 @@ public class DatabaseManager{
 		if (getTasks(day) == null) {
 			ContentValues values = new ContentValues();
 			values.put("tasklist", csv);
-	        int returncode = database.update(DatabaseHelper.TASK_TABLE_NAME, values, "day='" + day + "'", null);
+	        int returncode = database.update(DatabaseHelper.SCHEDULE_TABLE_NAME, values, "day='" + day + "'", null);
 	        return returncode;
 		}
 		else {
@@ -263,7 +263,7 @@ public class DatabaseManager{
 			values.put("day", day);
 			values.put("tasklist", csv);
 			
-			long insertId = database.insert(DatabaseHelper.TASK_TABLE_NAME, null, values);
+			long insertId = database.insert(DatabaseHelper.SCHEDULE_TABLE_NAME, null, values);
 			//return insertId;
 			
 //			Attributes[] attributes = Task.Attributes.values();
