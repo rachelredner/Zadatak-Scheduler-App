@@ -20,7 +20,7 @@ public class Activity_TodaysTasks extends Activity {
 	// This is the Adapter being used to display the list's data
     SimpleCursorAdapter mAdapter;
 	
-	
+	int lastClickedPosition;
     /********************************** ON CREATE *********************************\
     | The on create function loads the view and longs the orentation, then         |
     | populates the list for the list view for the first time                      |
@@ -57,7 +57,7 @@ public class Activity_TodaysTasks extends Activity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
                 //edit(position);
-            	
+            	lastClickedPosition = position;
             	activity.openContextMenu(parent);
             }
         });
@@ -70,7 +70,33 @@ public class Activity_TodaysTasks extends Activity {
     public void delete (int index) {
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
     	app.dbman.deleteTask(app.dbman.getAllTasks().get(index).id);
+    	
+    	// A task has been deleted, rescedule
+        app.schedule();
+    	
+        app.toaster("DELEATED TASK");
+    	
+        
+        
     	refreshList();
+    	
+    	
+    	
+    }
+    
+    public void postpone (int index) {
+    	ZadatakApp app = (ZadatakApp) getApplicationContext();
+    	app.dbman.deleteTask(app.dbman.getAllTasks().get(index).id);
+    	
+    	// Postpone the task, passing in task of the day that should
+    	// be postpoined
+    	app.postpone(index);
+    	
+    	// A task has been deleted, rescedule
+    	app.schedule();
+    	
+        app.toaster("POSTPONED TASK");
+    	
     }
     
     /********************************** EDIT TASK *********************************\
@@ -125,14 +151,26 @@ public class Activity_TodaysTasks extends Activity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
       AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+      
+      int position;
+      if (info == null) {
+    	  position = lastClickedPosition;
+      }
+      else {
+    	  position = info.position;
+      }
+      
       int menuItemIndex = item.getItemId();
       
       switch(menuItemIndex) {
       case 0:
-    	  edit (info.position);
+    	  edit (position);
     	  break;
       case 1:
-    	  delete(info.position);
+    	  postpone(position);
+    	  break;      
+      case 2:
+    	  delete(position);
     	  break;
       }
       
