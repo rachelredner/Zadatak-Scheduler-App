@@ -66,6 +66,12 @@ public class Activity_ViewTasks extends Activity {
     public void delete (int index) {
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
     	app.dbman.deleteTask(app.dbman.getAllTasks().get(index).id);
+    	
+    	// A task has been deleted, rescedule
+        app.schedule();
+    	
+        app.toaster("DELEATED TASK");
+        
     	refreshList();
     }
     

@@ -62,6 +62,11 @@ public class Activity_Profile extends Activity {
         app.setting.saveRadioGroup(Settings.SchedulingSchema, schedulingSchema);
         app.setting.saveCheckbox(Settings.UseSchedule,useSchedule);
         
+        // The profile has changed, rerun the scheduling algorithm
+        app.schedule();
+        
+        app.toaster("SAVED PROFILE");
+        
         finish();
     }
     

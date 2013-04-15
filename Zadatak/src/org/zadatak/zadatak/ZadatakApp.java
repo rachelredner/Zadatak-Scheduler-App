@@ -110,6 +110,13 @@ public class ZadatakApp extends Application {
 		}
 	}
 	
+	public void schedule() {
+		
+	}
+	
+	public void postpone(int index) {
+		toaster("Unimplemented");
+	}
 	
 	
 }

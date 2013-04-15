@@ -96,6 +96,11 @@ public class Activity_NewTask extends Activity {
     	if (editmode) { app.dbman.editTask(id, task); }
     	else { app.dbman.insertTask(task); }
     	
+    	// A task has been added or changed, rescedule
+    	app.schedule();
+    	
+    	app.toaster("NEW / EDITED TASK");
+    	
     	// Quit the activity
     	finish();
     }
