@@ -14,7 +14,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.SparseArray;
 
 public class DatabaseManager{
 	// Database fields
@@ -159,6 +158,12 @@ public class DatabaseManager{
 	 /////////////////////// SETTING MANIPULATION FUNCTIONS /////////////////////// 
 	//////////////////////////////////////////////////////////////////////////////  
 	
+	/********************************* SET SETTING ********************************\
+	| This function takes in a setting to set and a value to set it as. It first   |
+	| checks to see if the value is in the database. If it is then the value is    |
+	| edited to the new value. If it is not in the database then the value is      |
+	| added to the database.                                                       |
+	\******************************************************************************/
 	public int setSetting (String setting, String value) {
 		if (getSetting(setting) != null) {
 			ContentValues values = new ContentValues();
@@ -167,35 +172,21 @@ public class DatabaseManager{
 	        return returncode;
 		}
 		else {
-			
 			ContentValues values = new ContentValues();
 			values.put("settingname", setting);
 			values.put("settingvalue", value);
-			
-			long insertId = database.insert(DatabaseHelper.SETTING_TABLE_NAME, null, values);
-			//return insertId;
-			
-//			Attributes[] attributes = Task.Attributes.values();
-//			String[] allColumns = new String[attributes.length+1];
-//			allColumns[0] = DatabaseHelper.ID_COLUMN_NAME;
-//			for (int i = 0; i < attributes.length; i++) {
-//				allColumns[i+1] = attributes[i].toString();
-//			}
-//			
-//			
-//			Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, "_id = " + insertId, null, null, null, null);
-//			cursor.moveToFirst();
-//			Task newTask = cursorToTask(cursor);
-//			cursor.close();
-//			
-			
+			database.insert(DatabaseHelper.SETTING_TABLE_NAME, null, values);		
 			return 0;
 		}
 	}
 	
+	/********************************* GET SETTING ********************************\
+	| The get setting function takes in a string representing the name of the      |
+	| setting and then queries the database for the row that corresponds to that   |
+	| setting. It then takes the value of the setting from that row and returns it |
+	\******************************************************************************/
 	public String getSetting (String setting) {
 		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"settingname", "settingvalue"};
-		
 		
 		Cursor cursor = database.query(DatabaseHelper.SETTING_TABLE_NAME, allColumns, "settingname='" + setting + "'", null, null, null, null);
 		if (cursor.getCount() > 0) { // If there are one or more rows selected in the cursor then the item exists
@@ -216,10 +207,8 @@ public class DatabaseManager{
 	@SuppressLint("UseSparseArrays")
 	public Map<Integer,Task> getTasks(long day) {
 		
-		
 		// get database row with key "day"
 		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"day", "tasklist"};
-		
 		
 		Cursor cursor = database.query(DatabaseHelper.SCHEDULE_TABLE_NAME, allColumns, "day = " + day, null, null, null, null);
 		if (cursor.getCount() > 0) { // If there are one or more rows selected in the cursor then the item exists
@@ -258,33 +247,11 @@ public class DatabaseManager{
 	        return returncode;
 		}
 		else {
-			
 			ContentValues values = new ContentValues();
 			values.put("day", day);
 			values.put("tasklist", csv);
-			
-			long insertId = database.insert(DatabaseHelper.SCHEDULE_TABLE_NAME, null, values);
-			//return insertId;
-			
-//			Attributes[] attributes = Task.Attributes.values();
-//			String[] allColumns = new String[attributes.length+1];
-//			allColumns[0] = DatabaseHelper.ID_COLUMN_NAME;
-//			for (int i = 0; i < attributes.length; i++) {
-//				allColumns[i+1] = attributes[i].toString();
-//			}
-//			
-//			
-//			Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, "_id = " + insertId, null, null, null, null);
-//			cursor.moveToFirst();
-//			Task newTask = cursorToTask(cursor);
-//			cursor.close();
-//			
-			
+			database.insert(DatabaseHelper.SCHEDULE_TABLE_NAME, null, values);
 			return 0;
 		}
-		
-		//return 0;
 	}
-	
-	
 }
