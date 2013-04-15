@@ -1,7 +1,10 @@
 package org.zadatak.zadatak;
 
+import org.zadatak.zadatak.Task.Attributes;
+
 import android.app.Application;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -82,11 +85,39 @@ public class ZadatakApp extends Application {
 			int radioButtonId = Integer.parseInt(fromString);
 			radioGroup.check(radioButtonId);
 		}
+		  //////////////////////////////////////////////////////////////////////////////
+		 ////////////////////////// MISC GETTERS AND SETTERS ////////////////////////// 
+		//////////////////////////////////////////////////////////////////////////////  
+		
+		/******************************** SET EDIT TEXT *******************************\
+		| The set edit text function sets the given attribute equal to the value of    |
+		| the text contained within the specified edit text box. You can use the       |
+		| paired get() function to set the edit text back to it's value                |
+		\******************************************************************************/
+		public void saveEditText(Settings setting, EditText text) {
+			set(setting,text.getText().toString());
+		}
+		
+		/******************************** GET EDIT TEXT *******************************\
+		| This function will set an edit text equal to the attribute of the task       |
+		| specified. use the paired set() function to set the task's attribute equal   |
+		| to the edit text's value                                                     |
+		\******************************************************************************/
+		public void loadEditText(Settings setting, EditText text) {
+			String fromString = get(setting);
+			if (fromString == null) return;
+			text.setText(fromString);
+		}
 	}
+	
+	
+	
 }
 enum Settings {
 	StartTime,
 	EndTime,
+	DaysToSchedule,
 	UseSchedule,
 	SchedulingSchema
+	
 }

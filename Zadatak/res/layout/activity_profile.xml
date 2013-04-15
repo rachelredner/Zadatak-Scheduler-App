@@ -64,7 +64,6 @@
 		        android:layout_height="wrap_content"
 		    	android:textSize = "19dip"
 		        android:textColor="#BBBB9A"
-		        android:layout_below = "@+id/timepicker1"
 		        android:layout_marginTop = "8dip"
 		        android:text = "Daily end time: "
 		        />
@@ -74,19 +73,36 @@
 		        android:id = "@+id/timepicker2"
 		        android:layout_width = "wrap_content" 
 		        android:layout_height = "wrap_content"
-		        android:layout_below="@+id/EndTime"
 		        android:background="#FFCBCBCB"
-				android:layout_centerHorizontal="true"
 				android:layout_gravity="center"
 		        />
-	    
+		    
+	    	<TextView
+		 	    android:id = "@+id/daysToScheduleLabel"
+		 	    android:layout_width = "wrap_content" 
+		 	    android:layout_height = "wrap_content"
+		 	    android:layout_below = "@+id/scheduleoptions"
+		        android:layout_marginTop = "8dip"
+		 	    android:textSize = "19dip"
+		 	    android:textColor="#BBBB9A"
+		 	    android:text = "How many days should be scheduled at a time: "
+		 	    />
+	 	
+		 	<EditText
+		 	    android:id = "@+id/daysToSchedule"
+		 	    android:layout_width = "100dp"
+		 	    android:layout_height = "wrap_content"
+		 	    android:textSize = "19dip"
+		 	    android:text = "5" 
+		 	    android:textColor="#BBBB9A"
+		 	    />
+		 	
 		    <TextView 
 		        android:id = "@+id/scheduleprompt"
 		        android:layout_width = "wrap_content" 
 		        android:layout_height = "wrap_content"
-		        android:text = "Scheduling \n Schema:"
+		        android:text = "Scheduling Schema:"
 		        android:textColor="#BBBB9A"
-		        android:layout_below = "@+id/timepicker2"
 		        android:layout_marginTop = "8dip"
 		        android:textSize = "19dip"
 		        />
@@ -95,9 +111,6 @@
 				android:id = "@+id/scheduleoptions"
 		        android:layout_width = "wrap_content" 
 		        android:layout_height = "wrap_content"
-				android:layout_toRightOf="@+id/scheduleprompt"
-				android:layout_below = "@+id/EndTime"
-				android:layout_alignTop = "@+id/scheduleprompt"
 				android:layout_marginLeft = "30dip"
 		    	android:orientation="vertical"
 		    	android:checkedButton="@+id/Moderate"

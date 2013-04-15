@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TimePicker;
 
@@ -16,6 +17,7 @@ public class Activity_Profile extends Activity {
 
 	TimePicker startTime;
     TimePicker endTime;
+    EditText daysToSchedule;
     RadioGroup schedulingSchema;
     CheckBox useSchedule;
 	
@@ -30,6 +32,7 @@ public class Activity_Profile extends Activity {
         // Find all the widgets on the layout
         startTime = (TimePicker) findViewById(R.id.timepicker1);
         endTime = (TimePicker) findViewById(R.id.timepicker2);
+        daysToSchedule = (EditText) findViewById(R.id.daysToSchedule);
         schedulingSchema = (RadioGroup) findViewById(R.id.scheduleoptions);
         useSchedule = (CheckBox) findViewById(R.id.usecalendar);
         
@@ -38,6 +41,7 @@ public class Activity_Profile extends Activity {
 
         app.setting.loadTimePicker(Settings.StartTime, startTime);
         app.setting.loadTimePicker(Settings.EndTime, endTime);
+        app.setting.loadEditText(Settings.DaysToSchedule, daysToSchedule);
         app.setting.loadRadioGroup(Settings.SchedulingSchema, schedulingSchema);
         app.setting.loadCheckbox(Settings.UseSchedule,useSchedule);
         
@@ -45,7 +49,6 @@ public class Activity_Profile extends Activity {
         // Bind the save button
         Button save = (Button) findViewById(R.id.save);
 		save.setOnClickListener(new OnClickListener() { public void onClick(View v) { saveSettings();} } );
-		
 		
     }
     
@@ -55,6 +58,7 @@ public class Activity_Profile extends Activity {
     	
     	app.setting.saveTimePicker(Settings.StartTime,startTime);
     	app.setting.saveTimePicker(Settings.EndTime, endTime);
+    	app.setting.saveEditText(Settings.DaysToSchedule, daysToSchedule);
         app.setting.saveRadioGroup(Settings.SchedulingSchema, schedulingSchema);
         app.setting.saveCheckbox(Settings.UseSchedule,useSchedule);
         
