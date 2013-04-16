@@ -1,5 +1,13 @@
 package org.zadatak.zadatak;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+
 import org.zadatak.zadatak.Task.Attributes;
 
 import android.app.Application;
@@ -111,7 +119,54 @@ public class ZadatakApp extends Application {
 	}
 	
 	public void schedule() {
+		int daysToSchedule = Integer.parseInt(setting.get(Settings.DaysToSchedule));
+		Calendar calendar = Calendar.getInstance();
+		int currentDay = calendar.get(Calendar.DAY_OF_YEAR) + (365*calendar.get(Calendar.YEAR));
 		
+		// Get the list of tasks
+		List<Task> tasks = dbman.getAllTasks();
+		
+		// Generate the busy time for the days to be scheduled
+		List<Map<Integer,Integer>> busyTime = new ArrayList<Map<Integer,Integer>>();
+		
+		int startTime = 480; // Hard Coded for now but will be taken from the settings page
+		int endTime = 1410;
+		
+		for (int i = 0; i < daysToSchedule; i++) {
+			Map<Integer,Integer> busyTimeToday = new HashMap<Integer,Integer>();
+			busyTimeToday.put(0, startTime);
+			busyTimeToday.put(endTime,1440);
+			busyTime.add(busyTimeToday);
+		}
+		
+		
+		roundRobinSchedule(daysToSchedule, currentDay, tasks, busyTime);
+	}
+	
+	public void roundRobinSchedule (int daysToSchedule, int currentDay, List<Task> tasks, List<Map<Integer,Integer>> busyTime) {
+		//toaster(""+currentDay);
+		for (int i = 0; i < daysToSchedule; i++) {
+			Queue<Task> roundRobinQueue = new LinkedList<Task>();
+			// Fill the queue with the tasks for the day
+			for (Task task : tasks) { roundRobinQueue.add(task); }
+			
+			// Go through and schedule the day
+			boolean currentlyBusy = false;
+			Task currentTask = null;
+			int currentTaskStartTime = 0;
+			for (int time = 0; time < 1440; time++) {
+				if (currentlyBusy){
+					// If there is a task currently being scheduled
+					if (currentTask != null) {
+						
+					}
+					// look for end times
+				}
+				else {
+					// look for start times
+				}
+			}
+		}
 	}
 	
 	public void postpone(int index) {
