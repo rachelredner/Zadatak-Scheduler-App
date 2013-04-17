@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -150,29 +151,57 @@ public class ZadatakApp extends Application {
 		roundRobinSchedule(daysToSchedule, currentDay, tasks, busyTime);
 	}
 	
-	public void roundRobinSchedule (int daysToSchedule, int currentDay, List<Task> tasks, List<Map<Integer,Integer>> busyTime) {
+	// This is the function to naively schedule events in a round robin style until
+	// the day is completely filled.
+	public void roundRobinSchedule (int daysToSchedule, int currentDay, List<Task> tasks, List<Map<Integer,Integer>> busyTimes) {
 		//toaster(""+currentDay);
 		for (int i = 0; i < daysToSchedule; i++) {
 			Queue<Task> roundRobinQueue = new LinkedList<Task>();
 			// Fill the queue with the tasks for the day
 			for (Task task : tasks) { roundRobinQueue.add(task); }
 			
+			
+			// Get the busy times for the day
+			Map<Integer,Integer> busyTime = busyTimes.get(i);
+			
+			//Create the zadatak schedule for the day
+			Set<TaskBlock> scheduledTasks = new HashSet<TaskBlock>();
+			
 			// Go through and schedule the day
-			boolean currentlyBusy = false;
 			Task currentTask = null;
 			int currentTaskStartTime = 0;
 			for (int time = 0; time < 1440; time++) {
-				if (currentlyBusy){
-					// If there is a task currently being scheduled
+				// If you hit a busy time block
+				if (busyTime.containsKey(time)) {
+					// If a task is currently being scheduled
 					if (currentTask != null) {
-						
+						// End the task and schedule it
+						TaskBlock taskBlock = new TaskBlock(currentTaskStartTime, time, currentTask);
+						scheduledTasks.add(taskBlock);
+						currentTask = null;
 					}
-					// look for end times
+					
+					// Skip to the end of the busy time
+					time = busyTime.get(time);
 				}
-				else {
-					// look for start times
+				
+				// If a task is scheduled for more then 30 minutes start a new one
+				if (time - currentTaskStartTime > 30) {
+					TaskBlock taskBlock = new TaskBlock(currentTaskStartTime, time, currentTask);
+					scheduledTasks.add(taskBlock);
+					currentTask = null;
+				}
+				
+				// Begin Scheduling a new task
+				if (currentTask == null) {
+					currentTask = roundRobinQueue.remove();
+					roundRobinQueue.add(currentTask);//re append the task to the end of the list
+					currentTaskStartTime = time;
 				}
 			}
+			
+			// Save the schechuled data in the databse
+			dbman.setTasks(i+currentDay, scheduledTasks);
 		}
 	}
 	
