@@ -2,9 +2,11 @@ package org.zadatak.zadatak;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.zadatak.zadatak.Task.Attributes;
 
@@ -205,7 +207,7 @@ public class DatabaseManager{
 	
 	// This function gets the tasks for today and returns a map of start times to activities
 	@SuppressLint("UseSparseArrays")
-	public Map<Integer,Task> getTasks(long day) {
+	public Set<TaskBlock> getTasks(long day) {
 		
 		// get database row with key "day"
 		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"day", "tasklist"};
@@ -217,15 +219,20 @@ public class DatabaseManager{
 			cursor.close();
 			
 			// Parse String into the hashmap
-			Map<Integer,Task> taskList = new HashMap<Integer,Task>();
+			Set<TaskBlock> taskList = new HashSet<TaskBlock>();
 			
 			String[] parts = tasks.split(",");
 			for (String part : parts) {
 				String[] elements = part.split(":");
-				Integer time = Integer.parseInt(elements[0]);
-				long id = Long.parseLong(elements[1]);
+				Integer startTime = Integer.parseInt(elements[0]);
+				Integer endTime = Integer.parseInt(elements[1]);
+				long id = Long.parseLong(elements[2]);
 				Task task = getTaskById(id);
-				taskList.put(time, task);
+				
+				TaskBlock taskBlock = new TaskBlock(startTime, endTime, task);
+				
+				
+				taskList.add(taskBlock);
 			}
 			return taskList;
 			
@@ -234,10 +241,10 @@ public class DatabaseManager{
 		return null;
 	}
 	
-	public int setTasks(long day, Map<Integer,Task> taskList) {
+	public int setTasks(long day, Set<TaskBlock> taskList) {
 		String csv = "";
-		for (Entry<Integer,Task> task : taskList.entrySet()) {
-			csv += task.getKey()+":"+task.getValue().id+",";
+		for (TaskBlock taskBlock : taskList) {
+			csv += taskBlock.startTime+":"+taskBlock.endTime+":"+taskBlock.task.id+",";
 		}
 		// Set database with key "day" to the value of csv
 		if (getTasks(day) == null) {
