@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,6 +55,11 @@ public class Activity_TodaysTasks extends Activity {
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
 		Set<TaskBlock> tasks = app.dbman.getTasks(app.today());
     	
+		if (tasks == null) {
+			app.toaster("no activities regestered for today ("+app.today()+")");
+			Log.v("calendar","no activities regestered for today ("+app.today()+")");
+		}
+		
 		List<TaskBlock> taskArray = new ArrayList<TaskBlock>();
 		
 		for (TaskBlock taskBlock : tasks) {
@@ -85,9 +91,9 @@ public class Activity_TodaysTasks extends Activity {
 	          int datarate1=o1.startTime;
 	          int datarate2=o2.startTime;
 
-	          if(datarate1>datarate2)
+	          if(datarate1<datarate2)
 	              return -1;
-	          else if(datarate1<datarate2)
+	          else if(datarate1>datarate2)
 	              return +1;
 	          else
 	              return 0;
