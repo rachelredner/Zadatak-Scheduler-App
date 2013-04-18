@@ -237,6 +237,7 @@ public class DatabaseManager{
 			return taskList;
 			
 		}
+		cursor.close();
 		
 		return null;
 	}
