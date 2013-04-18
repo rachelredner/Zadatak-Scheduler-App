@@ -191,7 +191,7 @@ public class ZadatakApp extends Application {
 				}
 				
 				// If a task is scheduled for more then 30 minutes start a new one
-				if (time - currentTaskStartTime > 30 && currentTask != null) {
+				if (time - currentTaskStartTime >= 30 && currentTask != null) {
 					TaskBlock taskBlock = new TaskBlock(currentTaskStartTime, time, currentTask);
 					scheduledTasks.add(taskBlock);
 					currentTask = null;
@@ -207,6 +207,7 @@ public class ZadatakApp extends Application {
 			
 			// Save the schechuled data in the databse
 			dbman.setTasks(i+currentDay, scheduledTasks);
+			Log.v("calendar", "Set Tasks for day " + (i+currentDay));
 		}
 	}
 	
