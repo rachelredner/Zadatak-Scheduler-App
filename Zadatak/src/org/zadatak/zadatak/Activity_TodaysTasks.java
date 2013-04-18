@@ -1,6 +1,11 @@
 package org.zadatak.zadatak;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -35,6 +40,8 @@ public class Activity_TodaysTasks extends Activity {
     	refreshList();
     }
     
+    
+    
     /******************************** REFRESH LIST ********************************\
     | This function refreshes the list if the list is ever update, for example     |
     | when a task is deleted or modified                                           |
@@ -45,11 +52,20 @@ public class Activity_TodaysTasks extends Activity {
     	ListView list = (ListView) findViewById(R.id.tasklist);
     	
     	ZadatakApp app = (ZadatakApp) getApplicationContext();
-		List<Task> tasks = app.dbman.getAllTasks();
+		Set<TaskBlock> tasks = app.dbman.getTasks(app.today());
     	
+		List<TaskBlock> taskArray = new ArrayList<TaskBlock>();
+		
+		for (TaskBlock taskBlock : tasks) {
+			taskArray.add(taskBlock);
+		}
+		
+		
+		
+		Collections.sort(taskArray, new taskBlockArrayComparitor());
+		
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listitem, tasks);
-        
-        TaskListAdapter adapter = new TaskListAdapter(this,R.layout.listitem,tasks);
+        TaskBlockListAdapter adapter = new TaskBlockListAdapter(this,R.layout.listitem,taskArray);
 		
         list.setAdapter(adapter);
         registerForContextMenu(list);
@@ -62,6 +78,21 @@ public class Activity_TodaysTasks extends Activity {
             }
         });
     }
+    
+    public class taskBlockArrayComparitor implements Comparator<TaskBlock> {
+
+	    public int compare(TaskBlock o1, TaskBlock o2) {
+	          int datarate1=o1.startTime;
+	          int datarate2=o2.startTime;
+
+	          if(datarate1>datarate2)
+	              return -1;
+	          else if(datarate1<datarate2)
+	              return +1;
+	          else
+	              return 0;
+	    } 
+	}
     
     /********************************* DELETE TASK ********************************\
     | This function deletes a task from the database given the id of the task in   |
