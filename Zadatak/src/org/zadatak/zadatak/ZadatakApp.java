@@ -191,7 +191,7 @@ public class ZadatakApp extends Application {
 				}
 				
 				// If a task is scheduled for more then 30 minutes start a new one
-				if (time - currentTaskStartTime > 30) {
+				if (time - currentTaskStartTime > 30 && currentTask != null) {
 					TaskBlock taskBlock = new TaskBlock(currentTaskStartTime, time, currentTask);
 					scheduledTasks.add(taskBlock);
 					currentTask = null;
