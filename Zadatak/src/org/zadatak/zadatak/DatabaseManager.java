@@ -16,6 +16,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class DatabaseManager{
 	// Database fields
@@ -212,7 +213,7 @@ public class DatabaseManager{
 		// get database row with key "day"
 		String[] allColumns = {DatabaseHelper.ID_COLUMN_NAME ,"day", "tasklist"};
 		
-		Cursor cursor = database.query(DatabaseHelper.SCHEDULE_TABLE_NAME, allColumns, "day = " + day, null, null, null, null);
+		Cursor cursor = database.query(DatabaseHelper.SCHEDULE_TABLE_NAME, allColumns, "day=" + day, null, null, null, null);
 		if (cursor.getCount() > 0) { // If there are one or more rows selected in the cursor then the item exists
 			cursor.moveToFirst();
 			String tasks = cursor.getString(2); // Get the setting value
@@ -248,10 +249,11 @@ public class DatabaseManager{
 			csv += taskBlock.startTime+":"+taskBlock.endTime+":"+taskBlock.task.id+",";
 		}
 		// Set database with key "day" to the value of csv
-		if (getTasks(day) == null) {
+		if (getTasks(day) != null) {
 			ContentValues values = new ContentValues();
 			values.put("tasklist", csv);
-	        int returncode = database.update(DatabaseHelper.SCHEDULE_TABLE_NAME, values, "day='" + day + "'", null);
+	        int returncode = database.update(DatabaseHelper.SCHEDULE_TABLE_NAME, values, "day=" + day + "", null);
+	        Log.v("Calendar","Updated day "+day+ "with tasks "+csv);
 	        return returncode;
 		}
 		else {
@@ -259,6 +261,7 @@ public class DatabaseManager{
 			values.put("day", day);
 			values.put("tasklist", csv);
 			database.insert(DatabaseHelper.SCHEDULE_TABLE_NAME, null, values);
+			Log.v("Calendar","Created new day "+day+ "with tasks "+csv);
 			return 0;
 		}
 	}
