@@ -126,10 +126,15 @@ public class ZadatakApp extends Application {
 		}
 	}
 	
+	// a function that returns the date of today as an integer
+	public int today() {
+		Calendar calendar = Calendar.getInstance();
+		return calendar.get(Calendar.DAY_OF_YEAR) + (365*calendar.get(Calendar.YEAR));
+	}
+	
 	public void schedule() {
 		int daysToSchedule = Integer.parseInt(setting.get(Settings.DaysToSchedule));
-		Calendar calendar = Calendar.getInstance();
-		int currentDay = calendar.get(Calendar.DAY_OF_YEAR) + (365*calendar.get(Calendar.YEAR));
+		int currentDay = today();
 		
 		// Get the list of tasks
 		List<Task> tasks = dbman.getAllTasks();
