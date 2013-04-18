@@ -105,11 +105,15 @@ public class DatabaseManager{
 		}
 		
 		Cursor cursor = database.query(DatabaseHelper.TASK_TABLE_NAME, allColumns, "_id = " + id, null, null, null, null);
-		cursor.moveToFirst();
-		Task newTask = cursorToTask(cursor);
+		if (cursor.getCount() > 0) {
+			cursor.moveToFirst();
+			Task newTask = cursorToTask(cursor);
+			cursor.close();
+
+			return newTask;
+		}
 		cursor.close();
-		
-		return newTask;
+		return null;
 	}
 	
 	  
