@@ -64,8 +64,8 @@ public class TaskBlockListAdapter extends ArrayAdapter<TaskBlock> {
 				if (taskName != null) { nameBox.setText(taskName); }
 			}
 			if (duedateBox != null) {
-				String dueDate = task.startTime + "-" + task.startTime;
-				if (dueDate != null) { 	duedateBox.setText("Due on: "+dueDate);	}
+				String dueDate = (task.startTime/60)+":"+(task.startTime%60)+ " to " + (task.endTime/60) + ":" + (task.endTime%60);
+				if (dueDate != null) { 	duedateBox.setText("Scheduled for: "+dueDate); }
 			}
 		}
 		return v;
