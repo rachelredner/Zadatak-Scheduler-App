@@ -139,6 +139,11 @@ public class ZadatakApp extends Application {
 		// Get the list of tasks
 		List<Task> tasks = dbman.getAllTasks();
 		
+		// Dont try to schedule no tasks
+		if (tasks.isEmpty()) {
+			return;
+		}
+
 		// Generate the busy time for the days to be scheduled
 		List<Map<Integer,Integer>> busyTime = new ArrayList<Map<Integer,Integer>>();
 		
