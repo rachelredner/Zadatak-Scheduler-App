@@ -147,8 +147,8 @@ public class ZadatakApp extends Application {
 		// Generate the busy time for the days to be scheduled
 		List<Map<Integer,Integer>> busyTime = new ArrayList<Map<Integer,Integer>>();
 		
-		int startTime = 480; // Hard Coded for now but will be taken from the settings page
-		int endTime = 1410;
+		int startTime = dbman.getSetting(Settings.StartTime); // Hard Coded for now but will be taken from the settings page
+		int endTime = dbman.getSetting(Settings.EndTime);
 		
 		for (int i = 0; i < daysToSchedule; i++) {
 			Map<Integer,Integer> busyTimeToday = new HashMap<Integer,Integer>();
