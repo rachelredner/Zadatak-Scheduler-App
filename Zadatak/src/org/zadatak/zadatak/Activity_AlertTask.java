@@ -31,7 +31,7 @@ public class Activity_AlertTask extends Activity {
         						  WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON |
         						  WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         
-        
+        /*
 //      Button beginTask = (Button)findViewById(R.id.beginTask);
 //      beginTask.setOnClickListener(new OnClickListener(){ public void onClick(View v){ beginTask(); } } );
 //		
@@ -52,7 +52,7 @@ public class Activity_AlertTask extends Activity {
         //Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alert);
         r.play();
-		
+		*/
     }
     
 //    private void playloop() {
