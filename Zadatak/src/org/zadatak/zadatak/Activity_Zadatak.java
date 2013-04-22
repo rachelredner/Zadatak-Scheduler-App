@@ -48,6 +48,10 @@ public class Activity_Zadatak extends Activity {
 		ZadatakApp app = (ZadatakApp) getApplicationContext();
 		app.dbman.open();
 		
+		// Start the background service for notifications
+		Intent intent = new Intent(this, ZadatakService.class);
+		startService(intent);
+		
 		
 		// Allow Zadatak to wake up the phone
 		/*getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
