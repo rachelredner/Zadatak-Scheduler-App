@@ -1,5 +1,7 @@
 package org.zadatak.zadatak;
 
+import java.util.Calendar;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -44,8 +46,13 @@ public class ZadatakService extends Service {
                     handler.postDelayed(this, 60000); 
                 }
             } 
-        }; 
-        handler.postDelayed(runable, 60000); 
+        };
+        
+        Calendar rightnow = Calendar.getInstance();
+        long minuteOffset = rightnow.getTimeInMillis() % 60000;
+        
+        
+        handler.postDelayed(runable, 60000-minuteOffset); 
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
