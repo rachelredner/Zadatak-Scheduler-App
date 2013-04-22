@@ -19,34 +19,39 @@ public class ZadatakService extends Service {
     IBinder mBinder;      // interface for clients that bind
     boolean mAllowRebind; // indicates whether onRebind should be used
 
+    
+    final Handler handler = new Handler();
+    
+    Runnable runable = new Runnable() { 
+        public void run() { 
+            try{
+                //do your code here
+                //also call the same runnable 
+                //handler.postDelayed(this, 60000);
+                //Toast.makeText(context, "Checking Time", Toast.LENGTH_SHORT).show();
+                Log.v("AsyncText","On Minute Checking Time");
+                Intent dialogIntent = new Intent(getBaseContext(), Activity_AlertTask.class);
+                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplication().startActivity(dialogIntent);
+            }
+            catch (Exception e) {
+                // TODO: handle exception
+            	handler.postDelayed(this, 60000);
+            }
+            finally{
+                //also call the same runnable 
+                handler.postDelayed(this, 60000); 
+            }
+        } 
+    };
+    
     @Override
     public void onCreate() {
     	Toast.makeText(this, "Service Created", Toast.LENGTH_SHORT).show();
         // The service is being created
-    	final Handler handler = new Handler();
+    	
     	final Context context = this;
-        Runnable runable = new Runnable() { 
-            public void run() { 
-                try{
-                    //do your code here
-                    //also call the same runnable 
-                    //handler.postDelayed(this, 60000);
-                    //Toast.makeText(context, "Checking Time", Toast.LENGTH_SHORT).show();
-                    Log.v("AsyncText","On Minute Checking Time");
-                    Intent dialogIntent = new Intent(getBaseContext(), Activity_AlertTask.class);
-                    dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getApplication().startActivity(dialogIntent);
-                }
-                catch (Exception e) {
-                    // TODO: handle exception
-                	handler.postDelayed(this, 60000);
-                }
-                finally{
-                    //also call the same runnable 
-                    handler.postDelayed(this, 60000); 
-                }
-            } 
-        };
+        
         
         Calendar rightnow = Calendar.getInstance();
         long minuteOffset = rightnow.getTimeInMillis() % 60000;
@@ -82,5 +87,6 @@ public class ZadatakService extends Service {
     public void onDestroy() {
     	Toast.makeText(this, "Service Destroyed", Toast.LENGTH_SHORT).show(); 
         // The service is no longer used and is being destroyed
+    	handler.removeCallbacks(runable);
     }
 }
