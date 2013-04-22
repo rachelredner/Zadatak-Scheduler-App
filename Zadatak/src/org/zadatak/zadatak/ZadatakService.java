@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.util.Log;
 import android.widget.Toast;
 
 public class ZadatakService extends Service {
@@ -27,11 +28,16 @@ public class ZadatakService extends Service {
                 try{
                     //do your code here
                     //also call the same runnable 
-                    handler.postDelayed(this, 60000);
-                    Toast.makeText(context, "Checking Time", Toast.LENGTH_SHORT).show();
+                    //handler.postDelayed(this, 60000);
+                    //Toast.makeText(context, "Checking Time", Toast.LENGTH_SHORT).show();
+                    Log.v("AsyncText","On Minute Checking Time");
+                    Intent dialogIntent = new Intent(getBaseContext(), Activity_AlertTask.class);
+                    dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getApplication().startActivity(dialogIntent);
                 }
                 catch (Exception e) {
                     // TODO: handle exception
+                	handler.postDelayed(this, 60000);
                 }
                 finally{
                     //also call the same runnable 
