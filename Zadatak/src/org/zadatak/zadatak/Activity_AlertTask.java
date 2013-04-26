@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Activity_AlertTask extends Activity {
 
@@ -30,6 +31,12 @@ public class Activity_AlertTask extends Activity {
         						  WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | 
         						  WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON |
         						  WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+        
+        String taskName = (String)savedInstanceState.get("Task Name");
+        if (taskName != null) {
+        	TextView name = (TextView) findViewById(R.id.task_name);
+        	name.setText(taskName);
+        }
         
         /*
 //      Button beginTask = (Button)findViewById(R.id.beginTask);

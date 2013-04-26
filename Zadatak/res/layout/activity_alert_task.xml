@@ -2,7 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+    
+    <TextView
+		android:id = "@+id/task_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_alignParentTop = "True"
+		android:text="Task Name"
+		android:textColor="#BBBB9A"
+		android:textSize = "30dip"
+		android:textStyle = "bold"
+		android:layout_marginTop = "6dip" />
+    
     <Button
         android:id="@+id/beginTask"
         android:layout_width="wrap_content"

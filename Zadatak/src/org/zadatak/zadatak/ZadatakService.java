@@ -1,6 +1,9 @@
 package org.zadatak.zadatak;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import android.app.Service;
 import android.content.Context;
@@ -29,10 +32,32 @@ public class ZadatakService extends Service {
                 //also call the same runnable 
                 //handler.postDelayed(this, 60000);
                 //Toast.makeText(context, "Checking Time", Toast.LENGTH_SHORT).show();
+            	
+            	ZadatakApp app = (ZadatakApp) getApplicationContext();
+            	
+            	Calendar calendar = Calendar.getInstance(); 
+            	Integer currentMinute = calendar.get(Calendar.MINUTE) + 60*calendar.get(Calendar.HOUR);
+            	
                 Log.v("AsyncText","On Minute Checking Time");
-                Intent dialogIntent = new Intent(getBaseContext(), Activity_AlertTask.class);
-                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplication().startActivity(dialogIntent);
+                
+                // check to see if a task starts at this minute
+                Set<TaskBlock> tasks = app.dbman.getTasks(app.today());
+                Map<Integer,String> taskNames = new HashMap<Integer,String>();
+                
+                for (TaskBlock taskBlock : tasks) {
+        			taskNames.put(taskBlock.startTime, taskBlock.task.get(Task.Attributes.Name));
+        		}
+                
+                TaskBlock thisTime = new TaskBlock(currentMinute);
+                
+                if (taskNames.containsKey(thisTime)) {
+                	Intent dialogIntent = new Intent(getBaseContext(), Activity_AlertTask.class);
+                	dialogIntent.putExtra("taskname", taskNames.get(thisTime));
+                    dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getApplication().startActivity(dialogIntent);
+                }
+                
+                
             }
             catch (Exception e) {
                 // TODO: handle exception
