@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -32,10 +33,20 @@ public class Activity_AlertTask extends Activity {
         						  WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON |
         						  WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         
-        String taskName = (String)savedInstanceState.get("Task Name");
-        if (taskName != null) {
-        	TextView name = (TextView) findViewById(R.id.task_name);
-        	name.setText(taskName);
+        
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+	        String taskName = (String)extras.get("taskname");
+	        if (taskName != null) {
+	        	TextView name = (TextView) findViewById(R.id.task_name);
+	        	name.setText(taskName);
+	        }
+	        else {
+	        	Log.v("DisplayTask","Task name is null :(");
+	        }
+        }
+        else {
+        	Log.v("DisplayTask","Extras are null :(");
         }
         
         /*
