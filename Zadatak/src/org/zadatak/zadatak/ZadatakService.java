@@ -36,7 +36,7 @@ public class ZadatakService extends Service {
             	ZadatakApp app = (ZadatakApp) getApplicationContext();
             	
             	Calendar calendar = Calendar.getInstance(); 
-            	Integer currentMinute = calendar.get(Calendar.MINUTE) + 60*calendar.get(Calendar.HOUR);
+            	Integer currentMinute = calendar.get(Calendar.MINUTE) + 60*calendar.get(Calendar.HOUR_OF_DAY);
             	
                 Log.v("AsyncText","On Minute Checking Time");
                 
@@ -48,11 +48,11 @@ public class ZadatakService extends Service {
         			taskNames.put(taskBlock.startTime, taskBlock.task.get(Task.Attributes.Name));
         		}
                 
-                TaskBlock thisTime = new TaskBlock(currentMinute);
-                
-                if (taskNames.containsKey(thisTime)) {
+                Log.v("AsyncText",""+currentMinute);
+                if (taskNames.containsKey(currentMinute)) {
+                	Log.v("AsyncText","Found match!");
                 	Intent dialogIntent = new Intent(getBaseContext(), Activity_AlertTask.class);
-                	dialogIntent.putExtra("taskname", taskNames.get(thisTime));
+                	dialogIntent.putExtra("taskname", taskNames.get(currentMinute));
                     dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     getApplication().startActivity(dialogIntent);
                 }
